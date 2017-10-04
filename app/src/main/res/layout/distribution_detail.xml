@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/distribution"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/distribution_detail"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/binomial_text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="n" />
+
+        <EditText
+            android:id="@+id/n"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="1" />
+
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="p" />
+
+        <EditText
+            android:id="@+id/p"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="0.0" />
+
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="r" />
+
+        <EditText
+            android:id="@+id/r"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="1" />
+    </LinearLayout>
+</LinearLayout>

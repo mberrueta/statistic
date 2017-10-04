@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Statistic</string>
+    <string name="title_distribution_detail">Distribution Detail</string>
+    <string name="binomial_text">
+        <b>Variable aleatoria:</b>\n
+        “r” <i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n
+        <b>Parámetros del Modelo:</b> \n
+             “n” <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n
+             “p” <i>(probabilidad de éxito constante en cada experimento)</i>\n
+        <b>Dominio de la Variable Aleatoria:</b>\n
+        0 ≤ r ≤ n .\n
+    </string>
+</resources>

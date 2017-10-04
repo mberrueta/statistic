@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+
+import android.widget.EditText;
+import android.widget.TextView;
+import com.uade.matt.statistic.models.BinomialDistributionCalc;
 
 /**
  * An activity representing a single Distribution detail screen. This
@@ -18,7 +23,6 @@ import android.view.MenuItem;
  * in a {@link DistributionListActivity}.
  */
 public class DistributionDetailActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,5 +83,13 @@ public class DistributionDetailActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void click(View view) {
+        int n = Integer.parseInt(((EditText)findViewById(R.id.n)).getText().toString());
+        int p = Integer.parseInt(((EditText)findViewById(R.id.p)).getText().toString());
+        double r = Double.parseDouble(((EditText)findViewById(R.id.r)).getText().toString());
+            BinomialDistributionCalc result = new BinomialDistributionCalc(n, p, r).calculatePx();
+        Log.i(BinomialDistributionCalc.class.toString(), result.toString());
     }
 }

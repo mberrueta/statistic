@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.uade.matt.statistic.models.BinomialDistributionCalc;
 
+import static com.uade.matt.statistic.R.id.r;
+
 /**
  * An activity representing a single Distribution detail screen. This
  * activity is only used narrow width devices. On tablet-size devices,
@@ -23,6 +25,8 @@ import com.uade.matt.statistic.models.BinomialDistributionCalc;
  * in a {@link DistributionListActivity}.
  */
 public class DistributionDetailActivity extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,18 +49,7 @@ public class DistributionDetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don't need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
         if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
             Bundle arguments = new Bundle();
             arguments.putString(DistributionDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(DistributionDetailFragment.ARG_ITEM_ID));
@@ -66,6 +59,7 @@ public class DistributionDetailActivity extends AppCompatActivity {
                     .add(R.id.distribution_detail_container, fragment)
                     .commit();
         }
+
     }
 
     @Override
@@ -85,11 +79,5 @@ public class DistributionDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void click(View view) {
-        int n = Integer.parseInt(((EditText)findViewById(R.id.n)).getText().toString());
-        int p = Integer.parseInt(((EditText)findViewById(R.id.p)).getText().toString());
-        double r = Double.parseDouble(((EditText)findViewById(R.id.r)).getText().toString());
-            BinomialDistributionCalc result = new BinomialDistributionCalc(n, p, r).calculatePx();
-        Log.i(BinomialDistributionCalc.class.toString(), result.toString());
-    }
+
 }

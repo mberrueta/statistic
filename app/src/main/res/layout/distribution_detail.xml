@@ -32,6 +32,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:selectAllOnFocus="true"
             android:text="1" />
 
 
@@ -46,6 +47,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:selectAllOnFocus="true"
             android:text="0.0" />
 
 
@@ -60,6 +62,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:selectAllOnFocus="true"
             android:text="1" />
     </LinearLayout>
 
@@ -76,10 +79,11 @@
             android:text="F" />
 
         <EditText
-            android:id="@+id/leftP"
+            android:id="@+id/f"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:selectAllOnFocus="true"
             android:text="1" />
 
 
@@ -90,10 +94,11 @@
             android:text="P" />
 
         <EditText
-            android:id="@+id/twoTailP"
+            android:id="@+id/pbin"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:selectAllOnFocus="true"
             android:text="0.0" />
 
 
@@ -104,10 +109,11 @@
             android:text="G" />
 
         <EditText
-            android:id="@+id/rightP"
+            android:id="@+id/g"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:selectAllOnFocus="true"
             android:text="1" />
     </LinearLayout>
 
@@ -115,6 +121,5 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="click"
         android:text="calc" />
 </LinearLayout>

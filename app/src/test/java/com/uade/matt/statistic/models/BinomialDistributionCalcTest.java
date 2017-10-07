@@ -22,6 +22,9 @@ public class BinomialDistributionCalcTest {
         assertThat(result.getF(), is(0.8784233454094307));
         assertThat(result.getG(), is(0.3917469981251689));
         assertThat(result.getPbin(), is(0.27017034353459846));
+        assertThat(result.getMean(), is(18.0000));
+        assertThat(result.getVariance(), is(1.80000));
+        assertThat(result.getStandardDeviation(), is(1.3416407864998738));
     }
 
 }

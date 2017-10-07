@@ -29,6 +29,7 @@ public class DistributionDetailFragment extends Fragment {
     private EditText etF;
     private EditText etPbin;
     private EditText etG;
+    private EditText etResult;
 
     public DistributionDetailFragment() {
     }
@@ -90,6 +91,7 @@ public class DistributionDetailFragment extends Fragment {
         etF = rootView.findViewById(R.id.f);
         etPbin = rootView.findViewById(R.id.pbin);
         etG = rootView.findViewById(R.id.g);
+        etResult = rootView.findViewById(R.id.etResult);
 
 
         Button mButton = (Button) rootView.findViewById(R.id.button);
@@ -107,6 +109,7 @@ public class DistributionDetailFragment extends Fragment {
                 etF.setText(result.getF().toString());
                 etPbin.setText(result.getPbin().toString());
                 etG.setText(result.getG().toString());
+                etResult.setText(result.toString());
             }
         });
 

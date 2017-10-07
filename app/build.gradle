@@ -33,8 +33,9 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
-    compile files('/Users/matiasberrueta/AndroidStudioProjects/Statistic/libs/commons-math3-3.6.1.jar')
+	compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile 'org.apache.commons:commons-math3:3.6.1'
+    // compile files('/Users/matiasberrueta/AndroidStudioProjects/Statistic/libs/commons-math3-3.6.1.jar')
     // Test
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.+'

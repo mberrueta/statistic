@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/distribution"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,18 +14,17 @@
         <TextView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:clickable="false"
             android:enabled="false"
-            android:text="n" />
+            android:inputType="text"
+            android:text="n"/>
 
         <EditText
             android:id="@+id/n"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:selectAllOnFocus="true"
-            android:text="1" />
+            android:selectAllOnFocus="true"/>
 
 
         <TextView
@@ -41,25 +40,23 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:selectAllOnFocus="true"
-            android:text="0.0" />
+            android:selectAllOnFocus="true"/>
 
 
         <TextView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:clickable="false"
             android:enabled="false"
-            android:text="r" />
+            android:inputType="text"
+            android:text="r"/>
 
         <EditText
             android:id="@+id/r"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:selectAllOnFocus="true"
-            android:text="1" />
+            android:selectAllOnFocus="true"/>
     </LinearLayout>
 
 
@@ -72,52 +69,49 @@
         <TextView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:clickable="false"
             android:enabled="false"
-            android:text="F" />
+            android:inputType="text"
+            android:text="F"/>
 
         <EditText
             android:id="@+id/f"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:selectAllOnFocus="true"
-            android:text="1" />
+            android:selectAllOnFocus="true"/>
 
 
         <TextView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:clickable="false"
             android:enabled="false"
-            android:text="P" />
+            android:inputType="text"
+            android:text="P"/>
 
         <EditText
             android:id="@+id/pbin"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:selectAllOnFocus="true"
-            android:text="0.0" />
+            android:selectAllOnFocus="true"/>
 
 
         <TextView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:clickable="false"
             android:enabled="false"
-            android:text="G" />
+            android:inputType="text"
+            android:text="G"/>
 
         <EditText
             android:id="@+id/g"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:selectAllOnFocus="true"
-            android:text="1" />
+            android:selectAllOnFocus="true"/>
 
 
         <android.support.design.widget.FloatingActionButton
@@ -127,32 +121,32 @@
             android:layout_gravity="center_vertical|start"
             android:layout_margin="@dimen/fab_margin"
             app:layout_anchor="@+id/calc_container"
-            app:layout_anchorGravity="top|end" />
+            app:layout_anchorGravity="top|end"/>
 
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--app:backgroundTint="@android:color/holo_green_dark"-->
-            <!--app:layout_anchor="@+id/calc_container"-->
-            <!--app:layout_anchorGravity="bottom|right"-->
-            <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:backgroundTint="@android:color/holo_green_dark"-->
+        <!--app:layout_anchor="@+id/calc_container"-->
+        <!--app:layout_anchorGravity="bottom|right"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
 
-            <!--app:srcCompat="@android:drawable/ic_menu_help"/>-->
+        <!--app:srcCompat="@android:drawable/ic_menu_help"/>-->
 
     </LinearLayout>
 
     <!--<Button-->
-        <!--android:id="@+id/button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="calc" />-->
+    <!--android:id="@+id/button"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="calc" />-->
+
 
     <EditText
         android:id="@+id/etResult"
         android:layout_width="match_parent"
         android:layout_height="262dp"
         android:inputType="textMultiLine"
-        android:selectAllOnFocus="true"
-        android:text="1"/>
+        android:selectAllOnFocus="true"/>
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart"

@@ -1,5 +1,6 @@
 package com.uade.matt.statistic;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -38,8 +39,14 @@ public class DistributionDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage(R.string.binomial_text)
+                        .setTitle(R.string.help);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+//                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 

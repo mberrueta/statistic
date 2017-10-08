@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Statistic</string>
     <string name="title_distribution_detail">Distribution Detail</string>
+    <string name="help">help</string>
     <string name="binomial_text">
         <b>Variable aleatoria:</b>\n
         “r” <i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n

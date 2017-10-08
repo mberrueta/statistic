@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/distribution"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/distribution"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/distribution_detail"
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/binomial_text" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -74,8 +64,9 @@
 
 
     <LinearLayout
+        android:id="@+id/calc_container"
         android:layout_width="match_parent"
-        android:layout_height="61dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <TextView
@@ -127,19 +118,45 @@
             android:inputType="numberDecimal"
             android:selectAllOnFocus="true"
             android:text="1" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_margin="@dimen/fab_margin"
+            app:layout_anchor="@+id/calc_container"
+            app:layout_anchorGravity="top|end" />
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:backgroundTint="@android:color/holo_green_dark"-->
+            <!--app:layout_anchor="@+id/calc_container"-->
+            <!--app:layout_anchorGravity="bottom|right"-->
+            <!--android:layout_margin="@dimen/fab_margin"-->
+
+            <!--app:srcCompat="@android:drawable/ic_menu_help"/>-->
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="calc" />
+    <!--<Button-->
+        <!--android:id="@+id/button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="calc" />-->
 
     <EditText
         android:id="@+id/etResult"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="262dp"
         android:inputType="textMultiLine"
         android:selectAllOnFocus="true"
         android:text="1"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
 </LinearLayout>

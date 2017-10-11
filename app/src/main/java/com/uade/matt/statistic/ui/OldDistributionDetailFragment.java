@@ -1,10 +1,10 @@
-package com.uade.matt.statistic;
+package com.uade.matt.statistic.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -21,8 +22,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.uade.matt.statistic.dummy.DummyContent;
+import com.uade.matt.statistic.R;
 import com.uade.matt.statistic.models.BinomialDistributionCalc;
+import com.uade.matt.statistic.utils.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +32,19 @@ import java.util.List;
 import library.MinMaxFilter;
 
 import static com.uade.matt.statistic.R.id.f;
+import static com.uade.matt.statistic.R.id.n;
 import static com.uade.matt.statistic.R.id.p;
+import static com.uade.matt.statistic.R.id.r;
+import static com.uade.matt.statistic.utils.Helper.getParsed;
 
-public class DistributionDetailFragment extends Fragment {
+public class OldDistributionDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
     BinomialDistributionCalc result;
-    private DummyContent.DummyItem mItem;
-    private EditText etN, etR, etP, etF, etPbin, etG, etResult;
+    private ContentType.Item mItem;
+    private EditText etN, etR, etP, etF, etPbin, etG, etResult, etMean, etStandardDeviation;
     private BarChart chart;
 
-    public DistributionDetailFragment() {
+    public OldDistributionDetailFragment() {
     }
 
     @Override
@@ -47,7 +52,7 @@ public class DistributionDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            mItem = ContentType.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
@@ -70,7 +75,7 @@ public class DistributionDetailFragment extends Fragment {
                 }.start();
                 try {
                     Thread.sleep(4000); // Let the Toast display before app will get shutdown
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
                 }
                 System.exit(2);
             }
@@ -78,81 +83,87 @@ public class DistributionDetailFragment extends Fragment {
 
     }
 
-    public Object getParsed(NumberType numberType, EditText et) {
-
-        if (et.getText().toString().trim().length() == 0)
-            return null;
-
-        String s = et.getText().toString().trim();
-        switch (numberType) {
-            case DOUBLE:
-                return Double.parseDouble(et.getText().toString().trim());
-            case INTEGER:
-                return Integer.parseInt(et.getText().toString().trim());
-            default:
-                return s;
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.distribution_detail, container, false);
+        final View rootView = inflater.inflate(R.layout.binomial_distribution_view, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((EditText) rootView.findViewById(R.id.n)).setFilters(new InputFilter[]{new MinMaxFilter(1, 99999999)});
-            ((EditText) rootView.findViewById(R.id.r)).setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+            ((EditText) rootView.findViewById(n)).setFilters(new InputFilter[]{new MinMaxFilter(1, 99999999)});
+            ((EditText) rootView.findViewById(r)).setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
             ((EditText) rootView.findViewById(p)).setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
         }
 
         chart = rootView.findViewById(R.id.chart);
-        etN = rootView.findViewById(R.id.n);
-        etR = rootView.findViewById(R.id.r);
+        etN = rootView.findViewById(n);
+        etR = rootView.findViewById(r);
         etP = rootView.findViewById(p);
         etF = rootView.findViewById(f);
+        etMean = rootView.findViewById(R.id.etMean);
+        etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
         etPbin = rootView.findViewById(R.id.pbin);
         etG = rootView.findViewById(R.id.g);
         etResult = rootView.findViewById(R.id.etResult);
 
 
-        FloatingActionButton mButton = (FloatingActionButton) rootView.findViewById(R.id.button);
+        FloatingActionButton mButton = rootView.findViewById(R.id.button);
+        FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
+        mClearButton.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   etN.setText("");
+                   etR.setText("");
+                   etP.setText("");
+                   etF.setText("");
+                   etStandardDeviation.setText("");
+                   etMean.setText("");
+                   etPbin.setText("");
+                   etG.setText("");
+                   etResult.setText("");
+                   chart.invalidate();
+               }
+           });
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int n = Integer.parseInt(etN.getText().toString());
-                int r;
 
                 result = new BinomialDistributionCalc()
-                        .p((Double) getParsed(NumberType.DOUBLE, etP))
-                        .f((Double) getParsed(NumberType.DOUBLE, etF))
-                        .n((Integer) getParsed(NumberType.INTEGER, etN))
-                        .r((Integer) getParsed(NumberType.INTEGER, etR))
+                        .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
+                        .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                        .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+                        .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+                        .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+                        .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
+                        .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
                         .calculatePx();
 
-
-//                if (etR.getText().length() > 0 ){
-//                    r = Integer.parseInt(etR.getText().toString());
-//                    result = new BinomialDistributionCalc().calculatePx();
-//                }else{
-//                    Double f = Double.parseDouble(etF.getText().toString());
-//                    result = new BinomialDistributionCalc(n, p, f).calculatePx();
-//                }
-
+                if(!Helper.isNullorEmpty(result.resultMessage()))
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
+                    builder.setMessage(result.resultMessage())
+                            .setTitle(R.string.help);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    return;
+                }
 
                 etN.setText(result.n().toString());
                 etR.setText(result.r().toString());
                 etP.setText(result.p().toString());
                 etF.setText(result.f().toString());
+                etStandardDeviation.setText(result.standardDeviation().toString());
+                etMean.setText(result.mean().toString());
                 etPbin.setText(result.pbin().toString());
                 etG.setText(result.g().toString());
                 etResult.setText(result.toString());
 
-
-                List<BinomialDistributionCalc.Dto> list = result.generateSuccessIndex();
+                List<Helper.Dto> list = result.generateSuccessIndex();
                 List<BarEntry> entries = new ArrayList<>();
-                for (BinomialDistributionCalc.Dto data : list) {
-                    entries.add(new BarEntry((float) data.id, data.value.floatValue()));
+
+                for (Helper.Dto data : list) {
+                    entries.add( new BarEntry((float) data.id, data.value.floatValue()));
                 }
 
                 BarDataSet dataSet = new BarDataSet(entries, "p = " + result.p().toString());
@@ -161,8 +172,9 @@ public class DistributionDetailFragment extends Fragment {
                 chart.invalidate();
                 chart.animateX(2500, Easing.EasingOption.EaseInBack);
                 chart.fitScreen();
-                chart.highlightValue(new Highlight(0, 0, n));
-                chart.highlightValue(chart.getHighlighter().getHighlight((float) n, 0));
+                chart.highlightValues(new Highlight[]{
+                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
+                });
 
                 chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
                     Toast mCurrentToast;
@@ -190,9 +202,5 @@ public class DistributionDetailFragment extends Fragment {
         });
 
         return rootView;
-    }
-
-    public enum NumberType {
-        DOUBLE, INTEGER
     }
 }

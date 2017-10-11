@@ -11,4 +11,6 @@
         <b>Dominio de la Variable Aleatoria:</b>\n
         0 ≤ r ≤ n .\n
     </string>
+    <string name="normal_text"> NORMAL!!!
+    </string>
 </resources>

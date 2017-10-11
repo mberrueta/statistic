@@ -2,11 +2,10 @@ package com.uade.matt.statistic.models;
 
 import android.util.Log;
 
+import com.uade.matt.statistic.utils.Helper;
+
 import org.apache.commons.math3.distribution.BinomialDistribution;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import static com.uade.matt.statistic.utils.Helper.isNullorZero;
+import static com.uade.matt.statistic.utils.Helper.round;
+
 @Accessors(chain = true, fluent = true)
-public class BinomialDistributionCalc {
+public class BinomialDistributionCalc extends DistributionCalc {
     private BinomialDistribution dist;
     // trials
     @Getter
@@ -45,20 +47,48 @@ public class BinomialDistributionCalc {
     @Setter
     private Double supportLowerBound, supportUpperBound;
 
+    @Getter
+    @Setter
+    private String resultMessage;
+
     public BinomialDistributionCalc calculatePx() {
-        Log.i(BinomialDistributionCalc.class.toString(), "Pre: " + this.toString());
+        Log.i(BinomialDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
 
-        if (n == 0) {
-            return this;
+        if (isNullorZero(n)) {
+            if(!isNullorZero(mean))
+                n = (int)(mean / p);
+            else
+                n = (int)(standardDeviation / (p * (1 - p)));
         }
 
 
         dist = new BinomialDistribution(n, p);
 
 
-        if (r == null) {
-            r = dist.inverseCumulativeProbability(f);
+        if (isNullorZero(r)) {
+            if(!isNullorZero(f))
+            {
+                Integer r2 = dist.inverseCumulativeProbability(f);
+                Integer r1 = r2 - 1;
+                Double f1 = dist.cumulativeProbability(r1);
+                Double f2 = dist.cumulativeProbability(r2);
+                resultMessage = String.format("Range values: %n" +
+                        "P(r<%d) = %f %n" +
+                        "P(r<%d) = %f", r1, f1, r2, f2);
+                return this;
+            }
+            else
+            {
+                Integer r1 = dist.inverseCumulativeProbability(1 - g);
+                Integer r2 = r1 + 1;
+                Double g1 = dist.cumulativeProbability(r1 - 1, n);
+                Double g2 = dist.cumulativeProbability(r2 - 1, n);
+                resultMessage = String.format("Range values: %n" +
+                        "P(r>%d) = %f %n" +
+                        "P(r>%d) = %f", r1, g1, r2, g2);
+                return this;
+            }
         }
 
 
@@ -72,13 +102,12 @@ public class BinomialDistributionCalc {
         median = n * p;
 
 
-        variance = n * p * (1 - p);
-        // needed to round the number
-        variance = round(variance);
-        standardDeviation = Math.sqrt(variance);
-        skewness = (1 - 2 * p) / standardDeviation;
-        kurtosis = 3 + ((1 - 6 * p * (1 - p)) / standardDeviation);
-        coefficientVariation = round(standardDeviation / mean);
+        standardDeviation = n * p * (1 - p);
+        standardDeviation = round(standardDeviation);
+        variance = Math.sqrt(standardDeviation);
+        skewness = (1 - 2 * p) / variance;
+        kurtosis = 3 + ((1 - 6 * p * (1 - p)) / variance);
+        coefficientVariation = round(variance / mean);
 
         f = dist.cumulativeProbability(r);
         g = r > 0 ? dist.cumulativeProbability(r - 1, n) : 1.0;
@@ -87,52 +116,50 @@ public class BinomialDistributionCalc {
         return this;
     }
 
+    public String toFullString() {
+        return "BinomialDistributionCalc{" +
+                "dist=" + dist +
+                ", n=" + n +
+                ", r=" + r +
+                ", p=" + p +
+                ", failureR=" + failureR +
+                ", possibleCombinations=" + possibleCombinations +
+                ", f=" + f +
+                ", g=" + g +
+                ", pbin=" + pbin +
+                ", failureP=" + failureP +
+                ", mean=" + mean +
+                ", median=" + median +
+                ", mode=" + mode +
+                ", variance=" + variance +
+                ", standardDeviation=" + standardDeviation +
+                ", skewness=" + skewness +
+                ", kurtosis=" + kurtosis +
+                ", coefficientVariation=" + coefficientVariation +
+                ", supportLowerBound=" + supportLowerBound +
+                ", supportUpperBound=" + supportUpperBound +
+                '}';
+    }
+
+
     @Override
     public String toString() {
-        return "Binomial:\n" +
-
-                "Failure r = " + failureR + "\n" +
-                "Failure p = " + failureP + "\n" +
-                "𝜇 = " + mean + "\n" +
-                "Median = " + median + "\n" +
-//                "Mode = " + mode + "\n" +
+        return  "Median = " + median + "\n" +
                 "𝜎² = " + variance + "\n" +
-                "𝜎 = " + standardDeviation + "\n" +
                 "As = " + skewness + "\n" +
                 "Kurtosis = " + kurtosis + "\n" +
                 "CV = " + coefficientVariation + "\n";
     }
 
-    public Double round(Double number) {
-        DecimalFormat df = new DecimalFormat("#.########");
-        df.setRoundingMode(RoundingMode.CEILING);
-        return Double
-                .parseDouble(df.format(number));
-    }
-
-    public List<Dto> generateSuccessIndex() {
-//        Dto[] temp = new Dto[n+1];
-        List<Dto> temp = new ArrayList<>();
+    public List<Helper.Dto> generateSuccessIndex() {
+        List<Helper.Dto> temp = new ArrayList<>();
 
         for (int i = 0; i <= n; i++) {
             double value = round(dist.probability(i));
             if (value > 0.0001) {
-                temp.add(new Dto(i, value, false));
+                temp.add(new Helper.Dto(i, value, false));
             }
         }
         return temp;
     }
-
-    public class Dto {
-        public Integer id;
-        public BigDecimal value;
-        public Boolean isMax;
-
-        public Dto(Integer id, Double value, Boolean isMax) {
-            this.id = id;
-            this.value = BigDecimal.valueOf(value);
-            this.isMax = isMax;
-        }
-    }
-
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -12,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.uade.matt.statistic.ui.BinomialDistributionFragment;
 import com.uade.matt.statistic.ui.ContentType;
+import com.uade.matt.statistic.ui.DistributionFragment;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class DistributionListActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
+        // Tablet mode
         if (findViewById(R.id.distribution_detail_container) != null) {
             mTwoPane = true;
         }
@@ -67,28 +69,37 @@ public class DistributionListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
+                    // Tablet mode
                     if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(BinomialDistributionFragment.ARG_ITEM_ID, holder.mItem.id);
-                        BinomialDistributionFragment fragment = new BinomialDistributionFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.distribution_detail_container, fragment)
-                                .commit();
+                        try {
+                            Class<?> cls = Class.forName(holder.mItem.activityClassName.replace("Activity", "Fragment"));
+                            Fragment fragment = (Fragment) cls.newInstance();
+                            Bundle arguments = new Bundle();
+                            fragment.setArguments(arguments);
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.distribution_detail_container, fragment)
+                                    .commit();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                     } else {
+
+                        //Phone mode
                         Context context = v.getContext();
 
                         try {
                             Class<?> cls = Class.forName(holder.mItem.activityClassName);
                             Intent intent = new Intent(context, cls);
-                            intent.putExtra(BinomialDistributionFragment.ARG_ITEM_ID, holder.mItem.id);
+                            intent.putExtra(DistributionFragment.ARG_ITEM_ID, holder.mItem.id);
                             context.startActivity(intent);
 
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }
             });

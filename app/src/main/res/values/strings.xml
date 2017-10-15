@@ -87,4 +87,8 @@
         chisquared
     </string>
 
+    <string name="population">poblacion</string>
+    <string name="sample">muestra</string>
+    <string name="limits">limites</string>
+    <string name="mean_inference_text">mean_inference_text!!!</string>
 </resources>

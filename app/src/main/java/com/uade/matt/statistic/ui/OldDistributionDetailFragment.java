@@ -110,20 +110,20 @@ public class OldDistributionDetailFragment extends Fragment {
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
         mClearButton.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   etN.setText("");
-                   etR.setText("");
-                   etP.setText("");
-                   etF.setText("");
-                   etStandardDeviation.setText("");
-                   etMean.setText("");
-                   etPbin.setText("");
-                   etG.setText("");
-                   etResult.setText("");
-                   chart.invalidate();
-               }
-           });
+            @Override
+            public void onClick(View v) {
+                etN.setText("");
+                etR.setText("");
+                etP.setText("");
+                etF.setText("");
+                etStandardDeviation.setText("");
+                etMean.setText("");
+                etPbin.setText("");
+                etG.setText("");
+                etResult.setText("");
+                chart.invalidate();
+            }
+        });
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,8 +139,7 @@ public class OldDistributionDetailFragment extends Fragment {
                         .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
                         .calculatePx();
 
-                if(!Helper.isNullorEmpty(result.resultMessage()))
-                {
+                if (!Helper.isNullorEmpty(result.resultMessage())) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
                     builder.setMessage(result.resultMessage())
                             .setTitle(R.string.help);
@@ -163,7 +162,7 @@ public class OldDistributionDetailFragment extends Fragment {
                 List<BarEntry> entries = new ArrayList<>();
 
                 for (Helper.Dto data : list) {
-                    entries.add( new BarEntry(data.id.floatValue(), data.value.floatValue()));
+                    entries.add(new BarEntry(data.id.floatValue(), data.value.floatValue()));
                 }
 
                 BarDataSet dataSet = new BarDataSet(entries, "p = " + result.p().toString());
@@ -173,7 +172,7 @@ public class OldDistributionDetailFragment extends Fragment {
                 chart.animateX(2500, Easing.EasingOption.EaseInBack);
                 chart.fitScreen();
                 chart.highlightValues(new Highlight[]{
-                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
+                        new Highlight((float) result.r(), result.pbin().floatValue(), 0)
                 });
 
                 chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {

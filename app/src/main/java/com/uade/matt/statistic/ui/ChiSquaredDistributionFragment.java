@@ -34,7 +34,6 @@ public class ChiSquaredDistributionFragment extends DistributionFragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class ChiSquaredDistributionFragment extends DistributionFragment {
 
         etDegreesOfFreedom = rootView.findViewById(R.id.etDegreesOfFreedom);
         etX = rootView.findViewById(R.id.etX);
-        
+
         etF = rootView.findViewById(R.id.f);
         etG = rootView.findViewById(R.id.g);
         etMean = rootView.findViewById(R.id.etMean);
@@ -95,16 +94,15 @@ public class ChiSquaredDistributionFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new ChiSquaredDistributionCalc()
-                    .degreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDegreesOfFreedom))
-                    .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
-                    .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-                    .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-                    .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-                    .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-                    .calculatePx();
+                        .degreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDegreesOfFreedom))
+                        .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
+                        .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                        .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+                        .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+                        .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+                        .calculatePx();
 
-                if(!Helper.isNullorEmpty(result.resultMessage()))
-                {
+                if (!Helper.isNullorEmpty(result.resultMessage())) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
                     builder.setMessage(result.resultMessage())
                             .setTitle(R.string.help);
@@ -124,7 +122,7 @@ public class ChiSquaredDistributionFragment extends DistributionFragment {
                 List<Helper.Dto> list = result.generateSuccessIndex();
                 List<DataPoint> entries = new ArrayList<>();
                 for (Helper.Dto data : list) {
-                    entries.add( new DataPoint(data.id.floatValue(), Helper.round(data.value).floatValue()));
+                    entries.add(new DataPoint(data.id.floatValue(), Helper.round(data.value).floatValue()));
                 }
                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(entries.toArray(new DataPoint[0]));
                 graph.addSeries(series);

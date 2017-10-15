@@ -58,14 +58,14 @@ public class BinomialDistributionFragment extends DistributionFragment {
         etN = rootView.findViewById(R.id.n);
         etP = rootView.findViewById(R.id.p);
         etR = rootView.findViewById(R.id.r);
-        
+
         etF = rootView.findViewById(R.id.f);
         etPbin = rootView.findViewById(R.id.pbin);
         etG = rootView.findViewById(R.id.g);
-        
+
         etMean = rootView.findViewById(R.id.etMean);
         etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
-        
+
         etResult = rootView.findViewById(R.id.etResult);
         chart = rootView.findViewById(R.id.chart);
 
@@ -83,37 +83,36 @@ public class BinomialDistributionFragment extends DistributionFragment {
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
         mClearButton.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   etN.setText("");
-                   etP.setText("");
-                   etR.setText("");
-                   etF.setText("");
-                   etPbin.setText("");
-                   etG.setText("");
-                   etMean.setText("");
-                   etStandardDeviation.setText("");
-                   etResult.setText("");
-                   chart.invalidate();
-               }
-           });
+            @Override
+            public void onClick(View v) {
+                etN.setText("");
+                etP.setText("");
+                etR.setText("");
+                etF.setText("");
+                etPbin.setText("");
+                etG.setText("");
+                etMean.setText("");
+                etStandardDeviation.setText("");
+                etResult.setText("");
+                chart.invalidate();
+            }
+        });
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 result = new BinomialDistributionCalc()
-                    .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
-                    .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
-                    .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
-                    .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-                    .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-                    .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-                    .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-                    .calculatePx();
+                        .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
+                        .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
+                        .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
+                        .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                        .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+                        .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+                        .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+                        .calculatePx();
 
-                if(!Helper.isNullorEmpty(result.resultMessage()))
-                {
+                if (!Helper.isNullorEmpty(result.resultMessage())) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
                     builder.setMessage(result.resultMessage())
                             .setTitle(R.string.help);
@@ -136,7 +135,7 @@ public class BinomialDistributionFragment extends DistributionFragment {
                 List<BarEntry> entries = new ArrayList<>();
 
                 for (Helper.Dto data : list) {
-                    entries.add( new BarEntry(data.id.floatValue(), data.value.floatValue()));
+                    entries.add(new BarEntry(data.id.floatValue(), data.value.floatValue()));
                 }
 
                 BarDataSet dataSet = new BarDataSet(entries, "p = " + result.p().toString());
@@ -146,7 +145,7 @@ public class BinomialDistributionFragment extends DistributionFragment {
                 chart.animateX(2500, Easing.EasingOption.EaseInBack);
                 chart.fitScreen();
                 chart.highlightValues(new Highlight[]{
-                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
+                        new Highlight((float) result.r(), result.pbin().floatValue(), 0)
                 });
 
                 chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {

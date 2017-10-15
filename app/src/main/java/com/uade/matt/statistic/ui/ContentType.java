@@ -17,6 +17,7 @@ public class ContentType {
         addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.PoissonDistributionActivity", "poisson"));
         addItem(new Item("T student distribution", "com.uade.matt.statistic.ui.TDistributionActivity", "t"));
         addItem(new Item("Chi squared distribution", "com.uade.matt.statistic.ui.ChiSquaredDistributionActivity", "chisquared"));
+        addItem(new Item("Mean inference", "com.uade.matt.statistic.ui.MeanInferenceActivity", "mean_inference"));
     }
 
     private static void addItem(Item item) {
@@ -32,6 +33,7 @@ public class ContentType {
             this.id = id;
             this.slug = slug;
         }
+
         @Override
         public String toString() {
             return id;

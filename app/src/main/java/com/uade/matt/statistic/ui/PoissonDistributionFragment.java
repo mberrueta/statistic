@@ -55,44 +55,44 @@ public class PoissonDistributionFragment extends DistributionFragment {
         etFrequency = rootView.findViewById(R.id.frequency);
         etT = rootView.findViewById(R.id.t);
         etR = rootView.findViewById(R.id.r);
-        
+
         etF = rootView.findViewById(R.id.f);
         etP = rootView.findViewById(R.id.p);
         etG = rootView.findViewById(R.id.g);
-        
+
         etMean = rootView.findViewById(R.id.etMean);
         etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
 
         etResult = rootView.findViewById(R.id.etResult);
-        
-        
+
+
         etFrequency.setFilters(new InputFilter[]{new MinMaxFilter(0.000001f, 99999999)});
         etT.setFilters(new InputFilter[]{new MinMaxFilter(0.000001f, 999999)});
         etR.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-        
+
         etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
         etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
         etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-        
+
         chart = rootView.findViewById(R.id.chart);
 
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
         mClearButton.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   etFrequency.setText("");
-                   etT.setText("");
-                   etR.setText("");
-                   etF.setText("");
-                   etP.setText("");
-                   etG.setText("");
-                   etMean.setText("");
-                   etStandardDeviation.setText("");
-                   etResult.setText("");
-                   chart.invalidate();
-               }
-           });
+            @Override
+            public void onClick(View v) {
+                etFrequency.setText("");
+                etT.setText("");
+                etR.setText("");
+                etF.setText("");
+                etP.setText("");
+                etG.setText("");
+                etMean.setText("");
+                etStandardDeviation.setText("");
+                etResult.setText("");
+                chart.invalidate();
+            }
+        });
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,8 +109,7 @@ public class PoissonDistributionFragment extends DistributionFragment {
                         .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
                         .calculatePx();
 
-                if(!Helper.isNullorEmpty(result.resultMessage()))
-                {
+                if (!Helper.isNullorEmpty(result.resultMessage())) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
                     builder.setMessage(result.resultMessage())
                             .setTitle(R.string.help);
@@ -133,7 +132,7 @@ public class PoissonDistributionFragment extends DistributionFragment {
                 List<BarEntry> entries = new ArrayList<>();
 
                 for (Helper.Dto data : list) {
-                    entries.add( new BarEntry(data.id.floatValue(), data.value.floatValue()));
+                    entries.add(new BarEntry(data.id.floatValue(), data.value.floatValue()));
                 }
 
                 BarDataSet dataSet = new BarDataSet(entries, "p = " + result.p().toString());

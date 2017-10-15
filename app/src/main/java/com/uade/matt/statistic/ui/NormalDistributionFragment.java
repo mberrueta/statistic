@@ -36,7 +36,6 @@ public class NormalDistributionFragment extends DistributionFragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,7 +70,7 @@ public class NormalDistributionFragment extends DistributionFragment {
         etX.setFilters(new InputFilter[]{new MinMaxFilter(-99999, 99999)});
         etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
         etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-        
+
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
         mClearButton.setOnClickListener(new View.OnClickListener() {
@@ -91,15 +90,14 @@ public class NormalDistributionFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new NormalDistributionCalc()
-                    .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-                    .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-                    .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
-                    .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-                    .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-                    .calculatePx();
+                        .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+                        .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+                        .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
+                        .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                        .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+                        .calculatePx();
 
-                if(!Helper.isNullorEmpty(result.resultMessage()))
-                {
+                if (!Helper.isNullorEmpty(result.resultMessage())) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
                     builder.setMessage(result.resultMessage())
                             .setTitle(R.string.help);
@@ -117,7 +115,7 @@ public class NormalDistributionFragment extends DistributionFragment {
                 List<Helper.Dto> list = result.generateSuccessIndex();
                 List<DataPoint> entries = new ArrayList<>();
                 for (Helper.Dto data : list) {
-                    entries.add( new DataPoint(data.id.floatValue(), Helper.round(data.value).floatValue()));
+                    entries.add(new DataPoint(data.id.floatValue(), Helper.round(data.value).floatValue()));
                 }
                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(entries.toArray(new DataPoint[0]));
                 graph.addSeries(series);

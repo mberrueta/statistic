@@ -6,11 +6,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-public class Helper {
-    public enum NumberType {
-        DOUBLE, INTEGER
-    }
+import static com.uade.matt.statistic.R.id.etMean;
+import static com.uade.matt.statistic.R.id.r;
 
+public class Helper {
     public static Object getParsed(NumberType numberType, EditText et) {
 
         if (et.getText().toString().trim().length() == 0)
@@ -46,6 +45,29 @@ public class Helper {
                 .parseDouble(df.format(number));
     }
 
+    public static boolean isNullorZero(Integer i) {
+        return 0 == (i == null ? 0 : i);
+    }
+
+    public static boolean isNullorZero(Double i) {
+        return 0 == (i == null ? 0 : i);
+    }
+
+    public static boolean isNullorEmpty(final String s) {
+        return s == null || s.toString().trim().isEmpty();
+    }
+
+    public static void setEditText(EditText et, Object value) {
+        String temp = "";
+        if(value != null)
+            temp = value.toString();
+        et.setText(temp);
+    }
+
+    public enum NumberType {
+        DOUBLE, INTEGER
+    }
+
     public static class Dto {
         public Double id, value;
         public Boolean isMax;
@@ -55,15 +77,5 @@ public class Helper {
             this.value = value;
             this.isMax = isMax;
         }
-    }
-
-    public static boolean isNullorZero(Integer i){
-        return 0 == ( i == null ? 0 : i);
-    }
-    public static boolean isNullorZero(Double i){
-        return 0 == ( i == null ? 0 : i);
-    }
-    public static boolean isNullorEmpty( final String s ) {
-        return s == null || s.toString().trim().isEmpty();
     }
 }

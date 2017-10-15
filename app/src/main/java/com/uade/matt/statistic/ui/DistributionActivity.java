@@ -3,6 +3,7 @@ package com.uade.matt.statistic.ui;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.uade.matt.statistic.DistributionListActivity;
@@ -16,6 +17,7 @@ abstract class DistributionActivity extends AppCompatActivity {
             NavUtils.navigateUpTo(this, new Intent(this, DistributionListActivity.class));
             return true;
         }
+        Log.i(DistributionActivity.class.toString(), "selected item" + id);
         return super.onOptionsItemSelected(item);
     }
 }

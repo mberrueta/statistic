@@ -56,10 +56,10 @@ public class BinomialDistributionCalc extends DistributionCalc {
 
 
         if (isNullorZero(n)) {
-            if(!isNullorZero(mean))
-                n = (int)(mean / p);
+            if (!isNullorZero(mean))
+                n = (int) (mean / p);
             else
-                n = (int)(standardDeviation / (p * (1 - p)));
+                n = (int) (standardDeviation / (p * (1 - p)));
         }
 
 
@@ -67,8 +67,7 @@ public class BinomialDistributionCalc extends DistributionCalc {
 
 
         if (isNullorZero(r)) {
-            if(!isNullorZero(f))
-            {
+            if (!isNullorZero(f)) {
                 Integer r2 = dist.inverseCumulativeProbability(f);
                 Integer r1 = r2 - 1;
                 Double f1 = dist.cumulativeProbability(r1);
@@ -77,9 +76,7 @@ public class BinomialDistributionCalc extends DistributionCalc {
                         "P(r<%d) = %f %n" +
                         "P(r<%d) = %f", r1, f1, r2, f2);
                 return this;
-            }
-            else
-            {
+            } else {
                 Integer r1 = dist.inverseCumulativeProbability(1 - g);
                 Integer r2 = r1 + 1;
                 Double g1 = dist.cumulativeProbability(r1 - 1, n);
@@ -139,7 +136,7 @@ public class BinomialDistributionCalc extends DistributionCalc {
 
     @Override
     public String toString() {
-        return  "Median = " + median + "\n" +
+        return "Median = " + median + "\n" +
                 "𝜎² = " + variance + "\n" +
                 "As = " + skewness + "\n" +
                 "Kurtosis = " + kurtosis + "\n" +

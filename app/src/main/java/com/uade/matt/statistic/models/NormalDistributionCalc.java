@@ -44,16 +44,18 @@ public class NormalDistributionCalc extends DistributionCalc {
     public NormalDistributionCalc calculatePx() {
         Log.i(NormalDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
+        if(isNullorZero(mean))
+            mean = 0.0;
+        if(isNullorZero(standardDeviation))
+            standardDeviation = 1.0;
 
         dist = new NormalDistribution(mean, standardDeviation);
 
         if (isNullorZero(x)) {
-            if(isNullorZero(f))
+            if (isNullorZero(f))
                 f = 1 - g;
             x = dist.inverseCumulativeProbability(f);
-        }
-        else
-        {
+        } else {
             f = dist.cumulativeProbability(x);
         }
 
@@ -78,7 +80,7 @@ public class NormalDistributionCalc extends DistributionCalc {
 
     @Override
     public String toString() {
-        return  "𝜎² = " + variance + "\n" +
+        return "𝜎² = " + variance + "\n" +
                 "As = " + skewness + "\n" +
                 "Kurtosis = " + kurtosis + "\n" +
                 "CV = " + coefficientVariation + "\n";
@@ -86,7 +88,6 @@ public class NormalDistributionCalc extends DistributionCalc {
 
     public List<Helper.Dto> generateSuccessIndex() {
         List<Helper.Dto> temp = new ArrayList<>();
-
 
 
         double firstValue = -5 * standardDeviation;

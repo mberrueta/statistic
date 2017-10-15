@@ -42,8 +42,7 @@ public class PoissonDistributionCalc extends DistributionCalc {
         dist = new PoissonDistribution(n);
 
         if (isNullorZero(r)) {
-            if(!isNullorZero(f))
-            {
+            if (!isNullorZero(f)) {
                 Integer r2 = dist.inverseCumulativeProbability(f);
                 Integer r1 = r2 - 1;
                 Double f1 = dist.cumulativeProbability(r1);
@@ -52,9 +51,7 @@ public class PoissonDistributionCalc extends DistributionCalc {
                         "P(r<%d) = %f %n" +
                         "P(r<%d) = %f", r1, f1, r2, f2);
                 return this;
-            }
-            else
-            {
+            } else {
                 Integer r1 = dist.inverseCumulativeProbability(1 - g);
                 Integer r2 = r1 + 1;
                 Double g1 = round(dist.probability(r1) + (1 - dist.cumulativeProbability(r1)));
@@ -83,7 +80,7 @@ public class PoissonDistributionCalc extends DistributionCalc {
 
     @Override
     public String toString() {
-        return  "𝜎² = " + variance + "\n" +
+        return "𝜎² = " + variance + "\n" +
                 "As = " + skewness + "\n" +
                 "Kurtosis = " + kurtosis + "\n" +
                 "CV = " + coefficientVariation + "\n";
@@ -93,7 +90,7 @@ public class PoissonDistributionCalc extends DistributionCalc {
         List<Helper.Dto> temp = new ArrayList<>();
         double value = 9999;
         int i = 0;
-        while (i < n || value > 0.0000001){
+        while (i < n || value > 0.0000001) {
             value = round(dist.probability(i));
             if (value > 0.0001) {
                 temp.add(new Helper.Dto(round(i), value, false));

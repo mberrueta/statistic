@@ -67,5 +67,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
+
+
+        <activity
+            android:name=".ui.MeanInferenceActivity"
+            android:label="@string/title_distribution_detail"
+            android:parentActivityName=".DistributionListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        </activity>
     </application>
 </manifest>

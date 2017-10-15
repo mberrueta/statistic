@@ -96,9 +96,9 @@ public class BinomialDistributionCalc extends DistributionCalc {
         median = n * p;
 
 
-        standardDeviation = n * p * (1 - p);
-        standardDeviation = round(standardDeviation);
-        variance = Math.sqrt(standardDeviation);
+        variance  = n * p * (1 - p);
+        variance = round(variance);
+        standardDeviation = Math.sqrt(variance);
         skewness = (1 - 2 * p) / variance;
         kurtosis = 3 + ((1 - 6 * p * (1 - p)) / variance);
         coefficientVariation = round(variance / mean);

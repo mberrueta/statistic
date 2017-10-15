@@ -50,9 +50,13 @@
                 <!-- sup -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="B"/>
                 <EditText android:id="@+id/etLimitSup" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
-                 <!-- error tolerado -->
+            </LinearLayout>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/error"/>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+            <!-- error tolerado -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="error"/>
-                <EditText android:id="@+id/etError" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <EditText android:id="@+id/etSampleError" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
                 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03B1"/>
                 <EditText android:id="@+id/etAlpha" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>

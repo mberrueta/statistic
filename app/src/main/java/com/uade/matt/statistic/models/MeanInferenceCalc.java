@@ -12,25 +12,37 @@ import static com.uade.matt.statistic.utils.Helper.isNullorZero;
 public class MeanInferenceCalc extends InferenceCalc {
 
     //poblacion
+
     @Getter
     @Setter
-    private Double mean, size, standardDeviation;
+    private Integer size;
+
+    @Getter
+    @Setter
+    private Double mean, standardDeviation;
 
     //poblacion
     @Getter
     @Setter
-    private Double sampleMean, sampleSize, sampleStandardDeviation;
+    private Integer sampleSize;
+    @Getter
+    @Setter
+    private Double sampleMean, sampleStandardDeviation;
 
     //limits
     @Getter
     @Setter
-    private Double limitInf, limitSup, alpha, error;
+    private Double limitInf, limitSup, alpha;
 
 
     //calcs
     @Getter
     @Setter
-    private Double sampleError, successProb;
+    private Integer sampleError;
+
+    @Getter
+    @Setter
+    private Double successProb;
 
     @Getter
     @Setter
@@ -38,6 +50,7 @@ public class MeanInferenceCalc extends InferenceCalc {
 
     public MeanInferenceCalc calc() {
         Log.i(MeanInferenceCalc.class.toString(), "Pre: " + this.toString());
+        Double temp = 0.0;
 
         //conocido sigma
         if(!isNullorZero(standardDeviation)){
@@ -47,13 +60,20 @@ public class MeanInferenceCalc extends InferenceCalc {
 
             if(isNullorZero(sampleSize))
             {
-                sampleSize = Math.pow(z * standardDeviation / error, 2) ;
+                temp = z * standardDeviation / sampleError;
+                temp = Math.ceil(Math.pow(temp, 2));//round up and ^ 2
+                sampleSize = temp.intValue();
             }
 
 
-            sampleError = z * standardDeviation / Math.sqrt(sampleSize);
-            limitInf = sampleMean - sampleError;
-            limitSup = sampleMean + sampleError;
+            temp = z * standardDeviation / Math.sqrt(sampleSize);
+            limitInf = sampleMean - temp;
+            limitSup = sampleMean + temp;
+
+            temp = Math.ceil(temp); //round up
+            sampleError = temp.intValue();
+
+
 
         }
         else
@@ -79,7 +99,7 @@ public class MeanInferenceCalc extends InferenceCalc {
                 ", sampleStandardDeviation=" + sampleStandardDeviation +
                 ", limitInf=" + limitInf +
                 ", limitSup=" + limitSup +
-                ", error=" + error +
+                ", sampleError=" + sampleError +
                 ", alpha=" + alpha +
                 ", sampleError=" + sampleError +
                 ", successProb=" + successProb +

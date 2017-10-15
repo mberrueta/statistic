@@ -50,9 +50,9 @@ public class ChiSquaredDistributionCalc extends DistributionCalc {
         if (isNullorZero(x)) {
             if (isNullorZero(f))
                 f = 1 - g;
-            x = dist.inverseCumulativeProbability(f);
+            x = round(dist.inverseCumulativeProbability(f));
         } else {
-            f = dist.cumulativeProbability(x);
+            f = round(dist.cumulativeProbability(x));
         }
 
         mean = degreesOfFreedom;

@@ -34,17 +34,17 @@ public class BinomialDistributionCalcTest {
 
         List<Helper.Dto> list = result.generateSuccessIndex();
 
-        assertThat(list.get(0).id, is(12));
-        assertThat(list.get(0).value, CoreMatchers.is(BigDecimal.valueOf(0.00035578)));
-        assertThat(list.get(1).value, CoreMatchers.is(BigDecimal.valueOf(0.00197046)));
-        assertThat(list.get(2).value, CoreMatchers.is(BigDecimal.valueOf(0.00886705)));
-        assertThat(list.get(3).value, CoreMatchers.is(BigDecimal.valueOf(0.03192137)));
-        assertThat(list.get(4).value, CoreMatchers.is(BigDecimal.valueOf(0.08977883)));
-        assertThat(list.get(5).value, CoreMatchers.is(BigDecimal.valueOf(0.19011988)));
-        assertThat(list.get(6).value, CoreMatchers.is(BigDecimal.valueOf(0.28517981)));
-        assertThat(list.get(7).value, CoreMatchers.is(BigDecimal.valueOf(0.27017035)));
-        assertThat(list.get(8).id, is(20));
-        assertThat(list.get(8).value, CoreMatchers.is(BigDecimal.valueOf(0.12157666)));
+        assertThat(list.get(0).id, is(12.0));
+        assertThat(list.get(0).value, CoreMatchers.is(BigDecimal.valueOf(0.000356).doubleValue()));
+        assertThat(list.get(1).value, CoreMatchers.is(BigDecimal.valueOf(0.001971).doubleValue()));
+        assertThat(list.get(2).value, CoreMatchers.is(BigDecimal.valueOf(0.008868).doubleValue()));
+        assertThat(list.get(3).value, CoreMatchers.is(BigDecimal.valueOf(0.031922).doubleValue()));
+        assertThat(list.get(4).value, CoreMatchers.is(BigDecimal.valueOf(0.089779).doubleValue()));
+        assertThat(list.get(5).value, CoreMatchers.is(BigDecimal.valueOf(0.190120).doubleValue()));
+        assertThat(list.get(6).value, CoreMatchers.is(BigDecimal.valueOf(0.285180).doubleValue()));
+        assertThat(list.get(7).value, CoreMatchers.is(BigDecimal.valueOf(0.270171).doubleValue()));
+        assertThat(list.get(8).id, is(20.0));
+        assertThat(list.get(8).value, CoreMatchers.is(BigDecimal.valueOf(0.121577).doubleValue()));
     }
 
 

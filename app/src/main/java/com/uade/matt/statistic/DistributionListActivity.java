@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.uade.matt.statistic.ui.BinomialDistributionFragment;
 import com.uade.matt.statistic.ui.ContentType;
-import com.uade.matt.statistic.ui.*;
 
 import java.util.List;
 

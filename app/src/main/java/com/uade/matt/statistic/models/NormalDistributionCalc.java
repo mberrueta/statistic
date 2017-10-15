@@ -4,10 +4,8 @@ import android.util.Log;
 
 import com.uade.matt.statistic.utils.Helper;
 
-import org.apache.commons.math3.distribution.BinomialDistribution;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +13,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import static android.R.attr.value;
-import static com.uade.matt.statistic.R.id.n;
-import static com.uade.matt.statistic.R.id.p;
-import static com.uade.matt.statistic.R.id.r;
-import static com.uade.matt.statistic.R.id.start;
 import static com.uade.matt.statistic.utils.Helper.isNullorZero;
 import static com.uade.matt.statistic.utils.Helper.round;
 

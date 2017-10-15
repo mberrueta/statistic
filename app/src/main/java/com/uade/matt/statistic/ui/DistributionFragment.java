@@ -1,16 +1,12 @@
 package com.uade.matt.statistic.ui;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.uade.matt.statistic.R;
 
 

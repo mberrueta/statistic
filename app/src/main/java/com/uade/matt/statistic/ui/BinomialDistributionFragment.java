@@ -55,20 +55,30 @@ public class BinomialDistributionFragment extends DistributionFragment {
             }
         });
 
-        chart = rootView.findViewById(R.id.chart);
         etN = rootView.findViewById(R.id.n);
-        etR = rootView.findViewById(R.id.r);
         etP = rootView.findViewById(R.id.p);
+        etR = rootView.findViewById(R.id.r);
+        
         etF = rootView.findViewById(R.id.f);
-        etMean = rootView.findViewById(R.id.etMean);
-        etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
         etPbin = rootView.findViewById(R.id.pbin);
         etG = rootView.findViewById(R.id.g);
+        
+        etMean = rootView.findViewById(R.id.etMean);
+        etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
+        
         etResult = rootView.findViewById(R.id.etResult);
+        chart = rootView.findViewById(R.id.chart);
 
         etN.setFilters(new InputFilter[]{new MinMaxFilter(1, 99999999)});
         etR.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
         etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+
+        etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+        etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+        etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+
+        etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
+        etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001, 999)});
 
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -76,13 +86,13 @@ public class BinomialDistributionFragment extends DistributionFragment {
                @Override
                public void onClick(View v) {
                    etN.setText("");
-                   etR.setText("");
                    etP.setText("");
+                   etR.setText("");
                    etF.setText("");
-                   etStandardDeviation.setText("");
-                   etMean.setText("");
                    etPbin.setText("");
                    etG.setText("");
+                   etMean.setText("");
+                   etStandardDeviation.setText("");
                    etResult.setText("");
                    chart.invalidate();
                }
@@ -93,14 +103,14 @@ public class BinomialDistributionFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new BinomialDistributionCalc()
-                        .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
-                        .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-                        .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-                        .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-                        .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-                        .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
-                        .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
-                        .calculatePx();
+                    .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
+                    .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
+                    .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
+                    .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                    .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+                    .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+                    .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+                    .calculatePx();
 
                 if(!Helper.isNullorEmpty(result.resultMessage()))
                 {
@@ -113,13 +123,13 @@ public class BinomialDistributionFragment extends DistributionFragment {
                 }
 
                 etN.setText(result.n().toString());
-                etR.setText(result.r().toString());
                 etP.setText(result.p().toString());
+                etR.setText(result.r().toString());
                 etF.setText(result.f().toString());
-                etStandardDeviation.setText(result.standardDeviation().toString());
-                etMean.setText(result.mean().toString());
                 etPbin.setText(result.pbin().toString());
                 etG.setText(result.g().toString());
+                etMean.setText(result.mean().toString());
+                etStandardDeviation.setText(result.standardDeviation().toString());
                 etResult.setText(result.toString());
 
                 List<Helper.Dto> list = result.generateSuccessIndex();

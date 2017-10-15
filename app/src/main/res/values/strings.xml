@@ -48,7 +48,7 @@
              `𝜇` <i> (`mu` Esperanza matemática o media)</i>\n
               Dominio : 0 ≤ n ≤ ∞ .\n
              `𝜎` <i>(`sigma` Desviación estandard)</i>\n
-              Dominio : 0 ≤ p ≤ 1 .\n
+              Dominio : 0 ≤ 𝜎 .\n
 
 
         Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n

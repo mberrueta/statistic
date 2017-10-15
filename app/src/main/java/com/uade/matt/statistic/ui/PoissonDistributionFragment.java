@@ -31,7 +31,7 @@ import static com.uade.matt.statistic.utils.Helper.getParsed;
 
 public class PoissonDistributionFragment extends DistributionFragment {
     PoissonDistributionCalc result;
-    private EditText etN, etR, etP, etF, etPbin, etG, etResult, etMean, etStandardDeviation;
+    private EditText etFrequency, etR, etP, etF, etT, etG, etResult, etMean, etStandardDeviation;
     private BarChart chart;
 
     @Override
@@ -44,9 +44,6 @@ public class PoissonDistributionFragment extends DistributionFragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Resources res = view.getResources();
-//                builder.setMessage(res.getString(res.getIdentifier("Poisson_text", null, null)))
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setMessage(R.string.poisson_text)
                         .setTitle(R.string.help);
@@ -69,8 +66,8 @@ public class PoissonDistributionFragment extends DistributionFragment {
         etResult = rootView.findViewById(R.id.etResult);
         
         
-        etFrequency.setFilters(new InputFilter[]{new MinMaxFilter(0.000001, 99999999)});
-        etT.setFilters(new InputFilter[]{new MinMaxFilter(0.000001, 999999)});
+        etFrequency.setFilters(new InputFilter[]{new MinMaxFilter(0.000001f, 99999999)});
+        etT.setFilters(new InputFilter[]{new MinMaxFilter(0.000001f, 999999)});
         etR.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
         
         etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
@@ -84,14 +81,14 @@ public class PoissonDistributionFragment extends DistributionFragment {
         mClearButton.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   etN.setText("");
+                   etFrequency.setText("");
+                   etT.setText("");
                    etR.setText("");
-                   etP.setText("");
                    etF.setText("");
-                   etStandardDeviation.setText("");
-                   etMean.setText("");
-                   etPbin.setText("");
+                   etP.setText("");
                    etG.setText("");
+                   etMean.setText("");
+                   etStandardDeviation.setText("");
                    etResult.setText("");
                    chart.invalidate();
                }
@@ -102,13 +99,14 @@ public class PoissonDistributionFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new PoissonDistributionCalc()
-                        .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
+                        .frequency((Double) getParsed(Helper.NumberType.DOUBLE, etFrequency)
+                        .t((Double) getParsed(Helper.NumberType.DOUBLE, etT))
+                        .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
                         .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                        .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
                         .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
                         .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
                         .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-                        .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
-                        .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
                         .calculatePx();
 
                 if(!Helper.isNullorEmpty(result.resultMessage()))
@@ -121,14 +119,14 @@ public class PoissonDistributionFragment extends DistributionFragment {
                     return;
                 }
 
-                etN.setText(result.n().toString());
+                etFrequency.setText(result.frequency().toString());
+                etT.setText(result.t().toString());
                 etR.setText(result.r().toString());
-                etP.setText(result.p().toString());
                 etF.setText(result.f().toString());
-                etStandardDeviation.setText(result.standardDeviation().toString());
-                etMean.setText(result.mean().toString());
-                etPbin.setText(result.pbin().toString());
+                etP.setText(result.p().toString());
                 etG.setText(result.g().toString());
+                etMean.setText(result.mean().toString());
+                etStandardDeviation.setText(result.standardDeviation().toString());
                 etResult.setText(result.toString());
 
                 List<Helper.Dto> list = result.generateSuccessIndex();
@@ -144,9 +142,9 @@ public class PoissonDistributionFragment extends DistributionFragment {
                 chart.invalidate();
                 chart.animateX(2500, Easing.EasingOption.EaseInBack);
                 chart.fitScreen();
-                chart.highlightValues(new Highlight[]{
-                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
-                });
+//                chart.highlightValues(new Highlight[]{
+//                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
+//                });
 
                 chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
                     Toast mCurrentToast;

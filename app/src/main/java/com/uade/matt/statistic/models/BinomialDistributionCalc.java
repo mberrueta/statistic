@@ -6,7 +6,6 @@ import com.uade.matt.statistic.utils.Helper;
 
 import org.apache.commons.math3.distribution.BinomialDistribution;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

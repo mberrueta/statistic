@@ -42,7 +42,7 @@
 
 
             <EditText
-                android:id="@+id/frecuency"
+                android:id="@+id/frequency"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"

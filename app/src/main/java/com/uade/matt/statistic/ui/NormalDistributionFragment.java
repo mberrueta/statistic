@@ -1,7 +1,6 @@
 package com.uade.matt.statistic.ui;
 
 import android.app.AlertDialog;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,18 +59,25 @@ public class NormalDistributionFragment extends DistributionFragment {
 
         etF = rootView.findViewById(R.id.f);
         etG = rootView.findViewById(R.id.g);
+
         etResult = rootView.findViewById(R.id.etResult);
         graph = rootView.findViewById(R.id.graph);
 
+        etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
+        etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001, 999)});
+        etX.setFilters(new InputFilter[]{new MinMaxFilter(-99999, 99999)});
+        etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+        etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+        
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                etMean.setText("0");
+                etStandardDeviation.setText("1");
                 etX.setText("");
                 etF.setText("");
-                etStandardDeviation.setText("1");
-                etMean.setText("0");
                 etG.setText("");
                 etResult.setText("");
             }
@@ -82,12 +88,12 @@ public class NormalDistributionFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new NormalDistributionCalc()
-                        .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
-                        .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-                        .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-                        .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-                        .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-                        .calculatePx();
+                    .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+                    .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+                    .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
+                    .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+                    .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+                    .calculatePx();
 
                 if(!Helper.isNullorEmpty(result.resultMessage()))
                 {
@@ -101,8 +107,8 @@ public class NormalDistributionFragment extends DistributionFragment {
                 etMean.setText(result.mean().toString());
                 etStandardDeviation.setText(result.standardDeviation().toString());
                 etX.setText(result.x().toString());
-                etG.setText(result.g().toString());
                 etF.setText(result.f().toString());
+                etG.setText(result.g().toString());
                 etResult.setText(result.toString());
 
                 List<Helper.Dto> list = result.generateSuccessIndex();

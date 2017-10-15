@@ -78,7 +78,7 @@ public class BinomialDistributionFragment extends DistributionFragment {
         etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
 
         etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-        etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001, 999)});
+        etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
 
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);

@@ -40,7 +40,7 @@ public class Helper {
     }
 
     public static Double round(Double number) {
-        DecimalFormat df = new DecimalFormat("#.########");
+        DecimalFormat df = new DecimalFormat("#.######");
         df.setRoundingMode(RoundingMode.CEILING);
         return Double
                 .parseDouble(df.format(number));

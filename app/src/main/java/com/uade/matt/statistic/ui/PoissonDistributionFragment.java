@@ -99,7 +99,7 @@ public class PoissonDistributionFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new PoissonDistributionCalc()
-                        .frequency((Double) getParsed(Helper.NumberType.DOUBLE, etFrequency)
+                        .frequency((Double) getParsed(Helper.NumberType.DOUBLE, etFrequency))
                         .t((Double) getParsed(Helper.NumberType.DOUBLE, etT))
                         .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
                         .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))

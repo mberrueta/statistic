@@ -14,7 +14,7 @@ public class ContentType {
     static {
         addItem(new Item("Binomial distribution", "com.uade.matt.statistic.ui.BinomialDistributionActivity", "binomial"));
         addItem(new Item("Normal distribution", "com.uade.matt.statistic.ui.NormalDistributionActivity", "normal"));
-        addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.BinomialDistributionActivity", "poisson"));
+        addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.PoissonDistributionActivity", "poisson"));
     }
 
     private static void addItem(Item item) {

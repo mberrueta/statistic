@@ -2,6 +2,7 @@ package com.uade.matt.statistic.ui;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.uade.matt.statistic.utils.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import library.MinMaxFilter;
 
 import static com.uade.matt.statistic.utils.Helper.getParsed;
 
@@ -64,7 +67,7 @@ public class NormalDistributionFragment extends DistributionFragment {
         graph = rootView.findViewById(R.id.graph);
 
         etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-        etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001, 999)});
+        etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
         etX.setFilters(new InputFilter[]{new MinMaxFilter(-99999, 99999)});
         etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
         etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});

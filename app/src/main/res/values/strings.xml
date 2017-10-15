@@ -71,4 +71,16 @@
               Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n
 
     </string>
+     <string name="t_text">
+        Distribución de probabilidad continua.
+        Se define como el cociente entre una normal estandarizada y la raíz cuadrada de una distribución denominada “Chi–Cuadrado (χ2)
+
+         <b>Variable aleatoria:</b>\n
+        `𝜈` <i>( `nu` número de grados de libertad, igual a `n - 1` n=observaciones)</i> \n
+            Dominio : ℝ/ 0 ≤ 𝜈 .\n
+        <b>Parámetros del Modelo:</b> \n
+             `x` <i> ()</i>\n
+              Dominio : ℝ/ -∞ ≤ x ≤ ∞ .\n
+
+    </string>
 </resources>

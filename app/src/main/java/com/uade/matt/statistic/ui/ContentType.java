@@ -16,6 +16,7 @@ public class ContentType {
         addItem(new Item("Normal distribution", "com.uade.matt.statistic.ui.NormalDistributionActivity", "normal"));
         addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.PoissonDistributionActivity", "poisson"));
         addItem(new Item("T student distribution", "com.uade.matt.statistic.ui.TDistributionActivity", "t"));
+        addItem(new Item("Chi squared distribution", "com.uade.matt.statistic.ui.ChiSquaredDistributionActivity", "chisquared"));
     }
 
     private static void addItem(Item item) {

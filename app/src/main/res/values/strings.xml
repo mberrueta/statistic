@@ -83,4 +83,8 @@
               Dominio : ℝ/ -∞ ≤ x ≤ ∞ .\n
 
     </string>
+    <string name="chisquared">
+        chisquared
+    </string>
+
 </resources>

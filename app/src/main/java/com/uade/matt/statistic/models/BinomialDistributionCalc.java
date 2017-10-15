@@ -6,6 +6,7 @@ import com.uade.matt.statistic.utils.Helper;
 
 import org.apache.commons.math3.distribution.BinomialDistribution;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +35,10 @@ public class BinomialDistributionCalc extends DistributionCalc {
 
     @Getter
     @Setter
-    private Integer failureR, possibleCombinations;
+    private Integer possibleCombinations;
     @Getter
     @Setter
-    private Double f, g, pbin, failureP;
+    private Double f, g, pbin;
     // media, mediana, moda, varianza, desv standard, asimetria
     @Getter
     @Setter
@@ -94,9 +95,6 @@ public class BinomialDistributionCalc extends DistributionCalc {
 
         pbin = dist.probability(r);
 
-        failureP = 1 - p;
-        failureP = round(failureP);
-        failureR = n - r;
         // mode (MAX PROB ?)
         mean = n * p;
         median = n * p;
@@ -122,12 +120,10 @@ public class BinomialDistributionCalc extends DistributionCalc {
                 ", n=" + n +
                 ", r=" + r +
                 ", p=" + p +
-                ", failureR=" + failureR +
                 ", possibleCombinations=" + possibleCombinations +
                 ", f=" + f +
                 ", g=" + g +
                 ", pbin=" + pbin +
-                ", failureP=" + failureP +
                 ", mean=" + mean +
                 ", median=" + median +
                 ", mode=" + mode +
@@ -157,7 +153,7 @@ public class BinomialDistributionCalc extends DistributionCalc {
         for (int i = 0; i <= n; i++) {
             double value = round(dist.probability(i));
             if (value > 0.0001) {
-                temp.add(new Helper.Dto(i, value, false));
+                temp.add(new Helper.Dto(round(i), value, false));
             }
         }
         return temp;

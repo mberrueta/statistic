@@ -163,7 +163,7 @@ public class OldDistributionDetailFragment extends Fragment {
                 List<BarEntry> entries = new ArrayList<>();
 
                 for (Helper.Dto data : list) {
-                    entries.add( new BarEntry((float) data.id, data.value.floatValue()));
+                    entries.add( new BarEntry(data.id.floatValue(), data.value.floatValue()));
                 }
 
                 BarDataSet dataSet = new BarDataSet(entries, "p = " + result.p().toString());

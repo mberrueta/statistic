@@ -27,6 +27,18 @@ public class Helper {
         }
     }
 
+    public static Double round(BigDecimal number) {
+        return round(number.doubleValue());
+    }
+
+    public static Double round(Integer number) {
+        return round(number.doubleValue());
+    }
+
+    public static Double round(Float number) {
+        return round(number.doubleValue());
+    }
+
     public static Double round(Double number) {
         DecimalFormat df = new DecimalFormat("#.########");
         df.setRoundingMode(RoundingMode.CEILING);
@@ -35,13 +47,12 @@ public class Helper {
     }
 
     public static class Dto {
-        public Integer id;
-        public BigDecimal value;
+        public Double id, value;
         public Boolean isMax;
 
-        public Dto(Integer id, Double value, Boolean isMax) {
+        public Dto(Double id, Double value, Boolean isMax) {
             this.id = id;
-            this.value = BigDecimal.valueOf(value);
+            this.value = value;
             this.isMax = isMax;
         }
     }

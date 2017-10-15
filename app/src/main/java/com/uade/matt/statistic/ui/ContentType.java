@@ -12,9 +12,9 @@ public class ContentType {
     public static final Map<String, Item> ITEM_MAP = new HashMap<String, Item>();
 
     static {
-        addItem(new Item("Binomial distribution", "com.uade.matt.statistic.ui.BinomialDistributionActivity"));
-        addItem(new Item("Normal distribution", "com.uade.matt.statistic.ui.NormalDistributionActivity"));
-        addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.BinomialDistributionActivity"));
+        addItem(new Item("Binomial distribution", "com.uade.matt.statistic.ui.BinomialDistributionActivity", "binomial"));
+        addItem(new Item("Normal distribution", "com.uade.matt.statistic.ui.NormalDistributionActivity", "normal"));
+        addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.BinomialDistributionActivity", "poisson"));
     }
 
     private static void addItem(Item item) {
@@ -23,11 +23,12 @@ public class ContentType {
     }
 
     public static class Item {
-        public final String id, activityClassName;
+        public final String id, activityClassName, slug;
 
-        public Item(String id, String activityClassName) {
+        public Item(String id, String activityClassName, String slug) {
             this.activityClassName = activityClassName;
             this.id = id;
+            this.slug = slug;
         }
         @Override
         public String toString() {

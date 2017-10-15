@@ -28,6 +28,14 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // compile files('/Users/matiasberrueta/AndroidStudioProjects/Statistic/libs/commons-math3-3.6.1.jar')
+    // Test
+    //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    //        exclude group: 'com.android.support', module: 'support-annotations'
+    //    })
+    //    androidTestCompile('android.util.Log')
+    // Required for instrumented tests
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:recyclerview-v7:26.+'
@@ -36,16 +44,10 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'org.apache.commons:commons-math3:3.6.1'
     compile 'com.getbase:floatingactionbutton:1.10.1'
-
-    // compile files('/Users/matiasberrueta/AndroidStudioProjects/Statistic/libs/commons-math3-3.6.1.jar')
-    // Test
+    compile 'com.google.android.gms:play-services-auth:11.0.4'
+    compile 'com.jjoe64:graphview:4.2.1'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.+'
     androidTestCompile 'com.android.support:support-annotations:26.+'
     androidTestCompile 'com.android.support.test:runner:0.5'
-    //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    //        exclude group: 'com.android.support', module: 'support-annotations'
-    //    })
-    //    androidTestCompile('android.util.Log')
-    // Required for instrumented tests
 }

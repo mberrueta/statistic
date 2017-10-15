@@ -1,30 +1,38 @@
 package com.uade.matt.statistic.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.uade.matt.statistic.R;
 
 
 public class DistributionFragment extends Fragment {
+    public static final String ARG_ITEM_ID = "item_id";
+    private ContentType.Item mItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        if (getArguments().containsKey(ARG_ITEM_ID)) {
-////            mItem = ContentType.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-//
-//            Activity activity = this.getActivity();
-//            CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
-//            if (appBarLayout != null) {
-//                appBarLayout.setTitle(mItem.id);
-//            }
-//        }
+        if (getArguments().containsKey(ARG_ITEM_ID)) {
+            mItem = ContentType.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+
+            Activity activity = this.getActivity();
+            CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
+            if (appBarLayout != null) {
+                appBarLayout.setTitle(mItem.id);
+            }
+
+
+        }
 
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override

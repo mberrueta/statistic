@@ -231,6 +231,19 @@
             app:fab_title="clear"
             />
 
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="?attr/colorAccent"
+            app:fab_icon="@android:drawable/btn_dialog"
+            app:fab_size="mini"
+            app:fab_title="clear"
+            />
+
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 

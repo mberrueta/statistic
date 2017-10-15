@@ -3,6 +3,12 @@
     <string name="title_distribution_detail">Distribution Detail</string>
     <string name="help">help</string>
     <string name="binomial_text">
+        Distribución de probabilidad <i>discreta</i> que cuenta el número de éxitos en una secuencia
+        de n ensayos de <i>Bernoulli</i> independientes entre sí, con una probabilidad fija p de ocurrencia del éxito entre los ensayos.\n
+
+        Probabilidad de exito
+
+
         <b>Variable aleatoria:</b>\n
         “r” <i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n
         <b>Parámetros del Modelo:</b> \n
@@ -10,7 +16,59 @@
              “p” <i>(probabilidad de éxito constante en cada experimento)</i>\n
         <b>Dominio de la Variable Aleatoria:</b>\n
         0 ≤ r ≤ n .\n
+        
+        
+        
+        Distribución de probabilidad <i>discreta</i> que cuenta el número de éxitos en una secuencia de `n` ensayos de <i>Bernoulli</i> independientes entre sí, con una probabilidad fija `p` de ocurrencia del éxito entre los ensayos. \n
+       
+        Probabilidad de éxito: `p` \n
+        Probabilidad de fracazo: `1 - p` \n
+        Cantidad de éxitos: `r` \n
+        Cantidad de fracazos: `n-r` \n
+        Combinaciones posibles: `k = nCr` \n
+
+
+        <b>Variable aleatoria:</b>\n
+        `r` <i>(cantidad de éxitos encontrados o bien a encontrar en `n` experimentos realizados o bien a realizar)</i> \n
+         Dominio : 0 ≤ r ≤ n .\n
+        <b>Parámetros del Modelo:</b> \n
+             `n` <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n
+              Dominio : 0 ≤ n ≤ ∞ .\n
+             `p` <i>(probabilidad de éxito constante en cada experimento)</i>\n
+              Dominio : 0 ≤ p ≤ 1 .\n
     </string>
-    <string name="normal_text"> NORMAL!!!
+    <string name="normal_text">
+        Distribución de probabilidad <i>continua</i> y es indudablemente el más importante, de los modelos continuos, y el de mayor uso en la ciencia estadística.
+        Creado por `De Moivre-Laplace` y no Gauss!!.
+
+        <b>Variable aleatoria:</b>\n
+        `x` <i>(distancia al eje de simetria)</i> \n
+         Dominio : ℝ .\n
+        <b>Parámetros del Modelo:</b> \n
+             `𝜇` <i> (`mu` Esperanza matemática o media)</i>\n
+              Dominio : 0 ≤ n ≤ ∞ .\n
+             `𝜎` <i>(`sigma` Desviación estandard)</i>\n
+              Dominio : 0 ≤ p ≤ 1 .\n
+
+
+        Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n
+        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n
+        <!--el 68,27% se encuentra en el intervalo (𝜇 - 𝜎) ≤ x ≤ (𝜇 + 𝜎) \n-->
+        <!--el 95,45% se encuentra en el intervalo (𝜇 - 2𝜎) ≤ x ≤ (𝜇 + 2𝜎) \n-->
+        <!--el 99,73% se encuentra en el intervalo (𝜇 - 3𝜎) ≤ x ≤ (𝜇 + 3𝜎) \n-->
+        <!--el 99,99% se encuentra en el intervalo (𝜇 - 4𝜎) ≤ x ≤ (𝜇 + 4𝜎) \n-->
+    </string>
+    <string name="poisson_text">
+        Distribución de probabilidad discreta que expresa, a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto período de tiempo. Concretamente, se especializa en la probabilidad de ocurrencia de sucesos con probabilidades muy pequeñas, o sucesos "raros".
+
+         <b>Variable aleatoria:</b>\n
+        `r` <i>(numero de acontecimientos)</i> \n
+         Dominio : ℕ .\n
+        <b>Parámetros del Modelo:</b> \n
+             `𝜆` <i> (`lambda` tasa de falla)</i>\n
+              Dominio : ℝ/ 0 ≤ 𝜆 ≤ ∞ .\n
+             `t` <i>(periodo de tiempo de la frecuencia)</i>\n
+              Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n
+
     </string>
 </resources>

@@ -38,5 +38,4 @@
                 android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
     </application>
-
 </manifest>

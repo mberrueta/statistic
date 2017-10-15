@@ -7,6 +7,7 @@ import com.uade.matt.statistic.utils.Helper;
 import org.apache.commons.math3.distribution.BinomialDistribution;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,31 +15,26 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import static android.R.attr.value;
+import static com.uade.matt.statistic.R.id.n;
+import static com.uade.matt.statistic.R.id.p;
+import static com.uade.matt.statistic.R.id.r;
+import static com.uade.matt.statistic.R.id.start;
 import static com.uade.matt.statistic.utils.Helper.isNullorZero;
 import static com.uade.matt.statistic.utils.Helper.round;
 
 @Accessors(chain = true, fluent = true)
 public class NormalDistributionCalc extends DistributionCalc {
     private NormalDistribution dist;
-    // trials
+
+    // v.a.
     @Getter
     @Setter
-    private Integer n;
-    // observed
-    @Getter
-    @Setter
-    private Integer r;
-    // probability of success
-    @Getter
-    @Setter
-    private Double p;
+    private Double x;
 
     @Getter
     @Setter
-    private Integer failureR, possibleCombinations;
-    @Getter
-    @Setter
-    private Double f, g, pbin, failureP;
+    private Double f, g;
     // media, mediana, moda, varianza, desv standard, asimetria
     @Getter
     @Setter
@@ -56,6 +52,28 @@ public class NormalDistributionCalc extends DistributionCalc {
         Log.i(NormalDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
 
+        dist = new NormalDistribution(mean, standardDeviation);
+
+        if (isNullorZero(x)) {
+            if(isNullorZero(f))
+                f = 1 - g;
+            x = dist.inverseCumulativeProbability(f);
+        }
+        else
+        {
+            f = dist.cumulativeProbability(x);
+        }
+
+
+        variance = Math.sqrt(standardDeviation);
+        skewness = 0.0;
+        kurtosis = 3.0;
+        coefficientVariation = 0.0;
+
+//        f = dist.cumulativeProbability(r);
+        g = 1 - f;
+        Log.i(BinomialDistributionCalc.class.toString(), "Post: " + this.toString());
+
 
         return this;
     }
@@ -67,11 +85,28 @@ public class NormalDistributionCalc extends DistributionCalc {
 
     @Override
     public String toString() {
-        return  "";
+        return  "𝜎² = " + variance + "\n" +
+                "As = " + skewness + "\n" +
+                "Kurtosis = " + kurtosis + "\n" +
+                "CV = " + coefficientVariation + "\n";
     }
 
     public List<Helper.Dto> generateSuccessIndex() {
         List<Helper.Dto> temp = new ArrayList<>();
+
+
+
+        double firstValue = -5 * standardDeviation;
+
+        for (double i = firstValue; i <= -1 * firstValue; i += 0.05) {
+            double value = round(dist.cumulativeProbability(i));
+            if (i > mean)
+                value = 1 - value;
+
+            if (value > 0.001) {
+                temp.add(new Helper.Dto(round(i), value, false));
+            }
+        }
 
         return temp;
     }

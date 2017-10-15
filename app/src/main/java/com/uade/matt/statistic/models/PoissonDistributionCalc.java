@@ -6,7 +6,6 @@ import com.uade.matt.statistic.utils.Helper;
 
 import org.apache.commons.math3.distribution.BinomialDistribution;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ import static com.uade.matt.statistic.utils.Helper.isNullorZero;
 import static com.uade.matt.statistic.utils.Helper.round;
 
 @Accessors(chain = true, fluent = true)
-public class BinomialDistributionCalc extends DistributionCalc {
+public class PoissonDistributionCalc extends DistributionCalc {
     private BinomialDistribution dist;
     // trials
     @Getter
@@ -52,8 +51,8 @@ public class BinomialDistributionCalc extends DistributionCalc {
     @Setter
     private String resultMessage;
 
-    public BinomialDistributionCalc calculatePx() {
-        Log.i(BinomialDistributionCalc.class.toString(), "Pre: " + this.toFullString());
+    public PoissonDistributionCalc calculatePx() {
+        Log.i(PoissonDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
 
         if (isNullorZero(n)) {
@@ -109,7 +108,7 @@ public class BinomialDistributionCalc extends DistributionCalc {
 
         f = dist.cumulativeProbability(r);
         g = r > 0 ? dist.cumulativeProbability(r - 1, n) : 1.0;
-        Log.i(BinomialDistributionCalc.class.toString(), "Post: " + this.toString());
+        Log.i(PoissonDistributionCalc.class.toString(), "Post: " + this.toString());
 
         return this;
     }

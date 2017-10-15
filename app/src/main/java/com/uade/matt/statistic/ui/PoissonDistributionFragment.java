@@ -19,7 +19,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.uade.matt.statistic.R;
-import com.uade.matt.statistic.models.BinomialDistributionCalc;
+import com.uade.matt.statistic.models.PoissonDistributionCalc;
 import com.uade.matt.statistic.utils.Helper;
 
 import java.util.ArrayList;
@@ -29,15 +29,15 @@ import library.MinMaxFilter;
 
 import static com.uade.matt.statistic.utils.Helper.getParsed;
 
-public class BinomialDistributionFragment extends DistributionFragment {
-    BinomialDistributionCalc result;
+public class PoissonDistributionFragment extends DistributionFragment {
+    PoissonDistributionCalc result;
     private EditText etN, etR, etP, etF, etPbin, etG, etResult, etMean, etStandardDeviation;
     private BarChart chart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.binomial_distribution_view, container, false);
+        final View rootView = inflater.inflate(R.layout.poisson_distribution_view, container, false);
 
 
         FloatingActionButton fab = rootView.findViewById(R.id.fab);
@@ -45,30 +45,39 @@ public class BinomialDistributionFragment extends DistributionFragment {
             @Override
             public void onClick(View view) {
 //                Resources res = view.getResources();
-//                builder.setMessage(res.getString(res.getIdentifier("binomial_text", null, null)))
+//                builder.setMessage(res.getString(res.getIdentifier("Poisson_text", null, null)))
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setMessage(R.string.binomial_text)
+                builder.setMessage(R.string.poisson_text)
                         .setTitle(R.string.help);
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
 
-        chart = rootView.findViewById(R.id.chart);
-        etN = rootView.findViewById(R.id.n);
+        etFrequency = rootView.findViewById(R.id.frequency);
+        etT = rootView.findViewById(R.id.t);
         etR = rootView.findViewById(R.id.r);
-        etP = rootView.findViewById(R.id.p);
+        
         etF = rootView.findViewById(R.id.f);
+        etP = rootView.findViewById(R.id.p);
+        etG = rootView.findViewById(R.id.g);
+        
         etMean = rootView.findViewById(R.id.etMean);
         etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
-        etPbin = rootView.findViewById(R.id.pbin);
-        etG = rootView.findViewById(R.id.g);
-        etResult = rootView.findViewById(R.id.etResult);
 
-        etN.setFilters(new InputFilter[]{new MinMaxFilter(1, 99999999)});
+        etResult = rootView.findViewById(R.id.etResult);
+        
+        
+        etFrequency.setFilters(new InputFilter[]{new MinMaxFilter(0.000001, 99999999)});
+        etT.setFilters(new InputFilter[]{new MinMaxFilter(0.000001, 999999)});
         etR.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+        
+        etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
         etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+        etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+        
+        chart = rootView.findViewById(R.id.chart);
 
         FloatingActionButton mButton = rootView.findViewById(R.id.button);
         FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -92,7 +101,7 @@ public class BinomialDistributionFragment extends DistributionFragment {
             @Override
             public void onClick(View v) {
 
-                result = new BinomialDistributionCalc()
+                result = new PoissonDistributionCalc()
                         .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
                         .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
                         .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))

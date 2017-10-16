@@ -38,7 +38,7 @@ public class PoissonDistributionCalc extends DistributionCalc {
     public PoissonDistributionCalc calculatePx() {
         Log.i(PoissonDistributionCalc.class.toString(), "Pre: " + this.toString());
 
-        if(isNullorZero(t))
+        if (isNullorZero(t))
             t = 1.0;
 
         mean = variance = n = round(frequency * t);

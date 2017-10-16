@@ -30,6 +30,6 @@ public class ChiSquaredDistributionCalcTest {
 
         assertNotNull(result);
         assertThat(result.g(), is(0.60653));
-        assertThat(result.x(), is(1.0));
+        assertThat(result.x(), is(1.000003));
     }
 }

@@ -44,9 +44,9 @@ public class NormalDistributionCalc extends DistributionCalc {
     public NormalDistributionCalc calculatePx() {
         Log.i(NormalDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
-        if(isNullorZero(mean))
+        if (isNullorZero(mean))
             mean = 0.0;
-        if(isNullorZero(standardDeviation))
+        if (isNullorZero(standardDeviation))
             standardDeviation = 1.0;
 
         dist = new NormalDistribution(mean, standardDeviation);

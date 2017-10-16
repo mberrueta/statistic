@@ -6,9 +6,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import static com.uade.matt.statistic.R.id.etMean;
-import static com.uade.matt.statistic.R.id.r;
-
 public class Helper {
     public static Object getParsed(NumberType numberType, EditText et) {
 
@@ -59,7 +56,7 @@ public class Helper {
 
     public static void setEditText(EditText et, Object value) {
         String temp = "";
-        if(value != null)
+        if (value != null)
             temp = value.toString();
         et.setText(temp);
     }

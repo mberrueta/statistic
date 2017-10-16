@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import static com.uade.matt.statistic.R.id.t;
 import static com.uade.matt.statistic.utils.Helper.isNullorZero;
 
 @Accessors(chain = true, fluent = true)
@@ -53,28 +52,26 @@ public class MeanInferenceCalc extends InferenceCalc {
         Log.i(MeanInferenceCalc.class.toString(), "Pre: " + this.toString());
 
         //conocido sigma
-        if(!isNullorZero(standardDeviation)){
+        if (!isNullorZero(standardDeviation)) {
             // Normal z
             Double multiplier = new NormalDistributionCalc()
-                                    .f(1 - (alpha / 2))
-                                    .calculatePx()
-                                    .x();
+                    .f(1 - (alpha / 2))
+                    .calculatePx()
+                    .x();
             calculate(multiplier, standardDeviation);
-        }
-        else
-        {
+        } else {
 
-            if (isNullorZero(sampleSize)){
+            if (isNullorZero(sampleSize)) {
                 // metodo iterativo sacar n.no importa el primer valor
                 sampleSize = calcSampleSizeIterativeMethod(500, 5);
             }
 
             // T of student
-            Double multiplier  = new TDistributionCalc()
-                        .f(1-(alpha/2))
-                        .degreesOfFreedom((double) (sampleSize - 1))
-                        .calculatePx()
-                        .x();
+            Double multiplier = new TDistributionCalc()
+                    .f(1 - (alpha / 2))
+                    .degreesOfFreedom((double) (sampleSize - 1))
+                    .calculatePx()
+                    .x();
 
             calculate(multiplier, sampleStandardDeviation);
         }
@@ -88,14 +85,14 @@ public class MeanInferenceCalc extends InferenceCalc {
     private Integer calcSampleSizeIterativeMethod(Integer n, Integer maxTries) {
         Log.i(MeanInferenceCalc.class.toString(),
                 "calcSampleSizeIterativeMethod n: " + n +
-                " maxtries: " + maxTries
+                        " maxtries: " + maxTries
         );
 
-        if (maxTries<1)
+        if (maxTries < 1)
             return n;
 
-        Double t  = new TDistributionCalc()
-                .f(1-(alpha/2))
+        Double t = new TDistributionCalc()
+                .f(1 - (alpha / 2))
                 .degreesOfFreedom((double) (n - 1))
                 .calculatePx()
                 .x();
@@ -113,26 +110,24 @@ public class MeanInferenceCalc extends InferenceCalc {
         Double temp;
         Double finitePopulationCorrection = 1.0;
 
-        if(isNullorZero(sampleSize))
-        {
+        if (isNullorZero(sampleSize)) {
             temp = multiplier * variation / sampleError;
             temp = Math.ceil(Math.pow(temp, 2));//round up and ^ 2
             Integer infinitePopulationSampleSize = temp.intValue();
 
             // in finite population case
-            if (!isNullorZero(size)){
+            if (!isNullorZero(size)) {
                 sampleSize = new Double(
-                        Math.ceil (
-                                ((double)size * infinitePopulationSampleSize) / (size + infinitePopulationSampleSize)
+                        Math.ceil(
+                                ((double) size * infinitePopulationSampleSize) / (size + infinitePopulationSampleSize)
                         )).intValue();
-            }
-            else
+            } else
                 sampleSize = infinitePopulationSampleSize;
 
         }
 
         if (!isNullorZero(size))
-            finitePopulationCorrection = Math.sqrt((size - sampleSize)/ size);
+            finitePopulationCorrection = Math.sqrt((size - sampleSize) / size);
 
         temp = multiplier * variation * finitePopulationCorrection / Math.sqrt(sampleSize);
         limitInf = sampleMean - temp;

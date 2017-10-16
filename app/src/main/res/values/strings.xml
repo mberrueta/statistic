@@ -90,6 +90,9 @@
     <string name="population">poblacion</string>
     <string name="sample">muestra</string>
     <string name="limits">limites</string>
+    <string name="variance_limits">limites varianza</string>
+    <string name="standard_deviation_limits">limites desvio standard</string>
     <string name="error">error</string>
     <string name="mean_inference_text">mean_inference_text!!!</string>
+    <string name="variance_inference_text">variance_inference_text bitch!!!</string>
 </resources>

@@ -75,4 +75,10 @@ public class Helper {
             this.isMax = isMax;
         }
     }
+
+    public static Integer garciaEcuation(Double a){
+        Double temp =  (double)2/9 * Math.pow (a + Math.sqrt( Math.pow(a,2) + 1 ), 2 );
+        temp = Math.ceil(temp);
+        return temp.intValue();
+    }
 }

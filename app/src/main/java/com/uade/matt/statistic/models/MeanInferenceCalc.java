@@ -42,10 +42,6 @@ public class MeanInferenceCalc extends InferenceCalc {
 
     @Getter
     @Setter
-    private Double successProb;
-
-    @Getter
-    @Setter
     private String resultMessage;
 
     public MeanInferenceCalc calc() {
@@ -152,7 +148,7 @@ public class MeanInferenceCalc extends InferenceCalc {
                 ", sampleError=" + sampleError +
                 ", alpha=" + alpha +
                 ", sampleError=" + sampleError +
-                ", successProb=" + successProb +
+//                ", successProb=" + successProb +
                 ", resultMessage='" + resultMessage + '\'' +
                 '}';
     }

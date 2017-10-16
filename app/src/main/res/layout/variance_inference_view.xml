@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/frame" android:layout_width="match_parent" android:layout_height="match_parent" android:fitsSystemWindows="true" tools:context="com.uade.matt.statistic.ui.BinomialDistributionActivity" tools:ignore="MergeRootFrame">
+    <LinearLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:weightSum="1">
+        <LinearLayout 
+            xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+            <!-- size -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/sample"/>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <!-- tamaño -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="n"/>
+                <EditText android:id="@+id/etSampleSize" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="number" android:selectAllOnFocus="true"/>
+                <!-- grados de libertad -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03BD"/>
+                <EditText android:id="@+id/etDegreesOfFreedom" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="number" android:selectAllOnFocus="true"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+               <!-- varianza -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="s^2"/>
+                <EditText android:id="@+id/etSampleVariance" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <!-- desvio standard -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="s"/>
+                <EditText android:id="@+id/etSampleStandardDeviation" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+            </LinearLayout>
+
+            <!-- limites -->
+            <!-- varianza -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/variance_limits"/>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <!-- A -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="A"/>
+                <EditText android:id="@+id/etLimitInfVariance" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <!-- B -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="B"/>
+                <EditText android:id="@+id/etLimitSupVariance" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <!-- R -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="R"/>
+                <EditText android:id="@+id/etLimitRelationshipVariance" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+            </LinearLayout>
+
+            <!-- desvio standard -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/standard_deviation_limits"/>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <!-- A' -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="A'"/>
+                <EditText android:id="@+id/etLimitInfStandardDeviation" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <!-- B' -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="B'"/>
+                <EditText android:id="@+id/etLimitSupStandardDeviation" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <!-- R' -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="R'"/>
+                <EditText android:id="@+id/etLimitRelationshipStandardDeviation" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+            </LinearLayout>
+
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/error"/>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03B1"/>
+                <EditText android:id="@+id/etAlpha" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+            </LinearLayout>
+
+ 
+            <EditText android:id="@+id/etResult" android:layout_width="match_parent" android:layout_height="129dp"
+                      android:inputType="textMultiLine" android:selectAllOnFocus="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu android:id="@+id/menu_fab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin" app:fab_addButtonColorNormal="?attr/colorPrimary" app:fab_addButtonSize="normal" app:fab_labelsPosition="left">
+        <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/button" android:layout_width="wrap_content" android:layout_height="wrap_content" app:fab_colorNormal="?attr/colorAccent" app:fab_icon="@android:drawable/star_on" app:fab_size="mini" app:fab_title="calc" />
+        <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/clear" android:layout_width="wrap_content" android:layout_height="wrap_content" app:fab_colorNormal="?attr/colorAccent" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear" />
+        <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/fab" android:layout_width="wrap_content" android:layout_height="wrap_content" app:fab_colorNormal="?attr/colorAccent" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</android.support.design.widget.CoordinatorLayout>

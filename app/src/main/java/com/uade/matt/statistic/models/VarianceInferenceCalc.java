@@ -22,7 +22,7 @@ public class VarianceInferenceCalc extends InferenceCalc {
     //limits
     @Getter
     @Setter
-    private Double limitInfVariance, limitSupVariance,limitRelationshipVariance,
+    private Double limitInfVariance, limitSupVariance, limitRelationshipVariance,
             limitInfStandardDeviation, limitSupStandardDeviation, limitRelationshipStandardDeviation,
             alpha;
     //calcs
@@ -39,7 +39,7 @@ public class VarianceInferenceCalc extends InferenceCalc {
     public VarianceInferenceCalc calc() {
         Log.i(VarianceInferenceCalc.class.toString(), "Pre: " + this.toString());
 
-        if(isNullorZero(sampleSize)){
+        if (isNullorZero(sampleSize)) {
             garciaA = aForGarciaEcuation();
             degreesOfFreedom = Helper.garciaEcuation(garciaA);
             sampleSize = degreesOfFreedom + 1;
@@ -47,34 +47,34 @@ public class VarianceInferenceCalc extends InferenceCalc {
 
         degreesOfFreedom = sampleSize - 1;
         Double chiInfVariance = new ChiSquaredDistributionCalc()
-                .f(1-(alpha/2))
+                .f(1 - (alpha / 2))
                 .degreesOfFreedom((double) sampleSize - 1)
                 .calculatePx()
                 .x();
 
         Double chiSupVariance = new ChiSquaredDistributionCalc()
-                .f(alpha/2)
+                .f(alpha / 2)
                 .degreesOfFreedom((double) sampleSize - 1)
                 .calculatePx()
                 .x();
 
-        Double numerator = (sampleSize - 1) * Math.pow(sampleStandardDeviation,2);
+        Double numerator = (sampleSize - 1) * Math.pow(sampleStandardDeviation, 2);
 
-        limitInfVariance = numerator / chiInfVariance ;
+        limitInfVariance = numerator / chiInfVariance;
         limitSupVariance = numerator / chiSupVariance;
 
         limitInfStandardDeviation = Math.sqrt(limitInfVariance);
         limitSupStandardDeviation = Math.sqrt(limitSupVariance);
 
-        sampleErrorVariance = new Double (
+        sampleErrorVariance = new Double(
                 Math.ceil(
-                        (limitSupVariance - limitInfVariance) / 2 )).intValue();
+                        (limitSupVariance - limitInfVariance) / 2)).intValue();
         limitRelationshipVariance = limitSupVariance / limitInfVariance;
 
-        sampleErrorStandardDeviation= new Double(
+        sampleErrorStandardDeviation = new Double(
                 Math.ceil(
-                        (limitSupStandardDeviation- limitInfStandardDeviation) / 2 )).intValue();
-        limitRelationshipStandardDeviation= limitSupStandardDeviation/ limitInfStandardDeviation;
+                        (limitSupStandardDeviation - limitInfStandardDeviation) / 2)).intValue();
+        limitRelationshipStandardDeviation = limitSupStandardDeviation / limitInfStandardDeviation;
 
         Log.i(VarianceInferenceCalc.class.toString(), "Post: " + this.toString());
         return this;
@@ -82,19 +82,19 @@ public class VarianceInferenceCalc extends InferenceCalc {
 
     private Double aForGarciaEcuation() {
 
-        if(isNullorZero(limitRelationshipVariance))
-            limitRelationshipVariance = Math.pow( limitRelationshipStandardDeviation, 2 ); // R = R'^2
+        if (isNullorZero(limitRelationshipVariance))
+            limitRelationshipVariance = Math.pow(limitRelationshipStandardDeviation, 2); // R = R'^2
 
-        Double z = new NormalDistributionCalc().f( 1 - alpha/2 ).calculatePx().x();
-        double temp = Math.pow( limitRelationshipVariance, (double)1/3); // raiz cub R
+        Double z = new NormalDistributionCalc().f(1 - alpha / 2).calculatePx().x();
+        double temp = Math.pow(limitRelationshipVariance, (double) 1 / 3); // raiz cub R
 
-        return z * (temp + 1) / (2 * (temp - 1)) ;
+        return z * (temp + 1) / (2 * (temp - 1));
     }
 
     @Override
     public String toString() {
-        return  "sampleErrorVariance=" + sampleErrorVariance + "\n"+
-                "sampleErrorStandardDeviation=" + sampleErrorStandardDeviation +"\n"+
-                "garciaA=" + garciaA +"\n";
+        return "sampleErrorVariance=" + sampleErrorVariance + "\n" +
+                "sampleErrorStandardDeviation=" + sampleErrorStandardDeviation + "\n" +
+                "garciaA=" + garciaA + "\n";
     }
 }

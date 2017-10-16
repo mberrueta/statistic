@@ -71,7 +71,7 @@
               Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n
 
     </string>
-     <string name="t_text">
+    <string name="t_text">
         Distribución de probabilidad continua.
         Se define como el cociente entre una normal estandarizada y la raíz cuadrada de una distribución denominada “Chi–Cuadrado (χ2)
 

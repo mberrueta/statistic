@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:selectAllOnFocus="true"
-              />
+                />
 
         </LinearLayout>
 
@@ -114,11 +114,11 @@
         </LinearLayout>
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            android:orientation="horizontal">
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,42 +127,42 @@
             <!-- mean 𝜇
             MATHEMATICAL ITALIC SMALL MU
             Unicode: U+1D707, UTF-8: F0 9D 9C 87 -->
-                    <TextView
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:enabled="false"
-                        android:inputType="text"
-                        android:text="\u03bc"/>
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:inputType="text"
+                android:text="\u03bc"/>
 
-                    <EditText
-                        android:id="@+id/etMean"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:selectAllOnFocus="true"
-                      />
+            <EditText
+                android:id="@+id/etMean"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:selectAllOnFocus="true"
+                />
             <!-- desvio estandard
             𝜎
             MATHEMATICAL ITALIC SMALL SIGMA
             Unicode: U+1D70E, UTF-8: F0 9D 9C 8E
             -->
-                    <TextView
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:enabled="false"
-                        android:inputType="text"
-                        android:text="\u03c3"/>
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:inputType="text"
+                android:text="\u03c3"/>
 
-                    <EditText
-                        android:id="@+id/etStandardDeviation"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:selectAllOnFocus="true"
-                  />
-            </LinearLayout>
+            <EditText
+                android:id="@+id/etStandardDeviation"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:selectAllOnFocus="true"
+                />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etResult"
@@ -173,14 +173,14 @@
             android:selectAllOnFocus="false"/>
 
         <!--<com.github.mikephil.charting.charts.LineChart-->
-            <!--android:id="@+id/chart"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="254dp"/>-->
+        <!--android:id="@+id/chart"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="254dp"/>-->
 
         <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:id="@+id/graph"
             android:layout_weight="0.92"/>
 
     </LinearLayout>
@@ -225,7 +225,7 @@
             app:fab_icon="@android:drawable/btn_dialog"
             app:fab_size="mini"
             app:fab_title="clear"
-        />
+            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

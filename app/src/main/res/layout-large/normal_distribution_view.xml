@@ -27,9 +27,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-<!-- mean 𝜇
-MATHEMATICAL ITALIC SMALL MU
-Unicode: U+1D707, UTF-8: F0 9D 9C 87 -->
+            <!-- mean 𝜇
+            MATHEMATICAL ITALIC SMALL MU
+            Unicode: U+1D707, UTF-8: F0 9D 9C 87 -->
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
@@ -46,11 +46,11 @@ Unicode: U+1D707, UTF-8: F0 9D 9C 87 -->
                 android:selectAllOnFocus="true"
                 android:text="0"/>
 
-<!-- desvio estandard
-𝜎
-MATHEMATICAL ITALIC SMALL SIGMA
-Unicode: U+1D70E, UTF-8: F0 9D 9C 8E
- -->
+            <!-- desvio estandard
+            𝜎
+            MATHEMATICAL ITALIC SMALL SIGMA
+            Unicode: U+1D70E, UTF-8: F0 9D 9C 8E
+             -->
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
@@ -139,14 +139,14 @@ Unicode: U+1D70E, UTF-8: F0 9D 9C 8E
             android:selectAllOnFocus="false"/>
 
         <!--<com.github.mikephil.charting.charts.LineChart-->
-            <!--android:id="@+id/chart"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="254dp"/>-->
+        <!--android:id="@+id/chart"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="254dp"/>-->
 
         <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:id="@+id/graph"
             android:layout_weight="0.92"/>
 
     </LinearLayout>
@@ -191,7 +191,7 @@ Unicode: U+1D70E, UTF-8: F0 9D 9C 8E
             app:fab_icon="@android:drawable/btn_dialog"
             app:fab_size="mini"
             app:fab_title="clear"
-        />
+            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

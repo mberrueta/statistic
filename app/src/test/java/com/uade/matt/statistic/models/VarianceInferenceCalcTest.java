@@ -1,14 +1,7 @@
 package com.uade.matt.statistic.models;
 
-import com.uade.matt.statistic.utils.Helper;
-
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import static com.uade.matt.statistic.R.id.r;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;

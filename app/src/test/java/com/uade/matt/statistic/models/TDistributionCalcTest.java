@@ -23,7 +23,7 @@ public class TDistributionCalcTest {
 
     @Test
     public void calculateInvPx() throws Exception {
-        TDistributionCalc result =  new TDistributionCalc()
+        TDistributionCalc result = new TDistributionCalc()
                 .degreesOfFreedom(55.8)
                 .f(0.97)
                 .calculatePx();

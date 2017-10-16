@@ -15,12 +15,18 @@ import com.uade.matt.statistic.utils.Helper;
 
 import library.MinMaxFilter;
 
+import static com.uade.matt.statistic.R.id.etAlpha;
+import static com.uade.matt.statistic.R.id.etMean;
+import static com.uade.matt.statistic.R.id.etSampleError;
+import static com.uade.matt.statistic.R.id.etSampleSize;
+import static com.uade.matt.statistic.R.id.etSampleStandardDeviation;
+import static com.uade.matt.statistic.R.id.etStandardDeviation;
 import static com.uade.matt.statistic.utils.Helper.getParsed;
 import static com.uade.matt.statistic.utils.Helper.setEditText;
 
 public class MeanInferenceFragment extends DistributionFragment {
     MeanInferenceCalc result;
-    private EditText etMean, etSize, etStandardDeviation, etSampleMean, etSampleSize,
+    private EditText /*etMean,*/ etSize, etStandardDeviation, etSampleMean, etSampleSize,
             etSampleStandardDeviation, etLimitInf, etLimitSup, etSampleError, etAlpha, etResult;
 
     @Override
@@ -42,7 +48,7 @@ public class MeanInferenceFragment extends DistributionFragment {
         });
 
 
-        etMean = rootView.findViewById(R.id.etMean);
+//        etMean = rootView.findViewById(etMean);
         etSize = rootView.findViewById(R.id.etSize);
         etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
         etSampleMean = rootView.findViewById(R.id.etSampleMean);
@@ -55,7 +61,7 @@ public class MeanInferenceFragment extends DistributionFragment {
         etResult = rootView.findViewById(R.id.etResult);
 
  
-        etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+//        etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
         etSize.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
         etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
         etSampleSize.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
@@ -68,7 +74,7 @@ public class MeanInferenceFragment extends DistributionFragment {
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etMean.setText("");
+//                etMean.setText("");
                 etSize.setText("");
                 etStandardDeviation.setText("");
                 etSampleMean.setText("");
@@ -87,7 +93,7 @@ public class MeanInferenceFragment extends DistributionFragment {
             public void onClick(View v) {
 
                 result = new MeanInferenceCalc()
-                .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+//                .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
                 .size((Integer) getParsed(Helper.NumberType.INTEGER, etSize))
                 .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
                 .sampleMean((Double) getParsed(Helper.NumberType.DOUBLE, etSampleMean))
@@ -108,7 +114,7 @@ public class MeanInferenceFragment extends DistributionFragment {
                     return;
                 }
 
-                setEditText(etMean, result.mean());
+//                setEditText(etMean, result.mean());
                 setEditText(etSize, result.size());
                 setEditText(etStandardDeviation, result.standardDeviation());
                 setEditText(etSampleMean, result.sampleMean());

@@ -12,9 +12,9 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/population"/>
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
                 <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
-                <!-- promedio -->
+                <!-- promedio
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03BC"/>
-                <EditText android:id="@+id/etMean" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>
+                <EditText android:id="@+id/etMean" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/> -->
                 <!-- tamaño -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="P"/>
                 <EditText android:id="@+id/etSize" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>

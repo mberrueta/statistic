@@ -10,14 +10,14 @@ import com.uade.matt.statistic.DistributionListActivity;
 
 abstract class DistributionActivity extends AppCompatActivity {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            NavUtils.navigateUpTo(this, new Intent(this, DistributionListActivity.class));
-            return true;
-        }
-        Log.i(DistributionActivity.class.toString(), "selected item" + id);
-        return super.onOptionsItemSelected(item);
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+    if (id == android.R.id.home) {
+      NavUtils.navigateUpTo(this, new Intent(this, DistributionListActivity.class));
+      return true;
     }
+    Log.i(DistributionActivity.class.toString(), "selected item" + id);
+    return super.onOptionsItemSelected(item);
+  }
 }

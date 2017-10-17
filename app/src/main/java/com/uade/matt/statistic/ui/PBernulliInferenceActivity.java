@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.uade.matt.statistic.R;
 
-public class VarianceInferenceActivity extends DistributionActivity {
+public class PBernulliInferenceActivity extends DistributionActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,9 @@ public class VarianceInferenceActivity extends DistributionActivity {
 
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
-      arguments.putString(VarianceInferenceFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(VarianceInferenceFragment.ARG_ITEM_ID));
-      VarianceInferenceFragment fragment = new VarianceInferenceFragment();
+      arguments.putString(PBernulliInferenceFragment.ARG_ITEM_ID,
+        getIntent().getStringExtra(PBernulliInferenceFragment.ARG_ITEM_ID));
+      PBernulliInferenceFragment fragment = new PBernulliInferenceFragment();
       fragment.setArguments(arguments);
       getSupportFragmentManager().beginTransaction()
         .add(R.id.distribution_detail_container, fragment)

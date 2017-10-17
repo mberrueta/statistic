@@ -95,4 +95,6 @@
     <string name="error">error</string>
     <string name="mean_inference_text">mean_inference_text!!!</string>
     <string name="variance_inference_text">variance_inference_text bitch!!!</string>
+    <string name="fisher_snedecor_text">fisher_snedecor_text!!!</string>
+    <string name="p_bernulli_inference_text">p_bernulli_inference bitch!!!</string>
 </resources>

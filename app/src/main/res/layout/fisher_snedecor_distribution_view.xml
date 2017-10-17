@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.uade.matt.statistic.ui.ChiSquaredDistributionActivity"
+    tools:context="com.uade.matt.statistic.ui.BinomialDistributionActivity"
     tools:ignore="MergeRootFrame">
 
     <LinearLayout
@@ -27,22 +27,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
-            <!-- grados de libertad
-            𝜈
-            MATHEMATICAL ITALIC SMALL NU
-            Unicode: U+1D708,
-            real > 0
-            -->
+
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:enabled="false"
                 android:inputType="text"
-                android:text="\u03BD"/>
+                android:text="\u03BD 1"/>
 
             <EditText
-                android:id="@+id/eChiSquareDegreesOfFreedom"
+                android:id="@+id/etNumeratorDegreesOfFreedom"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:selectAllOnFocus="true"/>
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:inputType="text"
+                android:text="\u03BD 2"/>
+
+            <EditText
+                android:id="@+id/etDenominatorDegreesOfFreedom"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -57,7 +67,7 @@
                 android:text="x"/>
 
             <EditText
-                android:id="@+id/etX"
+                android:id="@+id/x"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -113,17 +123,15 @@
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <!-- mean 𝜇
-            MATHEMATICAL ITALIC SMALL MU
-            Unicode: U+1D707, UTF-8: F0 9D 9C 87 -->
+                android:layout_weight="0.71"/>
+
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:enabled="false"
                 android:inputType="text"
-                android:text="\u03bc"/>
+                android:text="\u03BC"/>
 
             <EditText
                 android:id="@+id/etMean"
@@ -131,18 +139,14 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:selectAllOnFocus="true"/>
-            <!-- desvio estandard
-            𝜎
-            MATHEMATICAL ITALIC SMALL SIGMA
-            Unicode: U+1D70E, UTF-8: F0 9D 9C 8E
-            -->
+
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:enabled="false"
                 android:inputType="text"
-                android:text="\u03c3"/>
+                android:text="\u03C3"/>
 
             <EditText
                 android:id="@+id/etStandardDeviation"
@@ -155,19 +159,10 @@
         <EditText
             android:id="@+id/etResult"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="0.36"
+            android:layout_height="126dp"
+            android:layout_weight="1.04"
             android:inputType="textMultiLine"
             android:selectAllOnFocus="false"/>
-        <!--<com.github.mikephil.charting.charts.LineChart-->
-        <!--android:id="@+id/chart"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="254dp"/>-->
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/graph"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_weight="0.92"/>
     </LinearLayout>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu

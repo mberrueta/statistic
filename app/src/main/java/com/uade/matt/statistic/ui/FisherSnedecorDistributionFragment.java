@@ -9,66 +9,57 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 import com.uade.matt.statistic.R;
-import com.uade.matt.statistic.models.TDistributionCalc;
+import com.uade.matt.statistic.models.FisherSnedecorDistributionCalc;
 import com.uade.matt.statistic.utils.Helper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import library.MinMaxFilter;
 
 import static com.uade.matt.statistic.utils.Helper.getParsed;
+import static com.uade.matt.statistic.utils.Helper.setEditText;
 
-public class TDistributionFragment extends DistributionFragment {
-  public static final String ARG_ITEM_ID = "item_id";
-  TDistributionCalc result;
-  private EditText etX, etDegreesOfFreedom, etF, etG, etResult, etMean, etStandardDeviation;
-  private GraphView graph;
-  private ContentType.Item mItem;
-
-  public TDistributionFragment() {
-  }
-
+public class FisherSnedecorDistributionFragment extends DistributionFragment {
+  FisherSnedecorDistributionCalc result;
+  private EditText etNumeratorDegreesOfFreedom, etDenominatorDegreesOfFreedom,
+    etX, etF, etG, etResult, etMean, etStandardDeviation;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    final View rootView = inflater.inflate(R.layout.t_distribution_view, container, false);
+    final View rootView = inflater.inflate(R.layout.fisher_snedecor_distribution_view, container, false);
+
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.t_text)
+        builder.setMessage(R.string.fisher_snedecor_text)
           .setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
     });
 
-
-    etDegreesOfFreedom = rootView.findViewById(R.id.etDegreesOfFreedom);
-    etX = rootView.findViewById(R.id.etX);
+    etNumeratorDegreesOfFreedom = rootView.findViewById(R.id.etNumeratorDegreesOfFreedom);
+    etDenominatorDegreesOfFreedom = rootView.findViewById(R.id.etDenominatorDegreesOfFreedom);
+    etX = rootView.findViewById(R.id.x);
 
     etF = rootView.findViewById(R.id.f);
     etG = rootView.findViewById(R.id.g);
+
     etMean = rootView.findViewById(R.id.etMean);
     etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
 
     etResult = rootView.findViewById(R.id.etResult);
-    graph = rootView.findViewById(R.id.graph);
 
+    etNumeratorDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+    etDenominatorDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+    etX.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
 
-    etDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-    etX.setFilters(new InputFilter[]{new MinMaxFilter(-99999, 99999)});
     etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
     etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+
     etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
     etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
 
@@ -77,15 +68,14 @@ public class TDistributionFragment extends DistributionFragment {
     mClearButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        etNumeratorDegreesOfFreedom.setText("");
+        etDenominatorDegreesOfFreedom.setText("");
         etX.setText("");
-        etDegreesOfFreedom.setText("");
         etF.setText("");
         etG.setText("");
         etMean.setText("");
         etStandardDeviation.setText("");
         etResult.setText("");
-
       }
     });
 
@@ -93,8 +83,9 @@ public class TDistributionFragment extends DistributionFragment {
       @Override
       public void onClick(View v) {
 
-        result = new TDistributionCalc()
-          .degreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDegreesOfFreedom))
+        result = new FisherSnedecorDistributionCalc()
+          .numeratorDegreesOfFreedom((double) getParsed(Helper.NumberType.DOUBLE, etNumeratorDegreesOfFreedom))
+          .denominatorDegreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDenominatorDegreesOfFreedom))
           .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
           .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
           .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
@@ -111,26 +102,14 @@ public class TDistributionFragment extends DistributionFragment {
           return;
         }
 
-        etDegreesOfFreedom.setText(result.degreesOfFreedom().toString());
-        etX.setText(result.x().toString());
-        etF.setText(result.f().toString());
-        etG.setText(result.g().toString());
-        etMean.setText(result.mean().toString());
-        etStandardDeviation.setText(result.standardDeviation().toString());
-        etResult.setText(result.toString());
-
-        List<Helper.Dto> list = result.generateSuccessIndex();
-        List<DataPoint> entries = new ArrayList<>();
-        for (Helper.Dto data : list) {
-          entries.add(new DataPoint(data.id.floatValue(), Helper.round(data.value).floatValue()));
-        }
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(entries.toArray(new DataPoint[0]));
-        graph.addSeries(series);
-        graph.getViewport().setScalable(true);
-        graph.getViewport().setScrollable(true);
-        graph.getViewport().setScalableY(true);
-        graph.getViewport().setScrollableY(true);
-
+        setEditText(etNumeratorDegreesOfFreedom, result.numeratorDegreesOfFreedom());
+        setEditText(etDenominatorDegreesOfFreedom, result.denominatorDegreesOfFreedom());
+        setEditText(etX, result.x());
+        setEditText(etF, result.f());
+        setEditText(etG, result.g());
+        setEditText(etMean, result.mean());
+        setEditText(etStandardDeviation, result.standardDeviation());
+        setEditText(etResult, result.toString());
       }
     });
 

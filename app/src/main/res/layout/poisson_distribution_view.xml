@@ -30,7 +30,7 @@
             <!--lambda
                 frequency
                 𝜆
-                 Unicode: U+1D706
+                 Unicode: U+03BB
                -->
             <TextView
                 android:layout_width="20dp"
@@ -38,7 +38,7 @@
                 android:clickable="false"
                 android:enabled="false"
                 android:inputType="text"
-                android:text="\u1D706"/>
+                android:text="\u03BB"/>
 
 
             <EditText

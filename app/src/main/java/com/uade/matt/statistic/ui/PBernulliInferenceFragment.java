@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.uade.matt.statistic.R;
-import com.uade.matt.statistic.models.MeanInferenceCalc;
+import com.uade.matt.statistic.models.PBernulliInferenceCalc;
 import com.uade.matt.statistic.utils.Helper;
 
 import library.MinMaxFilter;
@@ -18,15 +18,14 @@ import library.MinMaxFilter;
 import static com.uade.matt.statistic.utils.Helper.getParsed;
 import static com.uade.matt.statistic.utils.Helper.setEditText;
 
-public class MeanInferenceFragment extends DistributionFragment {
-  MeanInferenceCalc result;
-  private EditText /*etMean,*/ etSize, etStandardDeviation, etSampleMean, etSampleSize,
-    etSampleStandardDeviation, etLimitInf, etLimitSup, etSampleError, etAlpha, etResult;
+public class PBernulliInferenceFragment extends DistributionFragment {
+  PBernulliInferenceCalc result;
+  private EditText etSize, etSampleSize, etSampleP, etLimitInf, etLimitSup, etError, etAlpha, etResult;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    final View rootView = inflater.inflate(R.layout.mean_inference_view, container, false);
+    final View rootView = inflater.inflate(R.layout.p_bernulli_inference_view, container, false);
 
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
@@ -34,51 +33,50 @@ public class MeanInferenceFragment extends DistributionFragment {
       @Override
       public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.mean_inference_text)
+        builder.setMessage(R.string.p_bernulli_inference_text)
           .setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
     });
 
-
-//        etMean = rootView.findViewById(etMean);
     etSize = rootView.findViewById(R.id.etSize);
-    etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
-    etSampleMean = rootView.findViewById(R.id.etSampleMean);
     etSampleSize = rootView.findViewById(R.id.etSampleSize);
-    etSampleStandardDeviation = rootView.findViewById(R.id.etSampleStandardDeviation);
+//        etP = rootView.findViewById(R.id.etP);
+    etSampleP = rootView.findViewById(R.id.etSampleP);
     etLimitInf = rootView.findViewById(R.id.etLimitInf);
     etLimitSup = rootView.findViewById(R.id.etLimitSup);
-    etSampleError = rootView.findViewById(R.id.etSampleError);
+    etError = rootView.findViewById(R.id.etError);
     etAlpha = rootView.findViewById(R.id.etAlpha);
     etResult = rootView.findViewById(R.id.etResult);
 
-
-//        etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
     etSize.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
     etSampleSize.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etSampleStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etSampleError.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+//        etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etSampleP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etLimitInf.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+    etLimitSup.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+    etError.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
     etAlpha.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
     mClearButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-//                etMean.setText("");
+
         etSize.setText("");
-        etStandardDeviation.setText("");
-        etSampleMean.setText("");
         etSampleSize.setText("");
-        etSampleStandardDeviation.setText("");
+//                etP.setText("");
+        etSampleP.setText("");
         etLimitInf.setText("");
         etLimitSup.setText("");
-        etSampleError.setText("");
+        etError.setText("");
         etAlpha.setText("");
         etResult.setText("");
+
+
       }
     });
 
@@ -86,16 +84,15 @@ public class MeanInferenceFragment extends DistributionFragment {
       @Override
       public void onClick(View v) {
 
-        result = new MeanInferenceCalc()
-//                .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+        result = new PBernulliInferenceCalc()
+
           .size((Integer) getParsed(Helper.NumberType.INTEGER, etSize))
-          .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-          .sampleMean((Double) getParsed(Helper.NumberType.DOUBLE, etSampleMean))
           .sampleSize((Integer) getParsed(Helper.NumberType.INTEGER, etSampleSize))
-          .sampleStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etSampleStandardDeviation))
+//                .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
+          .sampleP((Double) getParsed(Helper.NumberType.DOUBLE, etSampleP))
           .limitInf((Double) getParsed(Helper.NumberType.DOUBLE, etLimitInf))
           .limitSup((Double) getParsed(Helper.NumberType.DOUBLE, etLimitSup))
-          .sampleError((Integer) getParsed(Helper.NumberType.INTEGER, etSampleError))
+          .error((Double) getParsed(Helper.NumberType.DOUBLE, etError))
           .alpha((Double) getParsed(Helper.NumberType.DOUBLE, etAlpha))
           .calc();
 
@@ -108,17 +105,15 @@ public class MeanInferenceFragment extends DistributionFragment {
           return;
         }
 
-//                setEditText(etMean, result.mean());
         setEditText(etSize, result.size());
-        setEditText(etStandardDeviation, result.standardDeviation());
-        setEditText(etSampleMean, result.sampleMean());
         setEditText(etSampleSize, result.sampleSize());
-        setEditText(etSampleStandardDeviation, result.sampleStandardDeviation());
+//                setEditText(etP, result.p());
+        setEditText(etSampleP, result.sampleP());
         setEditText(etLimitInf, result.limitInf());
         setEditText(etLimitSup, result.limitSup());
-        setEditText(etSampleError, result.sampleError());
+        setEditText(etError, result.error());
         setEditText(etAlpha, result.alpha());
-        setEditText(etResult, result.resultMessage());
+        setEditText(etResult, result.toString());
       }
     });
 

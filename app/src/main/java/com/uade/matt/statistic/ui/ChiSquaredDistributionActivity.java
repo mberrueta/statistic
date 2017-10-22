@@ -23,12 +23,10 @@ public class ChiSquaredDistributionActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(ChiSquaredDistributionFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(ChiSquaredDistributionFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(ChiSquaredDistributionFragment.ARG_ITEM_ID));
       ChiSquaredDistributionFragment fragment = new ChiSquaredDistributionFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

@@ -33,10 +33,8 @@ public class TDistributionFragment extends DistributionFragment {
   public TDistributionFragment() {
   }
 
-
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.t_distribution_view, container, false);
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
@@ -45,13 +43,11 @@ public class TDistributionFragment extends DistributionFragment {
       public void onClick(View view) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.t_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.t_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
     });
-
 
     etDegreesOfFreedom = rootView.findViewById(R.id.etDegreesOfFreedom);
     etX = rootView.findViewById(R.id.etX);
@@ -64,13 +60,12 @@ public class TDistributionFragment extends DistributionFragment {
     etResult = rootView.findViewById(R.id.etResult);
     graph = rootView.findViewById(R.id.graph);
 
-
-    etDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-    etX.setFilters(new InputFilter[]{new MinMaxFilter(-99999, 99999)});
-    etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-    etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
+    etDegreesOfFreedom.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999) });
+    etX.setFilters(new InputFilter[] { new MinMaxFilter(-99999, 99999) });
+    etF.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etG.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etMean.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999) });
+    etStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0.0001f, 999) });
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -94,18 +89,15 @@ public class TDistributionFragment extends DistributionFragment {
       public void onClick(View v) {
 
         result = new TDistributionCalc()
-          .degreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDegreesOfFreedom))
-          .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
-          .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-          .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-          .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-          .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-          .calculatePx();
+            .degreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDegreesOfFreedom))
+            .x((Double) getParsed(Helper.NumberType.DOUBLE, etX)).f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+            .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+            .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+            .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation)).calculatePx();
 
         if (!Helper.isNullorEmpty(result.resultMessage())) {
           AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
-          builder.setMessage(result.resultMessage())
-            .setTitle(R.string.help);
+          builder.setMessage(result.resultMessage()).setTitle(R.string.help);
           AlertDialog dialog = builder.create();
           dialog.show();
           return;

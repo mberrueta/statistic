@@ -44,7 +44,6 @@ public class ChiSquaredDistributionCalc extends DistributionCalc {
   public ChiSquaredDistributionCalc calculatePx() {
     Log.i(ChiSquaredDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
-
     dist = new ChiSquaredDistribution(degreesOfFreedom);
 
     if (isNullorZero(x)) {
@@ -58,19 +57,18 @@ public class ChiSquaredDistributionCalc extends DistributionCalc {
     mean = degreesOfFreedom;
     variance = 2 * degreesOfFreedom;
     standardDeviation = Math.sqrt(variance);
-//
-//        skewness = 0.0;
-//        if (degreesOfFreedom > 4)
-//            kurtosis = 6 / (degreesOfFreedom - 4);
-//        else
-//            kurtosis = 0.0;
-//
-//        coefficientVariation = 0.0;
+    //
+    //        skewness = 0.0;
+    //        if (degreesOfFreedom > 4)
+    //            kurtosis = 6 / (degreesOfFreedom - 4);
+    //        else
+    //            kurtosis = 0.0;
+    //
+    //        coefficientVariation = 0.0;
 
-//        f = dist.cumulativeProbability(r);
+    //        f = dist.cumulativeProbability(r);
     g = 1 - f;
     Log.i(ChiSquaredDistributionCalc.class.toString(), "Post: " + this.toString());
-
 
     return this;
   }
@@ -79,18 +77,14 @@ public class ChiSquaredDistributionCalc extends DistributionCalc {
     return "";
   }
 
-
   @Override
   public String toString() {
-    return "𝜎² = " + variance + "\n" +
-      "As = " + skewness + "\n" +
-      "Kurtosis = " + kurtosis + "\n" +
-      "CV = " + coefficientVariation + "\n";
+    return "𝜎² = " + variance + "\n" + "As = " + skewness + "\n" + "Kurtosis = " + kurtosis + "\n" + "CV = "
+        + coefficientVariation + "\n";
   }
 
   public List<Helper.Dto> generateSuccessIndex() {
     List<Helper.Dto> temp = new ArrayList<>();
-
 
     for (double i = 0; i <= 3 * degreesOfFreedom; i++) {
       double value = round(dist.probability(i));

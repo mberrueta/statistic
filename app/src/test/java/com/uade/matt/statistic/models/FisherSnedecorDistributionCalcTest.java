@@ -9,12 +9,8 @@ import static org.junit.Assert.assertThat;
 public class FisherSnedecorDistributionCalcTest {
   @Test
   public void calculateP() throws Exception {
-    FisherSnedecorDistributionCalc result =
-      new FisherSnedecorDistributionCalc()
-        .numeratorDegreesOfFreedom(20.0)
-        .denominatorDegreesOfFreedom(40.0)
-        .x(1.24)
-        .calculatePx();
+    FisherSnedecorDistributionCalc result = new FisherSnedecorDistributionCalc().numeratorDegreesOfFreedom(20.0)
+        .denominatorDegreesOfFreedom(40.0).x(1.24).calculatePx();
     assertNotNull(result);
     assertThat(result.g(), is(0.2742668317233188));
     assertThat(result.f(), is(0.7257331682766812));
@@ -25,12 +21,8 @@ public class FisherSnedecorDistributionCalcTest {
 
   @Test
   public void calculateP2() throws Exception {
-    FisherSnedecorDistributionCalc result =
-      new FisherSnedecorDistributionCalc()
-        .numeratorDegreesOfFreedom(54.0)
-        .denominatorDegreesOfFreedom(6.0)
-        .f(0.95)
-        .calculatePx();
+    FisherSnedecorDistributionCalc result = new FisherSnedecorDistributionCalc().numeratorDegreesOfFreedom(54.0)
+        .denominatorDegreesOfFreedom(6.0).f(0.95).calculatePx();
     assertNotNull(result);
     assertThat(result.x(), is(3.747516));
     assertThat(result.mean(), is(1.50));
@@ -40,12 +32,8 @@ public class FisherSnedecorDistributionCalcTest {
 
   @Test
   public void calculateX() throws Exception {
-    FisherSnedecorDistributionCalc result =
-      new FisherSnedecorDistributionCalc()
-        .numeratorDegreesOfFreedom(20.0)
-        .denominatorDegreesOfFreedom(40.0)
-        .f(0.7257331682766812)
-        .calculatePx();
+    FisherSnedecorDistributionCalc result = new FisherSnedecorDistributionCalc().numeratorDegreesOfFreedom(20.0)
+        .denominatorDegreesOfFreedom(40.0).f(0.7257331682766812).calculatePx();
     assertNotNull(result);
     assertThat(result.g(), is(0.2742668317233188));
     assertThat(result.x(), is(1.240001));
@@ -56,12 +44,8 @@ public class FisherSnedecorDistributionCalcTest {
 
   @Test
   public void calculateX2() throws Exception {
-    FisherSnedecorDistributionCalc result =
-      new FisherSnedecorDistributionCalc()
-        .numeratorDegreesOfFreedom(20.0)
-        .denominatorDegreesOfFreedom(40.0)
-        .g(0.2742668317233188)
-        .calculatePx();
+    FisherSnedecorDistributionCalc result = new FisherSnedecorDistributionCalc().numeratorDegreesOfFreedom(20.0)
+        .denominatorDegreesOfFreedom(40.0).g(0.2742668317233188).calculatePx();
     assertNotNull(result);
     assertThat(result.f(), is(0.7257331682766812));
     assertThat(result.x(), is(1.240001));

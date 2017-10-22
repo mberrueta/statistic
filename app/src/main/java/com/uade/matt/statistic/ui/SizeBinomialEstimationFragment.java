@@ -23,23 +23,19 @@ public class SizeBinomialEstimationFragment extends DistributionFragment {
   private EditText etP0, etAlpha, etP1, etBeta, etResult;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.size_binomial_estimation, container, false);
-
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.variance_inference_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.variance_inference_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
     });
-
 
     etP0 = rootView.findViewById(R.id.etP0);
     etAlpha = rootView.findViewById(R.id.etAlpha);
@@ -47,11 +43,10 @@ public class SizeBinomialEstimationFragment extends DistributionFragment {
     etBeta = rootView.findViewById(R.id.etBeta);
     etResult = rootView.findViewById(R.id.etResult);
 
-    etP0.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etAlpha.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etP1.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etBeta.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-
+    etP0.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etAlpha.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etP1.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etBeta.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -71,16 +66,13 @@ public class SizeBinomialEstimationFragment extends DistributionFragment {
       public void onClick(View v) {
 
         try {
-          result = new SizeBinomialEstimationCalc()
-          .p0((Double) getParsed(Helper.NumberType.DOUBLE, etP0))
-          .alpha((Double) getParsed(Helper.NumberType.DOUBLE, etAlpha))
-          .p1((Double) getParsed(Helper.NumberType.DOUBLE, etP1))
-          .beta((Double) getParsed(Helper.NumberType.DOUBLE, etBeta))
-          .calc();
+          result = new SizeBinomialEstimationCalc().p0((Double) getParsed(Helper.NumberType.DOUBLE, etP0))
+              .alpha((Double) getParsed(Helper.NumberType.DOUBLE, etAlpha))
+              .p1((Double) getParsed(Helper.NumberType.DOUBLE, etP1))
+              .beta((Double) getParsed(Helper.NumberType.DOUBLE, etBeta)).calc();
         } catch (Exception e) {
           e.printStackTrace();
         }
-
 
         setEditText(etP0, result.p0());
         setEditText(etAlpha, result.alpha());

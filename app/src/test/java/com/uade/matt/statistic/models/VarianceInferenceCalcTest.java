@@ -9,11 +9,7 @@ import static org.junit.Assert.assertThat;
 public class VarianceInferenceCalcTest {
   @Test
   public void calculateVarianceLimits() throws Exception {
-    VarianceInferenceCalc result =
-      new VarianceInferenceCalc()
-        .alpha(0.1)
-        .sampleStandardDeviation(120.0)
-        .sampleSize(15)
+    VarianceInferenceCalc result = new VarianceInferenceCalc().alpha(0.1).sampleStandardDeviation(120.0).sampleSize(15)
         .calc();
     assertNotNull(result);
     assertThat(result.limitInfVariance(), is(8511.791026072764));
@@ -25,12 +21,8 @@ public class VarianceInferenceCalcTest {
 
   @Test
   public void calculateSampleSize() throws Exception {
-    VarianceInferenceCalc result =
-      new VarianceInferenceCalc()
-        .alpha(0.1)
-        .sampleStandardDeviation(120.0)
-        .limitRelationshipStandardDeviation(2.0)
-        .calc();
+    VarianceInferenceCalc result = new VarianceInferenceCalc().alpha(0.1).sampleStandardDeviation(120.0)
+        .limitRelationshipStandardDeviation(2.0).calc();
     assertNotNull(result);
     assertThat(result.sampleSize(), is(14));
     assertThat(result.degreesOfFreedom(), is(13));
@@ -38,12 +30,8 @@ public class VarianceInferenceCalcTest {
 
   @Test
   public void calculateSampleSize2() throws Exception {
-    VarianceInferenceCalc result =
-      new VarianceInferenceCalc()
-        .alpha(0.1)
-        .sampleStandardDeviation(120.0)
-        .limitRelationshipVariance(4.0)
-        .calc();
+    VarianceInferenceCalc result = new VarianceInferenceCalc().alpha(0.1).sampleStandardDeviation(120.0)
+        .limitRelationshipVariance(4.0).calc();
     assertNotNull(result);
     assertThat(result.sampleSize(), is(14));
     assertThat(result.degreesOfFreedom(), is(13));
@@ -51,11 +39,7 @@ public class VarianceInferenceCalcTest {
 
   @Test
   public void calculateVarianceLimits2() throws Exception {
-    VarianceInferenceCalc result =
-      new VarianceInferenceCalc()
-        .alpha(0.1)
-        .sampleStandardDeviation(0.1924)
-        .sampleSize(5)
+    VarianceInferenceCalc result = new VarianceInferenceCalc().alpha(0.1).sampleStandardDeviation(0.1924).sampleSize(5)
         .calc();
     assertNotNull(result);
     assertThat(result.limitInfVariance(), is(0.01560658239642148));

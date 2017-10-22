@@ -22,9 +22,8 @@ public class VarianceInferenceCalc extends InferenceCalc {
   //limits
   @Getter
   @Setter
-  private Double limitInfVariance, limitSupVariance, limitRelationshipVariance,
-    limitInfStandardDeviation, limitSupStandardDeviation, limitRelationshipStandardDeviation,
-    alpha;
+  private Double limitInfVariance, limitSupVariance, limitRelationshipVariance, limitInfStandardDeviation,
+      limitSupStandardDeviation, limitRelationshipStandardDeviation, alpha;
   //calcs
   @Getter
   @Setter
@@ -46,17 +45,11 @@ public class VarianceInferenceCalc extends InferenceCalc {
     }
 
     degreesOfFreedom = sampleSize - 1;
-    Double chiInfVariance = new ChiSquaredDistributionCalc()
-      .f(1 - (alpha / 2))
-      .degreesOfFreedom((double) sampleSize - 1)
-      .calculatePx()
-      .x();
+    Double chiInfVariance = new ChiSquaredDistributionCalc().f(1 - (alpha / 2))
+        .degreesOfFreedom((double) sampleSize - 1).calculatePx().x();
 
-    Double chiSupVariance = new ChiSquaredDistributionCalc()
-      .f(alpha / 2)
-      .degreesOfFreedom((double) sampleSize - 1)
-      .calculatePx()
-      .x();
+    Double chiSupVariance = new ChiSquaredDistributionCalc().f(alpha / 2).degreesOfFreedom((double) sampleSize - 1)
+        .calculatePx().x();
 
     Double numerator = (sampleSize - 1) * Math.pow(sampleStandardDeviation, 2);
 
@@ -66,14 +59,11 @@ public class VarianceInferenceCalc extends InferenceCalc {
     limitInfStandardDeviation = Math.sqrt(limitInfVariance);
     limitSupStandardDeviation = Math.sqrt(limitSupVariance);
 
-    sampleErrorVariance = new Double(
-      Math.ceil(
-        (limitSupVariance - limitInfVariance) / 2)).intValue();
+    sampleErrorVariance = new Double(Math.ceil((limitSupVariance - limitInfVariance) / 2)).intValue();
     limitRelationshipVariance = limitSupVariance / limitInfVariance;
 
-    sampleErrorStandardDeviation = new Double(
-      Math.ceil(
-        (limitSupStandardDeviation - limitInfStandardDeviation) / 2)).intValue();
+    sampleErrorStandardDeviation = new Double(Math.ceil((limitSupStandardDeviation - limitInfStandardDeviation) / 2))
+        .intValue();
     limitRelationshipStandardDeviation = limitSupStandardDeviation / limitInfStandardDeviation;
 
     Log.i(VarianceInferenceCalc.class.toString(), "Post: " + this.toString());
@@ -93,8 +83,7 @@ public class VarianceInferenceCalc extends InferenceCalc {
 
   @Override
   public String toString() {
-    return "sampleErrorVariance=" + sampleErrorVariance + "\n" +
-      "sampleErrorStandardDeviation=" + sampleErrorStandardDeviation + "\n" +
-      "garciaA=" + garciaA + "\n";
+    return "sampleErrorVariance=" + sampleErrorVariance + "\n" + "sampleErrorStandardDeviation="
+        + sampleErrorStandardDeviation + "\n" + "garciaA=" + garciaA + "\n";
   }
 }

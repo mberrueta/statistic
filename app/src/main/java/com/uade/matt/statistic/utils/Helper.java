@@ -14,12 +14,12 @@ public class Helper {
 
     String s = et.getText().toString().trim();
     switch (numberType) {
-      case DOUBLE:
-        return Double.parseDouble(et.getText().toString().trim());
-      case INTEGER:
-        return Integer.parseInt(et.getText().toString().trim());
-      default:
-        return s;
+    case DOUBLE:
+      return Double.parseDouble(et.getText().toString().trim());
+    case INTEGER:
+      return Integer.parseInt(et.getText().toString().trim());
+    default:
+      return s;
     }
   }
 
@@ -38,8 +38,7 @@ public class Helper {
   public static Double round(Double number) {
     DecimalFormat df = new DecimalFormat("#.######");
     df.setRoundingMode(RoundingMode.CEILING);
-    return Double
-      .parseDouble(df.format(number));
+    return Double.parseDouble(df.format(number));
   }
 
   public static boolean isNullorZero(Integer i) {

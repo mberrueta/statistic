@@ -59,16 +59,14 @@ public class NormalDistributionCalc extends DistributionCalc {
       f = dist.cumulativeProbability(x);
     }
 
-
     variance = Math.sqrt(standardDeviation);
     skewness = 0.0;
     kurtosis = 3.0;
     coefficientVariation = 0.0;
 
-//        f = dist.cumulativeProbability(r);
+    //        f = dist.cumulativeProbability(r);
     g = 1 - f;
     Log.i(BinomialDistributionCalc.class.toString(), "Post: " + this.toString());
-
 
     return this;
   }
@@ -77,18 +75,14 @@ public class NormalDistributionCalc extends DistributionCalc {
     return "";
   }
 
-
   @Override
   public String toString() {
-    return "𝜎² = " + variance + "\n" +
-      "As = " + skewness + "\n" +
-      "Kurtosis = " + kurtosis + "\n" +
-      "CV = " + coefficientVariation + "\n";
+    return "𝜎² = " + variance + "\n" + "As = " + skewness + "\n" + "Kurtosis = " + kurtosis + "\n" + "CV = "
+        + coefficientVariation + "\n";
   }
 
   public List<Helper.Dto> generateSuccessIndex() {
     List<Helper.Dto> temp = new ArrayList<>();
-
 
     double firstValue = -5 * standardDeviation;
 

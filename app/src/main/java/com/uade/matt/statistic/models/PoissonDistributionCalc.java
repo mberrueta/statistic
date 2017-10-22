@@ -50,22 +50,17 @@ public class PoissonDistributionCalc extends DistributionCalc {
         Integer r1 = r2 - 1;
         Double f1 = dist.cumulativeProbability(r1);
         Double f2 = dist.cumulativeProbability(r2);
-        resultMessage = String.format("Range values: %n" +
-          "P(r<%d) = %f %n" +
-          "P(r<%d) = %f", r1, f1, r2, f2);
+        resultMessage = String.format("Range values: %n" + "P(r<%d) = %f %n" + "P(r<%d) = %f", r1, f1, r2, f2);
         return this;
       } else {
         Integer r1 = dist.inverseCumulativeProbability(1 - g);
         Integer r2 = r1 + 1;
         Double g1 = round(dist.probability(r1) + (1 - dist.cumulativeProbability(r1)));
         Double g2 = round(dist.probability(r2) + (1 - dist.cumulativeProbability(r2)));
-        resultMessage = String.format("Range values: %n" +
-          "P(r>%d) = %f %n" +
-          "P(r>%d) = %f", r1, g1, r2, g2);
+        resultMessage = String.format("Range values: %n" + "P(r>%d) = %f %n" + "P(r>%d) = %f", r1, g1, r2, g2);
         return this;
       }
     }
-
 
     p = round(dist.probability(r));
     f = round(dist.cumulativeProbability(r));
@@ -80,13 +75,10 @@ public class PoissonDistributionCalc extends DistributionCalc {
     return this;
   }
 
-
   @Override
   public String toString() {
-    return "𝜎² = " + variance + "\n" +
-      "As = " + skewness + "\n" +
-      "Kurtosis = " + kurtosis + "\n" +
-      "CV = " + coefficientVariation + "\n";
+    return "𝜎² = " + variance + "\n" + "As = " + skewness + "\n" + "Kurtosis = " + kurtosis + "\n" + "CV = "
+        + coefficientVariation + "\n";
   }
 
   public List<Helper.Dto> generateSuccessIndex() {

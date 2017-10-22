@@ -23,12 +23,10 @@ public class VarianceInferenceActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(VarianceInferenceFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(VarianceInferenceFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(VarianceInferenceFragment.ARG_ITEM_ID));
       VarianceInferenceFragment fragment = new VarianceInferenceFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

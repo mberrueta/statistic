@@ -23,12 +23,10 @@ public class BinomialDistributionActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(BinomialDistributionFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(BinomialDistributionFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(BinomialDistributionFragment.ARG_ITEM_ID));
       BinomialDistributionFragment fragment = new BinomialDistributionFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

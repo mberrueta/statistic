@@ -23,12 +23,10 @@ public class TDistributionActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(TDistributionFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(TDistributionFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(TDistributionFragment.ARG_ITEM_ID));
       TDistributionFragment fragment = new TDistributionFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

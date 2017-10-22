@@ -23,12 +23,10 @@ public class PBernulliInferenceActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(PBernulliInferenceFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(PBernulliInferenceFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(PBernulliInferenceFragment.ARG_ITEM_ID));
       PBernulliInferenceFragment fragment = new PBernulliInferenceFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

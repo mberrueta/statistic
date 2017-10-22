@@ -23,12 +23,10 @@ public class PoissonDistributionActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(PoissonDistributionFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(PoissonDistributionFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(PoissonDistributionFragment.ARG_ITEM_ID));
       PoissonDistributionFragment fragment = new PoissonDistributionFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

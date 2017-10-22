@@ -45,8 +45,7 @@ public class DistributionListActivity extends AppCompatActivity {
     recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(ContentType.ITEMS));
   }
 
-  public class SimpleItemRecyclerViewAdapter
-    extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+  public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<ContentType.Item> mValues;
 
@@ -56,8 +55,7 @@ public class DistributionListActivity extends AppCompatActivity {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View view = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.distribution_list_content, parent, false);
+      View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.distribution_list_content, parent, false);
       return new ViewHolder(view);
     }
 
@@ -70,7 +68,6 @@ public class DistributionListActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-
           // Tablet mode
           if (mTwoPane) {
             try {
@@ -78,9 +75,8 @@ public class DistributionListActivity extends AppCompatActivity {
               Fragment fragment = (Fragment) cls.newInstance();
               Bundle arguments = new Bundle();
               fragment.setArguments(arguments);
-              getSupportFragmentManager().beginTransaction()
-                .replace(R.id.distribution_detail_container, fragment)
-                .commit();
+              getSupportFragmentManager().beginTransaction().replace(R.id.distribution_detail_container, fragment)
+                  .commit();
 
             } catch (Exception e) {
               e.printStackTrace();

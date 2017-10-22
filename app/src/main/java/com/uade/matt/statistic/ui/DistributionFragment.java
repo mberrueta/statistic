@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.uade.matt.statistic.R;
 
-
 public class DistributionFragment extends Fragment {
   public static final String ARG_ITEM_ID = "item_id";
   private ContentType.Item mItem;
@@ -26,7 +25,6 @@ public class DistributionFragment extends Fragment {
       if (appBarLayout != null) {
         appBarLayout.setTitle(mItem.id);
       }
-
 
     }
 

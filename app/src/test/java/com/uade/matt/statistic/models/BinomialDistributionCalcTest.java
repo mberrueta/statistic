@@ -15,12 +15,7 @@ import static org.junit.Assert.assertThat;
 public class BinomialDistributionCalcTest {
   @Test
   public void calculatePx() throws Exception {
-    BinomialDistributionCalc result =
-      new BinomialDistributionCalc()
-        .n(20)
-        .r(19)
-        .p(0.9)
-        .calculatePx();
+    BinomialDistributionCalc result = new BinomialDistributionCalc().n(20).r(19).p(0.9).calculatePx();
     assertNotNull(result);
     assertThat(result.n(), is(20));
     assertThat(result.r(), is(19));
@@ -47,53 +42,33 @@ public class BinomialDistributionCalcTest {
     assertThat(list.get(8).value, CoreMatchers.is(BigDecimal.valueOf(0.121577).doubleValue()));
   }
 
-
   @Test
   public void calculateInvPx() throws Exception {
-    BinomialDistributionCalc result = new BinomialDistributionCalc()
-      .n(20)
-      .f(0.87842)
-      .p(0.9)
-      .calculatePx();
+    BinomialDistributionCalc result = new BinomialDistributionCalc().n(20).f(0.87842).p(0.9).calculatePx();
 
     assertNotNull(result);
     assertThat(result.resultMessage(), is("Range values: \nP(r<18) = 0.608253 \nP(r<19) = 0.878423"));
   }
 
-
   @Test
   public void calculateP() throws Exception {
-    BinomialDistributionCalc result = new BinomialDistributionCalc()
-      .n(30)
-      .f(0.05)
-      .r(3)
-      .calculatePx();
+    BinomialDistributionCalc result = new BinomialDistributionCalc().n(30).f(0.05).r(3).calculatePx();
 
     assertNotNull(result);
     assertThat(result.p(), is(0.23859791924039372));
   }
 
-
   @Test
   public void calculateP2() throws Exception {
-    BinomialDistributionCalc result = new BinomialDistributionCalc()
-      .n(30)
-      .f(0.95)
-      .r(3)
-      .calculatePx();
+    BinomialDistributionCalc result = new BinomialDistributionCalc().n(30).f(0.95).r(3).calculatePx();
 
     assertNotNull(result);
     assertThat(result.p(), is(0.046854917762642306));
   }
 
-
   @Test
   public void calculateP3() throws Exception {
-    BinomialDistributionCalc result = new BinomialDistributionCalc()
-      .n(30)
-      .f(0.95)
-      .r(2)
-      .calculatePx();
+    BinomialDistributionCalc result = new BinomialDistributionCalc().n(30).f(0.95).r(2).calculatePx();
 
     assertNotNull(result);
     assertThat(result.p(), is(0.027815584949474188));

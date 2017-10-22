@@ -34,7 +34,6 @@ public class MeanInferenceCalc extends InferenceCalc {
   @Setter
   private Double limitInf, limitSup, alpha;
 
-
   //calcs
   @Getter
   @Setter
@@ -50,10 +49,7 @@ public class MeanInferenceCalc extends InferenceCalc {
     //conocido sigma
     if (!isNullorZero(standardDeviation)) {
       // Normal z
-      Double multiplier = new NormalDistributionCalc()
-        .f(1 - (alpha / 2))
-        .calculatePx()
-        .x();
+      Double multiplier = new NormalDistributionCalc().f(1 - (alpha / 2)).calculatePx().x();
       calculate(multiplier, standardDeviation);
     } else {
 
@@ -63,35 +59,24 @@ public class MeanInferenceCalc extends InferenceCalc {
       }
 
       // T of student
-      Double multiplier = new TDistributionCalc()
-        .f(1 - (alpha / 2))
-        .degreesOfFreedom((double) (sampleSize - 1))
-        .calculatePx()
-        .x();
+      Double multiplier = new TDistributionCalc().f(1 - (alpha / 2)).degreesOfFreedom((double) (sampleSize - 1))
+          .calculatePx().x();
 
       calculate(multiplier, sampleStandardDeviation);
     }
 
     Log.i(MeanInferenceCalc.class.toString(), "Post: " + this.toString());
 
-
     return this;
   }
 
   private Integer calcSampleSizeIterativeMethod(Integer n, Integer maxTries) {
-    Log.i(MeanInferenceCalc.class.toString(),
-      "calcSampleSizeIterativeMethod n: " + n +
-        " maxtries: " + maxTries
-    );
+    Log.i(MeanInferenceCalc.class.toString(), "calcSampleSizeIterativeMethod n: " + n + " maxtries: " + maxTries);
 
     if (maxTries < 1)
       return n;
 
-    Double t = new TDistributionCalc()
-      .f(1 - (alpha / 2))
-      .degreesOfFreedom((double) (n - 1))
-      .calculatePx()
-      .x();
+    Double t = new TDistributionCalc().f(1 - (alpha / 2)).degreesOfFreedom((double) (n - 1)).calculatePx().x();
 
     Double temp = t * sampleStandardDeviation / sampleError;
     temp = Math.ceil(Math.pow(temp, 2));//round up and ^ 2
@@ -114,9 +99,8 @@ public class MeanInferenceCalc extends InferenceCalc {
       // in finite population case
       if (!isNullorZero(size)) {
         sampleSize = new Double(
-          Math.ceil(
-            ((double) size * infinitePopulationSampleSize) / (size + infinitePopulationSampleSize)
-          )).intValue();
+            Math.ceil(((double) size * infinitePopulationSampleSize) / (size + infinitePopulationSampleSize)))
+                .intValue();
       } else
         sampleSize = infinitePopulationSampleSize;
 
@@ -133,23 +117,14 @@ public class MeanInferenceCalc extends InferenceCalc {
     sampleError = temp.intValue();
   }
 
-
   @Override
   public String toString() {
     return "MeanInferenceCalc{" +
-//                "mean=" + mean +
-      ", size=" + size +
-      ", standardDeviation=" + standardDeviation +
-      ", sampleMean=" + sampleMean +
-      ", sampleSize=" + sampleSize +
-      ", sampleStandardDeviation=" + sampleStandardDeviation +
-      ", limitInf=" + limitInf +
-      ", limitSup=" + limitSup +
-      ", sampleError=" + sampleError +
-      ", alpha=" + alpha +
-      ", sampleError=" + sampleError +
-//                ", successProb=" + successProb +
-      ", resultMessage='" + resultMessage + '\'' +
-      '}';
+    //                "mean=" + mean +
+        ", size=" + size + ", standardDeviation=" + standardDeviation + ", sampleMean=" + sampleMean + ", sampleSize="
+        + sampleSize + ", sampleStandardDeviation=" + sampleStandardDeviation + ", limitInf=" + limitInf + ", limitSup="
+        + limitSup + ", sampleError=" + sampleError + ", alpha=" + alpha + ", sampleError=" + sampleError +
+        //                ", successProb=" + successProb +
+        ", resultMessage='" + resultMessage + '\'' + '}';
   }
 }

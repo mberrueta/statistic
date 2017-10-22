@@ -23,12 +23,10 @@ public class NormalDistributionActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(NormalDistributionFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(NormalDistributionFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(NormalDistributionFragment.ARG_ITEM_ID));
       NormalDistributionFragment fragment = new NormalDistributionFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

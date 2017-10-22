@@ -20,30 +20,24 @@ import static com.uade.matt.statistic.utils.Helper.setEditText;
 
 public class VarianceInferenceFragment extends DistributionFragment {
   VarianceInferenceCalc result;
-  private EditText etSampleSize, etDegreesOfFreedom,
-    etSampleStandardDeviation, etLimitInfVariance, etLimitSupVariance,
-    etLimitRelationshipVariance, etLimitInfStandardDeviation,
-    etLimitSupStandardDeviation, etLimitRelationshipStandardDeviation,
-    etAlpha, etResult;
+  private EditText etSampleSize, etDegreesOfFreedom, etSampleStandardDeviation, etLimitInfVariance, etLimitSupVariance,
+      etLimitRelationshipVariance, etLimitInfStandardDeviation, etLimitSupStandardDeviation,
+      etLimitRelationshipStandardDeviation, etAlpha, etResult;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.variance_inference_view, container, false);
-
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.variance_inference_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.variance_inference_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
     });
-
 
     etSampleSize = rootView.findViewById(R.id.etSampleSize);
     etDegreesOfFreedom = rootView.findViewById(R.id.etDegreesOfFreedom);
@@ -57,17 +51,16 @@ public class VarianceInferenceFragment extends DistributionFragment {
     etAlpha = rootView.findViewById(R.id.etAlpha);
     etResult = rootView.findViewById(R.id.etResult);
 
-    etSampleSize.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etSampleStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etLimitInfVariance.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etLimitSupVariance.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etLimitRelationshipVariance.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etLimitInfStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etLimitSupStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etLimitRelationshipStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etAlpha.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-
+    etSampleSize.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etDegreesOfFreedom.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etSampleStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etLimitInfVariance.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etLimitSupVariance.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etLimitRelationshipVariance.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etLimitInfStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etLimitSupStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etLimitRelationshipStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etAlpha.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -93,23 +86,21 @@ public class VarianceInferenceFragment extends DistributionFragment {
       @Override
       public void onClick(View v) {
 
-        result = new VarianceInferenceCalc()
-          .sampleSize((Integer) getParsed(Helper.NumberType.INTEGER, etSampleSize))
-          .degreesOfFreedom((Integer) getParsed(Helper.NumberType.INTEGER, etDegreesOfFreedom))
-          .sampleStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etSampleStandardDeviation))
-          .limitInfVariance((Double) getParsed(Helper.NumberType.DOUBLE, etLimitInfVariance))
-          .limitSupVariance((Double) getParsed(Helper.NumberType.DOUBLE, etLimitSupVariance))
-          .limitRelationshipVariance((Double) getParsed(Helper.NumberType.DOUBLE, etLimitRelationshipVariance))
-          .limitInfStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etLimitInfStandardDeviation))
-          .limitSupStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etLimitSupStandardDeviation))
-          .limitRelationshipStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etLimitRelationshipStandardDeviation))
-          .alpha((Double) getParsed(Helper.NumberType.DOUBLE, etAlpha))
-          .calc();
+        result = new VarianceInferenceCalc().sampleSize((Integer) getParsed(Helper.NumberType.INTEGER, etSampleSize))
+            .degreesOfFreedom((Integer) getParsed(Helper.NumberType.INTEGER, etDegreesOfFreedom))
+            .sampleStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etSampleStandardDeviation))
+            .limitInfVariance((Double) getParsed(Helper.NumberType.DOUBLE, etLimitInfVariance))
+            .limitSupVariance((Double) getParsed(Helper.NumberType.DOUBLE, etLimitSupVariance))
+            .limitRelationshipVariance((Double) getParsed(Helper.NumberType.DOUBLE, etLimitRelationshipVariance))
+            .limitInfStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etLimitInfStandardDeviation))
+            .limitSupStandardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etLimitSupStandardDeviation))
+            .limitRelationshipStandardDeviation(
+                (Double) getParsed(Helper.NumberType.DOUBLE, etLimitRelationshipStandardDeviation))
+            .alpha((Double) getParsed(Helper.NumberType.DOUBLE, etAlpha)).calc();
 
         if (!Helper.isNullorEmpty(result.resultMessage())) {
           AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
-          builder.setMessage(result.resultMessage())
-            .setTitle(R.string.help);
+          builder.setMessage(result.resultMessage()).setTitle(R.string.help);
           AlertDialog dialog = builder.create();
           dialog.show();
           return;

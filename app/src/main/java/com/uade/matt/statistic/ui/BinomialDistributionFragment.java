@@ -35,21 +35,18 @@ public class BinomialDistributionFragment extends DistributionFragment {
   private BarChart chart;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.binomial_distribution_view, container, false);
-
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-//                Resources res = view.getResources();
-//                builder.setMessage(res.getString(res.getIdentifier("binomial_text", null, null)))
+        //                Resources res = view.getResources();
+        //                builder.setMessage(res.getString(res.getIdentifier("binomial_text", null, null)))
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.binomial_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.binomial_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
@@ -69,16 +66,16 @@ public class BinomialDistributionFragment extends DistributionFragment {
     etResult = rootView.findViewById(R.id.etResult);
     chart = rootView.findViewById(R.id.chart);
 
-    etN.setFilters(new InputFilter[]{new MinMaxFilter(1, 99999999)});
-    etR.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etN.setFilters(new InputFilter[] { new MinMaxFilter(1, 99999999) });
+    etR.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etP.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
-    etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etF.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etP.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etG.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
-    etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-    etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
+    etMean.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999) });
+    etStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0.0001f, 999) });
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -102,20 +99,15 @@ public class BinomialDistributionFragment extends DistributionFragment {
       @Override
       public void onClick(View v) {
 
-        result = new BinomialDistributionCalc()
-          .n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
-          .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
-          .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
-          .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-          .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-          .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-          .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-          .calculatePx();
+        result = new BinomialDistributionCalc().n((Integer) getParsed(Helper.NumberType.INTEGER, etN))
+            .p((Double) getParsed(Helper.NumberType.DOUBLE, etP)).r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
+            .f((Double) getParsed(Helper.NumberType.DOUBLE, etF)).g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+            .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+            .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation)).calculatePx();
 
         if (!Helper.isNullorEmpty(result.resultMessage())) {
           AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
-          builder.setMessage(result.resultMessage())
-            .setTitle(R.string.help);
+          builder.setMessage(result.resultMessage()).setTitle(R.string.help);
           AlertDialog dialog = builder.create();
           dialog.show();
           return;
@@ -144,9 +136,7 @@ public class BinomialDistributionFragment extends DistributionFragment {
         chart.invalidate();
         chart.animateX(2500, Easing.EasingOption.EaseInBack);
         chart.fitScreen();
-        chart.highlightValues(new Highlight[]{
-          new Highlight((float) result.r(), result.pbin().floatValue(), 0)
-        });
+        chart.highlightValues(new Highlight[] { new Highlight((float) result.r(), result.pbin().floatValue(), 0) });
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
           Toast mCurrentToast;
@@ -158,9 +148,7 @@ public class BinomialDistributionFragment extends DistributionFragment {
               mCurrentToast.cancel();
             }
 
-            mCurrentToast = Toast.makeText(rootView.getContext(),
-              e.getX() + " -> " + e.getY(),
-              Toast.LENGTH_LONG);
+            mCurrentToast = Toast.makeText(rootView.getContext(), e.getX() + " -> " + e.getY(), Toast.LENGTH_LONG);
             mCurrentToast.show();
           }
 

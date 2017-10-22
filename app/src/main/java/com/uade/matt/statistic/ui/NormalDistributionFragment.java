@@ -35,10 +35,8 @@ public class NormalDistributionFragment extends DistributionFragment {
   public NormalDistributionFragment() {
   }
 
-
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.normal_distribution_view, container, false);
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
@@ -47,13 +45,11 @@ public class NormalDistributionFragment extends DistributionFragment {
       public void onClick(View view) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.normal_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.normal_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
     });
-
 
     etMean = rootView.findViewById(R.id.etMean);
     etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);
@@ -65,11 +61,11 @@ public class NormalDistributionFragment extends DistributionFragment {
     etResult = rootView.findViewById(R.id.etResult);
     graph = rootView.findViewById(R.id.graph);
 
-    etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-    etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
-    etX.setFilters(new InputFilter[]{new MinMaxFilter(-99999, 99999)});
-    etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etMean.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999) });
+    etStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0.0001f, 999) });
+    etX.setFilters(new InputFilter[] { new MinMaxFilter(-99999, 99999) });
+    etF.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etG.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -89,18 +85,14 @@ public class NormalDistributionFragment extends DistributionFragment {
       @Override
       public void onClick(View v) {
 
-        result = new NormalDistributionCalc()
-          .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-          .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-          .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
-          .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-          .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-          .calculatePx();
+        result = new NormalDistributionCalc().mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+            .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
+            .x((Double) getParsed(Helper.NumberType.DOUBLE, etX)).f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+            .g((Double) getParsed(Helper.NumberType.DOUBLE, etG)).calculatePx();
 
         if (!Helper.isNullorEmpty(result.resultMessage())) {
           AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
-          builder.setMessage(result.resultMessage())
-            .setTitle(R.string.help);
+          builder.setMessage(result.resultMessage()).setTitle(R.string.help);
           AlertDialog dialog = builder.create();
           dialog.show();
           return;

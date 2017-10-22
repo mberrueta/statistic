@@ -23,12 +23,10 @@ public class FisherSnedecorDistributionActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(FisherSnedecorDistributionFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(FisherSnedecorDistributionFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(FisherSnedecorDistributionFragment.ARG_ITEM_ID));
       FisherSnedecorDistributionFragment fragment = new FisherSnedecorDistributionFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

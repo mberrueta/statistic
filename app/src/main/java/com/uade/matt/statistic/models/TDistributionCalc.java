@@ -44,7 +44,6 @@ public class TDistributionCalc extends DistributionCalc {
   public TDistributionCalc calculatePx() {
     Log.i(TDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
-
     dist = new TDistribution(degreesOfFreedom);
 
     if (isNullorZero(x)) {
@@ -71,10 +70,9 @@ public class TDistributionCalc extends DistributionCalc {
 
     coefficientVariation = 0.0;
 
-//        f = dist.cumulativeProbability(r);
+    //        f = dist.cumulativeProbability(r);
     g = 1 - f;
     Log.i(TDistributionCalc.class.toString(), "Post: " + this.toString());
-
 
     return this;
   }
@@ -83,18 +81,14 @@ public class TDistributionCalc extends DistributionCalc {
     return "";
   }
 
-
   @Override
   public String toString() {
-    return "𝜎² = " + variance + "\n" +
-      "As = " + skewness + "\n" +
-      "Kurtosis = " + kurtosis + "\n" +
-      "CV = " + coefficientVariation + "\n";
+    return "𝜎² = " + variance + "\n" + "As = " + skewness + "\n" + "Kurtosis = " + kurtosis + "\n" + "CV = "
+        + coefficientVariation + "\n";
   }
 
   public List<Helper.Dto> generateSuccessIndex() {
     List<Helper.Dto> temp = new ArrayList<>();
-
 
     double firstValue = -5 * standardDeviation;
 

@@ -20,22 +20,19 @@ import static com.uade.matt.statistic.utils.Helper.setEditText;
 
 public class FisherSnedecorDistributionFragment extends DistributionFragment {
   FisherSnedecorDistributionCalc result;
-  private EditText etNumeratorDegreesOfFreedom, etDenominatorDegreesOfFreedom,
-    etX, etF, etG, etResult, etMean, etStandardDeviation;
+  private EditText etNumeratorDegreesOfFreedom, etDenominatorDegreesOfFreedom, etX, etF, etG, etResult, etMean,
+      etStandardDeviation;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.fisher_snedecor_distribution_view, container, false);
-
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.fisher_snedecor_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.fisher_snedecor_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
@@ -53,15 +50,15 @@ public class FisherSnedecorDistributionFragment extends DistributionFragment {
 
     etResult = rootView.findViewById(R.id.etResult);
 
-    etNumeratorDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etDenominatorDegreesOfFreedom.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-    etX.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
+    etNumeratorDegreesOfFreedom.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etDenominatorDegreesOfFreedom.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
+    etX.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
 
-    etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etF.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etG.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
-    etMean.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999)});
-    etStandardDeviation.setFilters(new InputFilter[]{new MinMaxFilter(0.0001f, 999)});
+    etMean.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999) });
+    etStandardDeviation.setFilters(new InputFilter[] { new MinMaxFilter(0.0001f, 999) });
 
     FloatingActionButton mButton = rootView.findViewById(R.id.button);
     FloatingActionButton mClearButton = rootView.findViewById(R.id.clear);
@@ -84,19 +81,16 @@ public class FisherSnedecorDistributionFragment extends DistributionFragment {
       public void onClick(View v) {
 
         result = new FisherSnedecorDistributionCalc()
-          .numeratorDegreesOfFreedom((double) getParsed(Helper.NumberType.DOUBLE, etNumeratorDegreesOfFreedom))
-          .denominatorDegreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDenominatorDegreesOfFreedom))
-          .x((Double) getParsed(Helper.NumberType.DOUBLE, etX))
-          .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-          .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-          .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-          .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-          .calculatePx();
+            .numeratorDegreesOfFreedom((double) getParsed(Helper.NumberType.DOUBLE, etNumeratorDegreesOfFreedom))
+            .denominatorDegreesOfFreedom((Double) getParsed(Helper.NumberType.DOUBLE, etDenominatorDegreesOfFreedom))
+            .x((Double) getParsed(Helper.NumberType.DOUBLE, etX)).f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
+            .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+            .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+            .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation)).calculatePx();
 
         if (!Helper.isNullorEmpty(result.resultMessage())) {
           AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
-          builder.setMessage(result.resultMessage())
-            .setTitle(R.string.help);
+          builder.setMessage(result.resultMessage()).setTitle(R.string.help);
           AlertDialog dialog = builder.create();
           dialog.show();
           return;

@@ -35,18 +35,15 @@ public class PoissonDistributionFragment extends DistributionFragment {
   private BarChart chart;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.poisson_distribution_view, container, false);
-
 
     FloatingActionButton fab = rootView.findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.poisson_text)
-          .setTitle(R.string.help);
+        builder.setMessage(R.string.poisson_text).setTitle(R.string.help);
         AlertDialog dialog = builder.create();
         dialog.show();
       }
@@ -65,14 +62,13 @@ public class PoissonDistributionFragment extends DistributionFragment {
 
     etResult = rootView.findViewById(R.id.etResult);
 
+    etFrequency.setFilters(new InputFilter[] { new MinMaxFilter(0.000001f, 99999999) });
+    etT.setFilters(new InputFilter[] { new MinMaxFilter(0.000001f, 999999) });
+    etR.setFilters(new InputFilter[] { new MinMaxFilter(0, 99999999) });
 
-    etFrequency.setFilters(new InputFilter[]{new MinMaxFilter(0.000001f, 99999999)});
-    etT.setFilters(new InputFilter[]{new MinMaxFilter(0.000001f, 999999)});
-    etR.setFilters(new InputFilter[]{new MinMaxFilter(0, 99999999)});
-
-    etF.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etP.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
-    etG.setFilters(new InputFilter[]{new MinMaxFilter(0, 1)});
+    etF.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etP.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
+    etG.setFilters(new InputFilter[] { new MinMaxFilter(0, 1) });
 
     chart = rootView.findViewById(R.id.chart);
 
@@ -98,21 +94,16 @@ public class PoissonDistributionFragment extends DistributionFragment {
       @Override
       public void onClick(View v) {
 
-        result = new PoissonDistributionCalc()
-          .frequency((Double) getParsed(Helper.NumberType.DOUBLE, etFrequency))
-          .t((Double) getParsed(Helper.NumberType.DOUBLE, etT))
-          .r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
-          .f((Double) getParsed(Helper.NumberType.DOUBLE, etF))
-          .p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
-          .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
-          .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
-          .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation))
-          .calculatePx();
+        result = new PoissonDistributionCalc().frequency((Double) getParsed(Helper.NumberType.DOUBLE, etFrequency))
+            .t((Double) getParsed(Helper.NumberType.DOUBLE, etT)).r((Integer) getParsed(Helper.NumberType.INTEGER, etR))
+            .f((Double) getParsed(Helper.NumberType.DOUBLE, etF)).p((Double) getParsed(Helper.NumberType.DOUBLE, etP))
+            .g((Double) getParsed(Helper.NumberType.DOUBLE, etG))
+            .mean((Double) getParsed(Helper.NumberType.DOUBLE, etMean))
+            .standardDeviation((Double) getParsed(Helper.NumberType.DOUBLE, etStandardDeviation)).calculatePx();
 
         if (!Helper.isNullorEmpty(result.resultMessage())) {
           AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
-          builder.setMessage(result.resultMessage())
-            .setTitle(R.string.help);
+          builder.setMessage(result.resultMessage()).setTitle(R.string.help);
           AlertDialog dialog = builder.create();
           dialog.show();
           return;
@@ -141,9 +132,9 @@ public class PoissonDistributionFragment extends DistributionFragment {
         chart.invalidate();
         chart.animateX(2500, Easing.EasingOption.EaseInBack);
         chart.fitScreen();
-//                chart.highlightValues(new Highlight[]{
-//                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
-//                });
+        //                chart.highlightValues(new Highlight[]{
+        //                        new Highlight((float)result.r(), result.pbin().floatValue(), 0)
+        //                });
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
           Toast mCurrentToast;
@@ -155,9 +146,7 @@ public class PoissonDistributionFragment extends DistributionFragment {
               mCurrentToast.cancel();
             }
 
-            mCurrentToast = Toast.makeText(rootView.getContext(),
-              e.getX() + " -> " + e.getY(),
-              Toast.LENGTH_LONG);
+            mCurrentToast = Toast.makeText(rootView.getContext(), e.getX() + " -> " + e.getY(), Toast.LENGTH_LONG);
             mCurrentToast.show();
           }
 

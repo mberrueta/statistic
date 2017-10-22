@@ -23,12 +23,10 @@ public class MeanInferenceActivity extends DistributionActivity {
     if (savedInstanceState == null) {
       Bundle arguments = new Bundle();
       arguments.putString(MeanInferenceFragment.ARG_ITEM_ID,
-        getIntent().getStringExtra(MeanInferenceFragment.ARG_ITEM_ID));
+          getIntent().getStringExtra(MeanInferenceFragment.ARG_ITEM_ID));
       MeanInferenceFragment fragment = new MeanInferenceFragment();
       fragment.setArguments(arguments);
-      getSupportFragmentManager().beginTransaction()
-        .add(R.id.distribution_detail_container, fragment)
-        .commit();
+      getSupportFragmentManager().beginTransaction().add(R.id.distribution_detail_container, fragment).commit();
     }
   }
 }

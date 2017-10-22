@@ -78,31 +78,35 @@
     x -> f \n
     </string>
     <string name="poisson_help_text">
-    λ, r -> F, P, G \n
-    λ, F -> r \n
-    λ, G -> r \n
+    frec, r -> F, P, G \n
+    frec, F -> r \n
+    frec, G -> r \n
     </string>
     <string name="t_help_text">
-    𝜈, x -> F, G \n
-    𝜈, F -> x \n
+    grad lib, x -> F, G \n
+    grad lib, F -> x \n
     </string>
     <string name="mean_inference_help_text">
-    𝜎, x (sample mean), n (sample size), α -> A, B, error \n
-    𝜎, x (sample mean), n (sample size), error -> A, B, α \n
-    P (pobl size), 𝜎, x (sample mean), error, α-> n \n
+    stand dev, x (sample mean), n (sample size), alpha -> A, B, error \n
+    stand dev, x (sample mean), n (sample size), error -> A, B, alpha \n
+    P (pobl size), stand dev, x (sample mean), error, alpha-> n \n
     </string>
     <string name="variance_inference_help_text">
-    n (sample size), S (sample stnd dev), α -> A, B, R, A', B', R' \n
+    n (sample size), S (sample stnd dev), α -> A, B, R, A`, B`, R` \n
     </string>
     <string name="fisher_snedecor_help_text">
     S (sample stnd dev), R, α -> n \n
-    S (sample stnd dev), R', α -> n \n
+    S (sample stnd dev), R`, α -> n \n
+    </string>
+    <string name="chisquared_help_text">
+    grad lib, x -> F, G \n
+    grad lib, F -> x \n
     </string>
     <string name="p_bernulli_inference_help_text">
     n (size), r (sample size), α -> A, B, P \n
     </string>
     <string name="size_binomial_estimation_help_text">
-    p0 ,α, p1, β -> n, r
+    p0 ,alpha, p1, beta -> n, r
     </string>
 
 </resources>

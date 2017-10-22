@@ -5,7 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/frame" android:layout_width="match_parent" android:layout_height="match_parent" android:fitsSystemWindows="true" tools:context="com.uade.matt.statistic.ui.BinomialDistributionActivity" tools:ignore="MergeRootFrame">
     <LinearLayout 
         xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:weightSum="1">
+        <!--help-->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/fisher_snedecor_help_text"/>
+
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+
             <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
             <TextView android:layout_width="20dp" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03BD 1"/>
             <EditText android:id="@+id/etNumeratorDegreesOfFreedom" android:layout_width="100dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true"/>

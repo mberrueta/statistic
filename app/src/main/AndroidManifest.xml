@@ -1,104 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uade.matt.statistic">
-
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".DistributionListActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android" package="com.uade.matt.statistic">
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <activity android:name=".DistributionListActivity" android:label="@string/app_name" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.BinomialDistributionActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.BinomialDistributionActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.NormalDistributionActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.NormalDistributionActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.PoissonDistributionActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.PoissonDistributionActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.TDistributionActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.TDistributionActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.ChiSquaredDistributionActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.ChiSquaredDistributionActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.MeanInferenceActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.MeanInferenceActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.VarianceInferenceActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.VarianceInferenceActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.PBernulliInferenceActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.PBernulliInferenceActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
-        <activity
-            android:name=".ui.FisherSnedecorDistributionActivity"
-            android:label="@string/title_distribution_detail"
-            android:parentActivityName=".DistributionListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        <activity android:name=".ui.FisherSnedecorDistributionActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
+        </activity>
+        <activity android:name=".ui.SizeBinomialEstimationActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
     </application>
 </manifest>

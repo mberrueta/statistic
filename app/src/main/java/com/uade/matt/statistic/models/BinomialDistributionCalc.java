@@ -50,14 +50,9 @@ public class BinomialDistributionCalc extends DistributionCalc {
   public BinomialDistributionCalc calculatePx() {
     Log.i(BinomialDistributionCalc.class.toString(), "Pre: " + this.toFullString());
 
-
     if (isNullorZero(p)) {
-      Double fisherX = new FisherSnedecorDistributionCalc()
-        .numeratorDegreesOfFreedom((double) 2 * r + 2)
-        .denominatorDegreesOfFreedom((double) 2 * n - 2 * r)
-        .f(1 - f)
-        .calculatePx()
-        .x();
+      Double fisherX = new FisherSnedecorDistributionCalc().numeratorDegreesOfFreedom((double) 2 * r + 2)
+          .denominatorDegreesOfFreedom((double) 2 * n - 2 * r).f(1 - f).calculatePx().x();
 
       p = 1 / (1 + (((double) (n - r) / ((r + 1) * fisherX))));
     }
@@ -69,39 +64,31 @@ public class BinomialDistributionCalc extends DistributionCalc {
         n = (int) (standardDeviation / (p * (1 - p)));
     }
 
-
     dist = new BinomialDistribution(n, p);
-
 
     if (isNullorZero(r)) {
       if (!isNullorZero(f)) {
         Integer r2 = dist.inverseCumulativeProbability(f);
-        Integer r1 = r2 - 1;
-        Double f1 = dist.cumulativeProbability(r1);
+        r = r2 - 1;
+        f = dist.cumulativeProbability(r);
         Double f2 = dist.cumulativeProbability(r2);
-        resultMessage = String.format("Range values: %n" +
-          "P(r<%d) = %f %n" +
-          "P(r<%d) = %f", r1, f1, r2, f2);
+        resultMessage = String.format("Range values: %n" + "P(r<%d) = %f %n" + "P(r<%d) = %f", r, f, r2, f2);
         return this;
       } else {
-        Integer r1 = dist.inverseCumulativeProbability(1 - g);
-        Integer r2 = r1 + 1;
-        Double g1 = dist.cumulativeProbability(r1 - 1, n);
+        r = dist.inverseCumulativeProbability(1 - g);
+        Integer r2 = r + 1;
+        g = dist.cumulativeProbability(r - 1, n);
         Double g2 = dist.cumulativeProbability(r2 - 1, n);
-        resultMessage = String.format("Range values: %n" +
-          "P(r>%d) = %f %n" +
-          "P(r>%d) = %f", r1, g1, r2, g2);
+        resultMessage = String.format("Range values: %n" + "P(r>%d) = %f %n" + "P(r>%d) = %f", r, g, r2, g2);
         return this;
       }
     }
-
 
     pbin = dist.probability(r);
 
     // mode (MAX PROB ?)
     mean = n * p;
     median = n * p;
-
 
     variance = n * p * (1 - p);
     variance = round(variance);
@@ -118,36 +105,18 @@ public class BinomialDistributionCalc extends DistributionCalc {
   }
 
   public String toFullString() {
-    return "BinomialDistributionCalc{" +
-      "dist=" + dist +
-      ", n=" + n +
-      ", r=" + r +
-      ", p=" + p +
-      ", possibleCombinations=" + possibleCombinations +
-      ", f=" + f +
-      ", g=" + g +
-      ", pbin=" + pbin +
-      ", mean=" + mean +
-      ", median=" + median +
-      ", mode=" + mode +
-      ", variance=" + variance +
-      ", standardDeviation=" + standardDeviation +
-      ", skewness=" + skewness +
-      ", kurtosis=" + kurtosis +
-      ", coefficientVariation=" + coefficientVariation +
-      ", supportLowerBound=" + supportLowerBound +
-      ", supportUpperBound=" + supportUpperBound +
-      '}';
+    return "BinomialDistributionCalc{" + "dist=" + dist + ", n=" + n + ", r=" + r + ", p=" + p
+        + ", possibleCombinations=" + possibleCombinations + ", f=" + f + ", g=" + g + ", pbin=" + pbin + ", mean="
+        + mean + ", median=" + median + ", mode=" + mode + ", variance=" + variance + ", standardDeviation="
+        + standardDeviation + ", skewness=" + skewness + ", kurtosis=" + kurtosis + ", coefficientVariation="
+        + coefficientVariation + ", supportLowerBound=" + supportLowerBound + ", supportUpperBound=" + supportUpperBound
+        + '}';
   }
-
 
   @Override
   public String toString() {
-    return "Median = " + median + "\n" +
-      "𝜎² = " + variance + "\n" +
-      "As = " + skewness + "\n" +
-      "Kurtosis = " + kurtosis + "\n" +
-      "CV = " + coefficientVariation + "\n";
+    return "Median = " + median + "\n" + "𝜎² = " + variance + "\n" + "As = " + skewness + "\n" + "Kurtosis = "
+        + kurtosis + "\n" + "CV = " + coefficientVariation + "\n";
   }
 
   public List<Helper.Dto> generateSuccessIndex() {

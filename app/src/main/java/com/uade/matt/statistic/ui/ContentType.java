@@ -16,11 +16,17 @@ public class ContentType {
     addItem(new Item("Normal distribution", "com.uade.matt.statistic.ui.NormalDistributionActivity", "normal"));
     addItem(new Item("Poisson distribution", "com.uade.matt.statistic.ui.PoissonDistributionActivity", "poisson"));
     addItem(new Item("T - Student distribution", "com.uade.matt.statistic.ui.TDistributionActivity", "t"));
-    addItem(new Item("F - Fisher Snedecor distribution", "com.uade.matt.statistic.ui.FisherSnedecorDistributionActivity", "fisher_snedecor"));
-    addItem(new Item("Chi squared distribution", "com.uade.matt.statistic.ui.ChiSquaredDistributionActivity", "chisquared"));
+    addItem(new Item("F - Fisher Snedecor distribution",
+        "com.uade.matt.statistic.ui.FisherSnedecorDistributionActivity", "fisher_snedecor"));
+    addItem(new Item("Chi squared distribution", "com.uade.matt.statistic.ui.ChiSquaredDistributionActivity",
+        "chisquared"));
     addItem(new Item("Mean inference", "com.uade.matt.statistic.ui.MeanInferenceActivity", "mean_inference"));
-    addItem(new Item("Variance inference", "com.uade.matt.statistic.ui.VarianceInferenceActivity", "variance_inference"));
-    addItem(new Item("P Bernulli inference", "com.uade.matt.statistic.ui.PBernulliInferenceActivity", "p_bernulli_inference"));
+    addItem(
+        new Item("Variance inference", "com.uade.matt.statistic.ui.VarianceInferenceActivity", "variance_inference"));
+    addItem(new Item("P Bernulli inference", "com.uade.matt.statistic.ui.PBernulliInferenceActivity",
+        "p_bernulli_inference"));
+    addItem(new Item("Size Binomial estimation", "com.uade.matt.statistic.ui.SizeBinomialEstimationActivity",
+        "size_binomial_estimation"));
   }
 
   private static void addItem(Item item) {

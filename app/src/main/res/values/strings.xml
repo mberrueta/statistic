@@ -2,91 +2,61 @@
     <string name="app_name">Statistic</string>
     <string name="title_distribution_detail">Distribution Detail</string>
     <string name="help">help</string>
-    <string name="binomial_text">
-        Distribución de probabilidad <i>discreta</i> que cuenta el número de éxitos en una secuencia
-        de n ensayos de <i>Bernoulli</i> independientes entre sí, con una probabilidad fija p de ocurrencia del éxito entre los ensayos.\n
-
+    <string name="binomial_text">        Distribución de probabilidad 
+        <i>discreta</i> que cuenta el número de éxitos en una secuencia        de n ensayos de 
+        <i>Bernoulli</i> independientes entre sí, con una probabilidad fija p de ocurrencia del éxito entre los ensayos.\n
         Probabilidad de exito
 
-
-        <b>Variable aleatoria:</b>\n
-        “r” <i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n
-        <b>Parámetros del Modelo:</b> \n
-             “n” <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n
-             “p” <i>(probabilidad de éxito constante en cada experimento)</i>\n
-        <b>Dominio de la Variable Aleatoria:</b>\n
-        0 ≤ r ≤ n .\n
         
-        
-        
-        Distribución de probabilidad <i>discreta</i> que cuenta el número de éxitos en una secuencia de `n` ensayos de <i>Bernoulli</i> independientes entre sí, con una probabilidad fija `p` de ocurrencia del éxito entre los ensayos. \n
-       
-        Probabilidad de éxito: `p` \n
-        Probabilidad de fracazo: `1 - p` \n
-        Cantidad de éxitos: `r` \n
-        Cantidad de fracazos: `n-r` \n
-        Combinaciones posibles: `k = nCr` \n
+        <b>Variable aleatoria:</b>\n        “r” 
+        <i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n        
+        <b>Parámetros del Modelo:</b> \n             “n” 
+        <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n             “p” 
+        <i>(probabilidad de éxito constante en cada experimento)</i>\n        
+        <b>Dominio de la Variable Aleatoria:</b>\n        0 ≤ r ≤ n .\n                                Distribución de probabilidad 
+        <i>discreta</i> que cuenta el número de éxitos en una secuencia de `n` ensayos de 
+        <i>Bernoulli</i> independientes entre sí, con una probabilidad fija `p` de ocurrencia del éxito entre los ensayos. \n               Probabilidad de éxito: `p` \n        Probabilidad de fracazo: `1 - p` \n        Cantidad de éxitos: `r` \n        Cantidad de fracazos: `n-r` \n        Combinaciones posibles: `k = nCr` \n
 
-
-        <b>Variable aleatoria:</b>\n
-        `r` <i>(cantidad de éxitos encontrados o bien a encontrar en `n` experimentos realizados o bien a realizar)</i> \n
-         Dominio : 0 ≤ r ≤ n .\n
-        <b>Parámetros del Modelo:</b> \n
-             `n` <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n
-              Dominio : 0 ≤ n ≤ ∞ .\n
-             `p` <i>(probabilidad de éxito constante en cada experimento)</i>\n
-              Dominio : 0 ≤ p ≤ 1 .\n
+        
+        <b>Variable aleatoria:</b>\n        `r` 
+        <i>(cantidad de éxitos encontrados o bien a encontrar en `n` experimentos realizados o bien a realizar)</i> \n         Dominio : 0 ≤ r ≤ n .\n        
+        <b>Parámetros del Modelo:</b> \n             `n` 
+        <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `p` 
+        <i>(probabilidad de éxito constante en cada experimento)</i>\n              Dominio : 0 ≤ p ≤ 1 .\n    
     </string>
-    <string name="normal_text">
-        Distribución de probabilidad <i>continua</i> y es indudablemente el más importante, de los modelos continuos, y el de mayor uso en la ciencia estadística.
-        Creado por `De Moivre-Laplace` y no Gauss!!.
+    <string name="normal_text">        Distribución de probabilidad 
+        <i>continua</i> y es indudablemente el más importante, de los modelos continuos, y el de mayor uso en la ciencia estadística.        Creado por `De Moivre-Laplace` y no Gauss!!.
+        
+        <b>Variable aleatoria:</b>\n        `x` 
+        <i>(distancia al eje de simetria)</i> \n         Dominio : ℝ .\n        
+        <b>Parámetros del Modelo:</b> \n             `𝜇` 
+        <i> (`mu` Esperanza matemática o media)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `𝜎` 
+        <i>(`sigma` Desviación estandard)</i>\n              Dominio : 0 ≤ 𝜎 .\n
 
-        <b>Variable aleatoria:</b>\n
-        `x` <i>(distancia al eje de simetria)</i> \n
-         Dominio : ℝ .\n
-        <b>Parámetros del Modelo:</b> \n
-             `𝜇` <i> (`mu` Esperanza matemática o media)</i>\n
-              Dominio : 0 ≤ n ≤ ∞ .\n
-             `𝜎` <i>(`sigma` Desviación estandard)</i>\n
-              Dominio : 0 ≤ 𝜎 .\n
-
-
-        Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n
-        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n
+        Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n        
         <!--el 68,27% se encuentra en el intervalo (𝜇 - 𝜎) ≤ x ≤ (𝜇 + 𝜎) \n-->
         <!--el 95,45% se encuentra en el intervalo (𝜇 - 2𝜎) ≤ x ≤ (𝜇 + 2𝜎) \n-->
         <!--el 99,73% se encuentra en el intervalo (𝜇 - 3𝜎) ≤ x ≤ (𝜇 + 3𝜎) \n-->
         <!--el 99,99% se encuentra en el intervalo (𝜇 - 4𝜎) ≤ x ≤ (𝜇 + 4𝜎) \n-->
     </string>
-    <string name="poisson_text">
-        Distribución de probabilidad discreta que expresa, a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto período de tiempo. Concretamente, se especializa en la probabilidad de ocurrencia de sucesos con probabilidades muy pequeñas, o sucesos "raros".
-
-         <b>Variable aleatoria:</b>\n
-        `r` <i>(numero de acontecimientos)</i> \n
-         Dominio : ℕ .\n
-        <b>Parámetros del Modelo:</b> \n
-             `𝜆` <i> (`lambda` tasa de falla)</i>\n
-              Dominio : ℝ/ 0 ≤ 𝜆 ≤ ∞ .\n
-             `t` <i>(periodo de tiempo de la frecuencia)</i>\n
-              Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n
-
+    <string name="poisson_text">        Distribución de probabilidad discreta que expresa, a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto período de tiempo. Concretamente, se especializa en la probabilidad de ocurrencia de sucesos con probabilidades muy pequeñas, o sucesos "raros".
+         
+        <b>Variable aleatoria:</b>\n        `r` 
+        <i>(numero de acontecimientos)</i> \n         Dominio : ℕ .\n        
+        <b>Parámetros del Modelo:</b> \n             `𝜆` 
+        <i> (`lambda` tasa de falla)</i>\n              Dominio : ℝ/ 0 ≤ 𝜆 ≤ ∞ .\n             `t` 
+        <i>(periodo de tiempo de la frecuencia)</i>\n              Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n
+    
     </string>
-    <string name="t_text">
-        Distribución de probabilidad continua.
-        Se define como el cociente entre una normal estandarizada y la raíz cuadrada de una distribución denominada “Chi–Cuadrado (χ2)
-
-         <b>Variable aleatoria:</b>\n
-        `𝜈` <i>( `nu` número de grados de libertad, igual a `n - 1` n=observaciones)</i> \n
-            Dominio : ℝ/ 0 ≤ 𝜈 .\n
-        <b>Parámetros del Modelo:</b> \n
-             `x` <i> ()</i>\n
-              Dominio : ℝ/ -∞ ≤ x ≤ ∞ .\n
-
+    <string name="t_text">        Distribución de probabilidad continua.        Se define como el cociente entre una normal estandarizada y la raíz cuadrada de una distribución denominada “Chi–Cuadrado (χ2)
+         
+        <b>Variable aleatoria:</b>\n        `𝜈` 
+        <i>( `nu` número de grados de libertad, igual a `n - 1` n=observaciones)</i> \n            Dominio : ℝ/ 0 ≤ 𝜈 .\n        
+        <b>Parámetros del Modelo:</b> \n             `x` 
+        <i> ()</i>\n              Dominio : ℝ/ -∞ ≤ x ≤ ∞ .\n
+    
     </string>
-    <string name="chisquared">
-        chisquared
-    </string>
-
+    <string name="chisquared">        chisquared    </string>
     <string name="population">poblacion</string>
     <string name="sample">muestra</string>
     <string name="limits">limites</string>
@@ -97,4 +67,52 @@
     <string name="variance_inference_text">variance_inference_text bitch!!!</string>
     <string name="fisher_snedecor_text">fisher_snedecor_text!!!</string>
     <string name="p_bernulli_inference_text">p_bernulli_inference bitch!!!</string>
+    <string name="size_binomial_estimation_text">size_binomial_estimation_activity_text OHHHHH </string>
+    <string name="binomial_help_text">
+    n, r, p -> F, P, G \n
+    n, f, p -> r \n
+    n, f, r -> p \n
+    </string>
+    <string name="normal_help_text">
+    f -> x  \n
+    x -> f \n
+    </string>
+    <string name="poisson_help_text">
+    λ, r -> F, P, G \n
+    λ, F -> r \n
+    λ, G -> r \n
+    </string>
+    <string name="t_help_text">
+    𝜈, x -> F, G \n
+    𝜈, F -> x \n
+    </string>
+    <string name="mean_inference_help_text">
+    𝜎, x (sample mean), n (sample size), α -> A, B, error \n
+    𝜎, x (sample mean), n (sample size), error -> A, B, α \n
+    P (pobl size), 𝜎, x (sample mean), error, α-> n \n
+    </string>
+    <string name="variance_inference_help_text">
+    n (sample size), S (sample stnd dev), α -> A, B, R, A', B', R' \n
+    </string>
+    <string name="fisher_snedecor_help_text">
+    S (sample stnd dev), R, α -> n \n
+    S (sample stnd dev), R', α -> n \n
+    </string>
+    <string name="p_bernulli_inference_help_text">
+    n (size), r (sample size), α -> A, B, P \n
+    </string>
+    <string name="size_binomial_estimation_help_text">
+    p0 ,α, p1, β -> n, r
+    </string>
+
 </resources>
+<!-- 
+
+
+λ
+𝜈
+𝜇
+𝜎
+ ∞
+ α
+ β -->

@@ -123,6 +123,9 @@ public class BinomialDistributionFragment extends DistributionFragment {
         etStandardDeviation.setText(result.standardDeviation().toString());
         etResult.setText(result.toString());
 
+        if (result.n() > 1000)
+          return;
+
         List<Helper.Dto> list = result.generateSuccessIndex();
         List<BarEntry> entries = new ArrayList<>();
 

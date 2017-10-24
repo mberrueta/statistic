@@ -38,5 +38,9 @@
         <activity android:name=".ui.SizeBinomialEstimationActivity" android:label="@string/title_distribution_detail" android:parentActivityName=".DistributionListActivity" android:theme="@style/AppTheme.NoActionBar">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.uade.matt.statistic.DistributionListActivity"/>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts"/>
     </application>
 </manifest>

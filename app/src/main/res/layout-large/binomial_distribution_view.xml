@@ -225,16 +225,7 @@
     </LinearLayout>
 
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/menu_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:fab_addButtonColorNormal="?attr/colorPrimary"
-        app:fab_addButtonSize="normal"
-        app:fab_labelsPosition="left">
-
+    <com.getbase.floatingactionbutton.FloatingActionsMenu android:id="@+id/menu_fab" style="@style/button_wrapper" app:fab_addButtonColorNormal="?attr/colorPrimary" app:fab_expandDirection="down" app:fab_labelsPosition="right">
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/button"
             android:layout_width="wrap_content"

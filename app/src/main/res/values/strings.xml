@@ -69,9 +69,12 @@
     <string name="p_bernulli_inference_text">p_bernulli_inference bitch!!!</string>
     <string name="size_binomial_estimation_text">size_binomial_estimation_activity_text OHHHHH </string>
     <string name="binomial_help_text">
-    n, r, p -> F, P, G \n
-    n, f, p -> r \n
-    n, f, r -> p \n
+         n, p, r -> F ( &amp; all ) \t\t\n
+         n, p, F -> r &amp; r + 1 \t\t\n
+         n, p, G -> r &amp; r + 1 \t\t\n
+         n, r, F -> p ( &amp; all ) \t\t\n
+         𝜇, p, r -> n ( &amp; all ) \t\t\n
+         𝜎, p, r -> n ( &amp; all ) \t\t\n
     </string>
     <string name="normal_help_text">
     f -> x  \n

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Statistic</string>
+    <string name="app_name">Rick Statistic</string>
     <string name="title_distribution_detail">Distribution Detail</string>
     <string name="help">help</string>
     <string name="binomial_text">        Distribución de probabilidad 
@@ -33,7 +33,7 @@
         <i> (`mu` Esperanza matemática o media)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `𝜎` 
         <i>(`sigma` Desviación estandard)</i>\n              Dominio : 0 ≤ 𝜎 .\n
 
-        Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n        
+        Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n
         <!--el 68,27% se encuentra en el intervalo (𝜇 - 𝜎) ≤ x ≤ (𝜇 + 𝜎) \n-->
         <!--el 95,45% se encuentra en el intervalo (𝜇 - 2𝜎) ≤ x ≤ (𝜇 + 2𝜎) \n-->
         <!--el 99,73% se encuentra en el intervalo (𝜇 - 3𝜎) ≤ x ≤ (𝜇 + 3𝜎) \n-->
@@ -112,8 +112,11 @@
     p0 ,alpha, p1, beta -> n, r
     </string>
 
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>
-<!-- 
+    <!--
 
 
 λ

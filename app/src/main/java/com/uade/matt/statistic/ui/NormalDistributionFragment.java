@@ -39,17 +39,17 @@ public class NormalDistributionFragment extends DistributionFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.normal_distribution_view, container, false);
 
-    FloatingActionButton fab = rootView.findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
+    // FloatingActionButton fab = rootView.findViewById(R.id.fab);
+    // fab.setOnClickListener(new View.OnClickListener() {
+    //   @Override
+    //   public void onClick(View view) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.normal_text).setTitle(R.string.help);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+    //     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+    //     builder.setMessage(R.string.normal_text).setTitle(R.string.help);
+    //     AlertDialog dialog = builder.create();
+    //     dialog.show();
+    //   }
+    // });
 
     etMean = rootView.findViewById(R.id.etMean);
     etStandardDeviation = rootView.findViewById(R.id.etStandardDeviation);

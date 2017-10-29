@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" 
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/frame" style="@style/view_layout" tools:context="com.uade.matt.statistic.ui.PoissonDistributionActivity" tools:ignore="MergeRootFrame">
     <LinearLayout 
-        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:weightSum="1">
+        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" style="@style/lineal_layout" android:layout_height="wrap_content" android:orientation="vertical">
         <!--help-->
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/poisson_help_text"/>
+        <TextView style="@style/texts" android:layout_width="match_parent" android:text="@string/poisson_help_text"/>
         <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
             <Space style="@style/space"/>
             <!--lambda
@@ -33,7 +33,7 @@
             <EditText android:id="@+id/g" style="@style/float_textbox"/>
         </LinearLayout>
         <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
-            <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.71"/>
+            <Space style="@style/space"/>
             <TextView style="@style/texts" android:text="\u03BC"/>
             <EditText android:id="@+id/etMean" style="@style/float_textbox"/>
             <TextView style="@style/texts" android:text="\u03C3"/>

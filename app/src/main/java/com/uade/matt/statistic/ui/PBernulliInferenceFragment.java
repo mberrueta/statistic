@@ -26,16 +26,16 @@ public class PBernulliInferenceFragment extends DistributionFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.p_bernulli_inference_view, container, false);
 
-    FloatingActionButton fab = rootView.findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.p_bernulli_inference_text).setTitle(R.string.help);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+    // FloatingActionButton fab = rootView.findViewById(R.id.fab);
+    // fab.setOnClickListener(new View.OnClickListener() {
+    //   @Override
+    //   public void onClick(View view) {
+    //     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+    //     builder.setMessage(R.string.p_bernulli_inference_text).setTitle(R.string.help);
+    //     AlertDialog dialog = builder.create();
+    //     dialog.show();
+    //   }
+    // });
 
     etSize = rootView.findViewById(R.id.etSize);
     etSampleSize = rootView.findViewById(R.id.etSampleSize);

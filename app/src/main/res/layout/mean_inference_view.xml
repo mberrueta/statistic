@@ -3,64 +3,67 @@
     xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:app="http://schemas.android.com/apk/res-auto" 
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/frame" style="@style/view_layout" tools:context="com.uade.matt.statistic.ui.BinomialDistributionActivity" tools:ignore="MergeRootFrame">
-    <LinearLayout 
-        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:weightSum="1">
-        <LinearLayout 
-            xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <!--help-->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/mean_inference_help_text"/>
+        <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" style="@style/lineal_layout" android:layout_height="wrap_content" android:orientation="vertical">
+        <!--help-->
+        <TextView style="@style/texts" android:layout_width="match_parent" android:text="@string/mean_inference_help_text"/>
+            
             <!-- poblacion -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/population"/>
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/texts"  android:layout_width="match_parent"  android:text="@string/population"/>
+            <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
                 <Space style="@style/space"/>
                 <!-- promedio
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03BC"/><EditText android:id="@+id/etMean" style="@style/float_textbox"/> -->
+                <TextView style="@style/texts" android:text="\u03BC"/><EditText android:id="@+id/etMean" style="@style/float_textbox"/> -->
                 <!-- tamaño -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="P"/>
+                <TextView style="@style/texts" android:text="P"/>
                 <EditText android:id="@+id/etSize" style="@style/float_textbox"/>
                 <!-- desvio standard -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03C3"/>
+                <TextView style="@style/texts" android:text="\u03C3"/>
                 <EditText android:id="@+id/etStandardDeviation" style="@style/float_textbox"/>
             </LinearLayout>
+
+
             <!-- muestra -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/sample"/>
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/texts"  android:layout_width="match_parent"  android:text="@string/sample"/>
+            <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
                 <Space style="@style/space"/>
                 <!-- promedio -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u1E8B"/>
+                <TextView style="@style/texts" android:text="\u1E8B"/>
                 <EditText android:id="@+id/etSampleMean" style="@style/float_textbox"/>
                 <!-- tamaño -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="n"/>
+                <TextView style="@style/texts" android:text="n"/>
                 <EditText android:id="@+id/etSampleSize" style="@style/float_textbox"/>
                 <!-- desvio standard -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="s"/>
+                <TextView style="@style/texts" android:text="s"/>
                 <EditText android:id="@+id/etSampleStandardDeviation" style="@style/float_textbox"/>
             </LinearLayout>
+
             <!-- limites -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/limits"/>
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView style="@style/texts"  android:layout_width="match_parent"  android:text="@string/limits"/>
+            <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
                 <Space style="@style/space"/>
                 <!-- inf -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="A"/>
+                <TextView style="@style/texts" android:text="A"/>
                 <EditText android:id="@+id/etLimitInf" style="@style/float_textbox"/>
                 <!-- sup -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="B"/>
+                <TextView style="@style/texts" android:text="B"/>
                 <EditText android:id="@+id/etLimitSup" style="@style/float_textbox"/>
             </LinearLayout>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/error"/>
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+
+            <TextView style="@style/texts"  android:layout_width="match_parent"  android:text="@string/error"/>
+            <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
+                <Space style="@style/space"/>
                 <!-- error tolerado -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="error"/>
+                <TextView style="@style/texts" android:text="error"/>
                 <EditText android:id="@+id/etSampleError" style="@style/float_textbox"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="\u03B1"/>
+                <TextView style="@style/texts" android:text="\u03B1"/>
                 <EditText android:id="@+id/etAlpha" style="@style/float_textbox"/>
             </LinearLayout>
             <EditText android:id="@+id/etResult" style="@style/et_result_text"/>
-        </LinearLayout>
     </LinearLayout>
     <com.getbase.floatingactionbutton.FloatingActionsMenu android:id="@+id/menu_fab" style="@style/button_wrapper" app:fab_addButtonColorNormal="?attr/colorPrimary" app:fab_expandDirection="down" app:fab_labelsPosition="right">
         <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/button" style="@style/button" app:fab_icon="@android:drawable/star_on" app:fab_size="mini" app:fab_title="calc"/>
         <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/clear" style="@style/button" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear"/>
-        <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/fab" style="@style/button" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear"/>
+        
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </android.support.design.widget.CoordinatorLayout>

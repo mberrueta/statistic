@@ -26,7 +26,7 @@
             <EditText android:id="@+id/g" style="@style/float_textbox"/>
         </LinearLayout>
         <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
-            <Space android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.71"/>
+            <Space style="@style/space" />
             <TextView style="@style/texts" android:text="\u03BC"/>
             <EditText android:id="@+id/etMean" style="@style/float_textbox"/>
             <TextView style="@style/texts" android:text="\u03C3"/>
@@ -38,6 +38,5 @@
     <com.getbase.floatingactionbutton.FloatingActionsMenu android:id="@+id/menu_fab" style="@style/button_wrapper" app:fab_addButtonColorNormal="?attr/colorPrimary" app:fab_expandDirection="down" app:fab_labelsPosition="right">
         <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/button" style="@style/button" app:fab_colorNormal="?attr/colorAccent" app:fab_icon="@android:drawable/star_on" app:fab_size="mini" app:fab_title="calc"/>
         <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/clear" style="@style/button" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear"/>
-        <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/fab" style="@style/button" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear"/>
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </android.support.design.widget.CoordinatorLayout>

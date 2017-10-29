@@ -28,16 +28,16 @@ public class VarianceInferenceFragment extends DistributionFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.variance_inference_view, container, false);
 
-    FloatingActionButton fab = rootView.findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.variance_inference_text).setTitle(R.string.help);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+    // FloatingActionButton fab = rootView.findViewById(R.id.fab);
+    // fab.setOnClickListener(new View.OnClickListener() {
+    //   @Override
+    //   public void onClick(View view) {
+    //     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+    //     builder.setMessage(R.string.variance_inference_text).setTitle(R.string.help);
+    //     AlertDialog dialog = builder.create();
+    //     dialog.show();
+    //   }
+    // });
 
     etSampleSize = rootView.findViewById(R.id.etSampleSize);
     etDegreesOfFreedom = rootView.findViewById(R.id.etDegreesOfFreedom);

@@ -9,7 +9,8 @@ import static org.junit.Assert.assertThat;
 public class SizeBinomialEstimationCalcTest {
   @Test
   public void calculateVarianceLimits() {
-    SizeBinomialEstimationCalc result = new SizeBinomialEstimationCalc().p0(0.12).alpha(0.05).p1(0.14).beta(0.5).calc();
+    SizeBinomialEstimationCalc result = new SizeBinomialEstimationCalc()
+      .p0(0.12).alpha(0.05).p1(0.14).beta(0.5).calc();
     assertNotNull(result);
     System.out.print(result.resultMessage());
     assertThat(result.size() < 770, is(true));

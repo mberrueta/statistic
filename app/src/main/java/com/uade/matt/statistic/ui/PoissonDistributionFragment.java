@@ -38,16 +38,16 @@ public class PoissonDistributionFragment extends DistributionFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.poisson_distribution_view, container, false);
 
-    FloatingActionButton fab = rootView.findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.poisson_text).setTitle(R.string.help);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+    // FloatingActionButton fab = rootView.findViewById(R.id.fab);
+    // fab.setOnClickListener(new View.OnClickListener() {
+    //   @Override
+    //   public void onClick(View view) {
+    //     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+    //     builder.setMessage(R.string.poisson_text).setTitle(R.string.help);
+    //     AlertDialog dialog = builder.create();
+    //     dialog.show();
+    //   }
+    // });
 
     etFrequency = rootView.findViewById(R.id.frequency);
     etT = rootView.findViewById(R.id.t);

@@ -37,17 +37,17 @@ public class TDistributionFragment extends DistributionFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.t_distribution_view, container, false);
 
-    FloatingActionButton fab = rootView.findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
+    // FloatingActionButton fab = rootView.findViewById(R.id.fab);
+    // fab.setOnClickListener(new View.OnClickListener() {
+    //   @Override
+    //   public void onClick(View view) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.t_text).setTitle(R.string.help);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+    //     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+    //     builder.setMessage(R.string.t_text).setTitle(R.string.help);
+    //     AlertDialog dialog = builder.create();
+    //     dialog.show();
+    //   }
+    // });
 
     etDegreesOfFreedom = rootView.findViewById(R.id.etDegreesOfFreedom);
     etX = rootView.findViewById(R.id.etX);

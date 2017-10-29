@@ -24,7 +24,11 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
   @Setter
   private String resultMessage = "";
 
-  private Integer max_tries = 2000, tries = 0;
+  @Getter
+  @Setter
+  private Boolean lessThan;
+
+  private Integer max_tries = 1200, tries = 0;
   private Integer bestN, bestR;
   private Double A, B, bestErrorA = 999.0, bestErrorB = 999.0;
 
@@ -48,14 +52,16 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
 
   @Override
   public String toString() {
-    return "SizeBinomialEstimationCalc{" + "tries=" + tries + ", bestN=" + bestN + ", bestR=" + bestR + ", A=" + A
-        + ", B=" + B + ", bestErrorA=" + bestErrorA + ", bestErrorB=" + bestErrorB + '}';
+    return " tries=" + tries
+      + "\n best N=" + bestN + ", best R=" + bestR
+      + "\n A=" + A + ", B=" + B
+      + "\n Error A=" + String.format("%.4f",bestErrorA) + ", Error B=" + String.format("%.4f",bestErrorB) ;
   }
 
   private Pair<Integer, Integer> calcRequiredSize(Integer n, Integer r) throws Exception {
     tries++;
 
-    if (max_tries < tries)
+    if (max_tries <= tries)
       return new Pair<>(bestN, bestR);
 
     if (n < 1 || r < 1)
@@ -68,7 +74,8 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
     // Gb(r / n; p0) = alpha
     A = round(new BinomialDistributionCalc().p(p0).n(n).r(r).calculatePx().g());
     // Fb(r / n; p1) = beta
-    B = round(new BinomialDistributionCalc().p(p1).n(n).r(r - 1).calculatePx().f());
+    Integer bR = lessThan ? r -1 : r + 1;
+    B = round(new BinomialDistributionCalc().p(p1).n(n).r(bR).calculatePx().f());
 
     errorA = alpha - A;
     errorB = beta - B;

@@ -38,19 +38,19 @@ public class BinomialDistributionFragment extends DistributionFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     final View rootView = inflater.inflate(R.layout.binomial_distribution_view, container, false);
 
-    FloatingActionButton fab = rootView.findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        //                Resources res = view.getResources();
-        //                builder.setMessage(res.getString(res.getIdentifier("binomial_text", null, null)))
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage(R.string.binomial_text).setTitle(R.string.help);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
+//    FloatingActionButton fab = rootView.findViewById(R.id.fab);
+//    fab.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View view) {
+//        //                Resources res = view.getResources();
+//        //                builder.setMessage(res.getString(res.getIdentifier("binomial_text", null, null)))
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+//        builder.setMessage(R.string.binomial_text).setTitle(R.string.help);
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//      }
+//    });
 
     etN = rootView.findViewById(R.id.n);
     etP = rootView.findViewById(R.id.p);

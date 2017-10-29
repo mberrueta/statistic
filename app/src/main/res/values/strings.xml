@@ -2,60 +2,60 @@
     <string name="app_name">Rick Statistic</string>
     <string name="title_distribution_detail">Distribution Detail</string>
     <string name="help">help</string>
-    <string name="binomial_text">        Distribución de probabilidad 
-        <i>discreta</i> que cuenta el número de éxitos en una secuencia        de n ensayos de 
-        <i>Bernoulli</i> independientes entre sí, con una probabilidad fija p de ocurrencia del éxito entre los ensayos.\n
-        Probabilidad de exito
+    <!--<string name="binomial_text">        Distribución de probabilidad -->
+        <!--<i>discreta</i> que cuenta el número de éxitos en una secuencia        de n ensayos de -->
+        <!--<i>Bernoulli</i> independientes entre sí, con una probabilidad fija p de ocurrencia del éxito entre los ensayos.\n-->
+        <!--Probabilidad de exito-->
 
-        
-        <b>Variable aleatoria:</b>\n        “r” 
-        <i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n        
-        <b>Parámetros del Modelo:</b> \n             “n” 
-        <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n             “p” 
-        <i>(probabilidad de éxito constante en cada experimento)</i>\n        
-        <b>Dominio de la Variable Aleatoria:</b>\n        0 ≤ r ≤ n .\n                                Distribución de probabilidad 
-        <i>discreta</i> que cuenta el número de éxitos en una secuencia de `n` ensayos de 
-        <i>Bernoulli</i> independientes entre sí, con una probabilidad fija `p` de ocurrencia del éxito entre los ensayos. \n               Probabilidad de éxito: `p` \n        Probabilidad de fracazo: `1 - p` \n        Cantidad de éxitos: `r` \n        Cantidad de fracazos: `n-r` \n        Combinaciones posibles: `k = nCr` \n
+        <!---->
+        <!--<b>Variable aleatoria:</b>\n        “r” -->
+        <!--<i>(cantidad de éxitos encontrados o bien a encontrar en “n” experimentos realizados o bien a realizar)</i> \n        -->
+        <!--<b>Parámetros del Modelo:</b> \n             “n” -->
+        <!--<i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n             “p” -->
+        <!--<i>(probabilidad de éxito constante en cada experimento)</i>\n        -->
+        <!--<b>Dominio de la Variable Aleatoria:</b>\n        0 ≤ r ≤ n .\n                                Distribución de probabilidad -->
+        <!--<i>discreta</i> que cuenta el número de éxitos en una secuencia de `n` ensayos de -->
+        <!--<i>Bernoulli</i> independientes entre sí, con una probabilidad fija `p` de ocurrencia del éxito entre los ensayos. \n               Probabilidad de éxito: `p` \n        Probabilidad de fracazo: `1 - p` \n        Cantidad de éxitos: `r` \n        Cantidad de fracazos: `n-r` \n        Combinaciones posibles: `k = nCr` \n-->
 
-        
-        <b>Variable aleatoria:</b>\n        `r` 
-        <i>(cantidad de éxitos encontrados o bien a encontrar en `n` experimentos realizados o bien a realizar)</i> \n         Dominio : 0 ≤ r ≤ n .\n        
-        <b>Parámetros del Modelo:</b> \n             `n` 
-        <i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `p` 
-        <i>(probabilidad de éxito constante en cada experimento)</i>\n              Dominio : 0 ≤ p ≤ 1 .\n    
-    </string>
-    <string name="normal_text">        Distribución de probabilidad 
-        <i>continua</i> y es indudablemente el más importante, de los modelos continuos, y el de mayor uso en la ciencia estadística.        Creado por `De Moivre-Laplace` y no Gauss!!.
-        
-        <b>Variable aleatoria:</b>\n        `x` 
-        <i>(distancia al eje de simetria)</i> \n         Dominio : ℝ .\n        
-        <b>Parámetros del Modelo:</b> \n             `𝜇` 
-        <i> (`mu` Esperanza matemática o media)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `𝜎` 
-        <i>(`sigma` Desviación estandard)</i>\n              Dominio : 0 ≤ 𝜎 .\n
+        <!---->
+        <!--<b>Variable aleatoria:</b>\n        `r` -->
+        <!--<i>(cantidad de éxitos encontrados o bien a encontrar en `n` experimentos realizados o bien a realizar)</i> \n         Dominio : 0 ≤ r ≤ n .\n        -->
+        <!--<b>Parámetros del Modelo:</b> \n             `n` -->
+        <!--<i> (cantidad de pruebas o experimentos a realizar o bien realizados)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `p` -->
+        <!--<i>(probabilidad de éxito constante en cada experimento)</i>\n              Dominio : 0 ≤ p ≤ 1 .\n    -->
+    <!--</string>-->
+    <!--<string name="normal_text">        Distribución de probabilidad -->
+        <!--<i>continua</i> y es indudablemente el más importante, de los modelos continuos, y el de mayor uso en la ciencia estadística.        Creado por `De Moivre-Laplace` y no Gauss!!.-->
+        <!---->
+        <!--<b>Variable aleatoria:</b>\n        `x` -->
+        <!--<i>(distancia al eje de simetria)</i> \n         Dominio : ℝ .\n        -->
+        <!--<b>Parámetros del Modelo:</b> \n             `𝜇` -->
+        <!--<i> (`mu` Esperanza matemática o media)</i>\n              Dominio : 0 ≤ n ≤ ∞ .\n             `𝜎` -->
+        <!--<i>(`sigma` Desviación estandard)</i>\n              Dominio : 0 ≤ 𝜎 .\n-->
 
-        Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n
-        <!--el 68,27% se encuentra en el intervalo (𝜇 - 𝜎) ≤ x ≤ (𝜇 + 𝜎) \n-->
-        <!--el 95,45% se encuentra en el intervalo (𝜇 - 2𝜎) ≤ x ≤ (𝜇 + 2𝜎) \n-->
-        <!--el 99,73% se encuentra en el intervalo (𝜇 - 3𝜎) ≤ x ≤ (𝜇 + 3𝜎) \n-->
-        <!--el 99,99% se encuentra en el intervalo (𝜇 - 4𝜎) ≤ x ≤ (𝜇 + 4𝜎) \n-->
-    </string>
-    <string name="poisson_text">        Distribución de probabilidad discreta que expresa, a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto período de tiempo. Concretamente, se especializa en la probabilidad de ocurrencia de sucesos con probabilidades muy pequeñas, o sucesos "raros".
-         
-        <b>Variable aleatoria:</b>\n        `r` 
-        <i>(numero de acontecimientos)</i> \n         Dominio : ℕ .\n        
-        <b>Parámetros del Modelo:</b> \n             `𝜆` 
-        <i> (`lambda` tasa de falla)</i>\n              Dominio : ℝ/ 0 ≤ 𝜆 ≤ ∞ .\n             `t` 
-        <i>(periodo de tiempo de la frecuencia)</i>\n              Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n
-    
-    </string>
-    <string name="t_text">        Distribución de probabilidad continua.        Se define como el cociente entre una normal estandarizada y la raíz cuadrada de una distribución denominada “Chi–Cuadrado (χ2)
-         
-        <b>Variable aleatoria:</b>\n        `𝜈` 
-        <i>( `nu` número de grados de libertad, igual a `n - 1` n=observaciones)</i> \n            Dominio : ℝ/ 0 ≤ 𝜈 .\n        
-        <b>Parámetros del Modelo:</b> \n             `x` 
-        <i> ()</i>\n              Dominio : ℝ/ -∞ ≤ x ≤ ∞ .\n
-    
-    </string>
+        <!--Eje de simetría respecto de su esperanza matemática, la cual coincide con la moda y la mediana de la variable aleatoria. \n        Los puntos de inflexión de la curva se encuentran a una distancia igual al desvío estándar del eje de simetría.  \n-->
+        <!--&lt;!&ndash;el 68,27% se encuentra en el intervalo (𝜇 - 𝜎) ≤ x ≤ (𝜇 + 𝜎) \n&ndash;&gt;-->
+        <!--&lt;!&ndash;el 95,45% se encuentra en el intervalo (𝜇 - 2𝜎) ≤ x ≤ (𝜇 + 2𝜎) \n&ndash;&gt;-->
+        <!--&lt;!&ndash;el 99,73% se encuentra en el intervalo (𝜇 - 3𝜎) ≤ x ≤ (𝜇 + 3𝜎) \n&ndash;&gt;-->
+        <!--&lt;!&ndash;el 99,99% se encuentra en el intervalo (𝜇 - 4𝜎) ≤ x ≤ (𝜇 + 4𝜎) \n&ndash;&gt;-->
+    <!--</string>-->
+    <!--<string name="poisson_text">        Distribución de probabilidad discreta que expresa, a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto período de tiempo. Concretamente, se especializa en la probabilidad de ocurrencia de sucesos con probabilidades muy pequeñas, o sucesos "raros".-->
+         <!---->
+        <!--<b>Variable aleatoria:</b>\n        `r` -->
+        <!--<i>(numero de acontecimientos)</i> \n         Dominio : ℕ .\n        -->
+        <!--<b>Parámetros del Modelo:</b> \n             `𝜆` -->
+        <!--<i> (`lambda` tasa de falla)</i>\n              Dominio : ℝ/ 0 ≤ 𝜆 ≤ ∞ .\n             `t` -->
+        <!--<i>(periodo de tiempo de la frecuencia)</i>\n              Dominio : ℝ/ 0 ≤ t ≤ ∞ .\n-->
+    <!---->
+    <!--</string>-->
+    <!--<string name="t_text">        Distribución de probabilidad continua.        Se define como el cociente entre una normal estandarizada y la raíz cuadrada de una distribución denominada “Chi–Cuadrado (χ2)-->
+         <!---->
+        <!--<b>Variable aleatoria:</b>\n        `𝜈` -->
+        <!--<i>( `nu` número de grados de libertad, igual a `n - 1` n=observaciones)</i> \n            Dominio : ℝ/ 0 ≤ 𝜈 .\n        -->
+        <!--<b>Parámetros del Modelo:</b> \n             `x` -->
+        <!--<i> ()</i>\n              Dominio : ℝ/ -∞ ≤ x ≤ ∞ .\n-->
+    <!---->
+    <!--</string>-->
     <string name="chisquared">        chisquared    </string>
     <string name="population">poblacion</string>
     <string name="sample">muestra</string>
@@ -63,53 +63,53 @@
     <string name="variance_limits">limites varianza</string>
     <string name="standard_deviation_limits">limites desvio standard</string>
     <string name="error">error</string>
-    <string name="mean_inference_text">mean_inference_text!!!</string>
-    <string name="variance_inference_text">variance_inference_text bitch!!!</string>
-    <string name="fisher_snedecor_text">fisher_snedecor_text!!!</string>
-    <string name="p_bernulli_inference_text">p_bernulli_inference bitch!!!</string>
-    <string name="size_binomial_estimation_text">size_binomial_estimation_activity_text OHHHHH </string>
+    <!--<string name="mean_inference_text">mean_inference_text!!!</string>-->
+    <!--<string name="variance_inference_text">variance_inference_text bitch!!!</string>-->
+    <!--<string name="fisher_snedecor_text">fisher_snedecor_text!!!</string>-->
+    <!--<string name="p_bernulli_inference_text">p_bernulli_inference bitch!!!</string>-->
+    <!--<string name="size_binomial_estimation_text">size_binomial_estimation_activity_text OHHHHH </string>-->
     <string name="binomial_help_text">
          n, p, r -> F ( &amp; all ) \t\t\n
          n, p, F -> r &amp; r + 1 \t\t\n
          n, p, G -> r &amp; r + 1 \t\t\n
          n, r, F -> p ( &amp; all ) \t\t\n
-         𝜇, p, r -> n ( &amp; all ) \t\t\n
-         𝜎, p, r -> n ( &amp; all ) \t\t\n
+         \u03BC, p, r -> n ( &amp; all ) \t\t\n
+         \u03C3, p, r -> n ( &amp; all ) \t\t\n
     </string>
     <string name="normal_help_text">
-    f -> x  \n
-    x -> f \n
+    f -> x   \t\t\n
+    x -> f  \t\t\n
     </string>
     <string name="poisson_help_text">
-    frec, r -> F, P, G \n
-    frec, F -> r \n
-    frec, G -> r \n
+    \u03bb, r -> F, P, G  \t\t\n
+    \u03bb, F o G -> r  \t\t\n
     </string>
     <string name="t_help_text">
-    grad lib, x -> F, G \n
-    grad lib, F -> x \n
+    \u03bc, x -> F, G  \t\t\n
+    \u03bc, F o G -> x  \t\t\n
     </string>
     <string name="mean_inference_help_text">
-    stand dev, x (sample mean), n (sample size), alpha -> A, B, error \n
-    stand dev, x (sample mean), n (sample size), error -> A, B, alpha \n
-    P (pobl size), stand dev, x (sample mean), error, alpha-> n \n
+    stand dev, x, n, \u03B1 -> A, B, error  \t\t\n
+    stand dev, x, n, error -> A, B, \u03B1  \t\t\n
+    P (pobl size), stand dev, x, error, \u03B1-> n  \t\t\n
     </string>
     <string name="variance_inference_help_text">
-    n (sample size), S (sample stnd dev), α -> A, B, R, A`, B`, R` \n
+    n, S, \u03B1 -> A, B, R, A`, B`, R`  \t\t\n
+    \u03BD, S, \u03B1 -> A, B, R, A`, B`, R`  \t\t\n
     </string>
     <string name="fisher_snedecor_help_text">
-    S (sample stnd dev), R, α -> n \n
-    S (sample stnd dev), R`, α -> n \n
+        v1, v2, x -> F, G  \t\t\n
+        v1, v2, F o G -> x  \t\t\n
     </string>
     <string name="chisquared_help_text">
-    grad lib, x -> F, G \n
-    grad lib, F -> x \n
+    \u03bc, x -> F, G  \t\t\n
+    \u03bc, F o G -> x  \t\t\n
     </string>
     <string name="p_bernulli_inference_help_text">
-    n (size), r (sample size), α -> A, B, P \n
+    n (pob size), r, \u03B1 -> A, B, P  \t\t\n
     </string>
     <string name="size_binomial_estimation_help_text">
-    p0 ,alpha, p1, beta -> n, r
+    p0 ,\u03B1, p1, \u03B2 -> n, r \t\t\n
     </string>
 
     <string name="dummy_button">Dummy Button</string>
@@ -118,11 +118,15 @@
 </resources>
     <!--
 
+    S (sample stnd dev), R, \u03B1 -> n  \t\t\n
+    S (sample stnd dev), R`, \u03B1 -> n  \t\t\n
 
-λ
-𝜈
-𝜇
-𝜎
- ∞
- α
- β -->
+
+λ 03B2 \u03bb
+degrees of freedom 𝜈 \u03BD
+mean 𝜇 \u03BC
+standard deviation 𝜎 \u03C3
+ ∞ \u221E
+alpha  α \u03B1
+ beta β \u03B2
+ varianza 𝜎^2 \u03C3^2 -->

@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:app="http://schemas.android.com/apk/res-auto" 
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/frame" style="@style/view_layout" tools:context="com.uade.matt.statistic.ui.ChiSquaredDistributionActivity" tools:ignore="MergeRootFrame">
-    <LinearLayout 
-        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:weightSum="1">
+<LinearLayout 
+        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/distribution" style="@style/lineal_layout" android:layout_height="wrap_content" android:orientation="vertical">
         <!--help-->
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false" android:enabled="false" android:inputType="text" android:text="@string/chisquared_help_text"/>
+        <TextView style="@style/texts" android:layout_width="match_parent" android:text="@string/chisquared_help_text"/>
         <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
             <Space style="@style/space"/>
             <!-- grados de libertad
@@ -52,6 +52,6 @@
     <com.getbase.floatingactionbutton.FloatingActionsMenu android:id="@+id/menu_fab" style="@style/button_wrapper" app:fab_addButtonColorNormal="?attr/colorPrimary" app:fab_expandDirection="down" app:fab_labelsPosition="right">
         <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/button" style="@style/button" app:fab_icon="@android:drawable/star_on" app:fab_size="mini" app:fab_title="calc"/>
         <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/clear" style="@style/button" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear"/>
-        <com.getbase.floatingactionbutton.FloatingActionButton android:id="@+id/fab" style="@style/button" app:fab_icon="@android:drawable/btn_dialog" app:fab_size="mini" app:fab_title="clear"/>
+        
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </android.support.design.widget.CoordinatorLayout>

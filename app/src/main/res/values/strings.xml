@@ -88,15 +88,35 @@
     \u03bc, x -> F, G  \t\t\n
     \u03bc, F o G -> x  \t\t\n
     </string>
+
+
+
     <string name="mean_inference_help_text">
-    stand dev, x, n, \u03B1 -> A, B, error  \t\t\n
-    stand dev, x, n, error -> A, B, \u03B1  \t\t\n
-    P (pobl size), stand dev, x, error, \u03B1-> n  \t\t\n
+    P vacio = poblacion  \u221E \t\t\n
+    ------------------- \t\t\n
+    conocido \u03C3   \t\t\n
+    \u03C3, x, n, \u03B1 -> A, B, error  \t\t\n
+    \u03C3, x, error, \u03B1 -> n, A, B  \t\t\n
+    desconocido \u03C3 \t\t\n
+    x, n, s, , \u03B1 -> A, B \t\t\n
+    x, s, error, \u03B1 -> n, A, B \t\t\n
     </string>
+
+
+
     <string name="variance_inference_help_text">
-    n, S, \u03B1 -> A, B, R, A`, B`, R`  \t\t\n
-    \u03BD, S, \u03B1 -> A, B, R, A`, B`, R`  \t\t\n
+    n, s, \u03B1 -> A, B, R, A`, B`, R`  \t\n
+    s, R, \u03B1 -> A, B, R, A`, B`, R`  \t\n
+    s, R`,\u03B1 -> A, B, R, A`, B`, R` \t\n
     </string>
+
+
+    <string name="p_bernulli_inference_help_text">
+    n, r, \u03B1 -> A, B, P  \t\t\n
+    </string>
+
+
+
     <string name="fisher_snedecor_help_text">
         v1, v2, x -> F, G  \t\t\n
         v1, v2, F o G -> x  \t\t\n
@@ -105,9 +125,8 @@
     \u03bc, x -> F, G  \t\t\n
     \u03bc, F o G -> x  \t\t\n
     </string>
-    <string name="p_bernulli_inference_help_text">
-    n (pob size), r, \u03B1 -> A, B, P  \t\t\n
-    </string>
+
+
     <string name="size_binomial_estimation_help_text">
     p0 ,\u03B1, p1, \u03B2 -> n, r \t\t\n
     </string>

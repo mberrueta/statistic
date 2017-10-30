@@ -7,6 +7,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class MeanInferenceCalcTest {
+
+  //sigma, X, N, y alpha -> A,B
   @Test
   public void calculateMeanKnowedSD() throws Exception {
     MeanInferenceCalc result = new MeanInferenceCalc().alpha(0.1).standardDeviation(15.0).sampleSize(10)
@@ -33,6 +35,8 @@ public class MeanInferenceCalcTest {
   //        assertThat(result.sampleError(), is(8));
   //    }
 
+
+  // sigma, X, error , alpha -> n
   @Test
   public void calculateSampleSizeKnowedSD() throws Exception {
     MeanInferenceCalc result = new MeanInferenceCalc().alpha(0.1).standardDeviation(15.0).sampleMean(246.0)
@@ -41,8 +45,9 @@ public class MeanInferenceCalcTest {
     assertThat(result.sampleSize(), is(25));
   }
 
+  // poblacion finita
   @Test
-  public void calculateInfPopSampleSizeKnowedSD() throws Exception {
+  public void calculateFinitePopulationSampleSizeKnowedSD() throws Exception {
     MeanInferenceCalc result = new MeanInferenceCalc().alpha(0.1).standardDeviation(15.0).sampleMean(246.0)
         .sampleError(5).size(900).calc();
     assertNotNull(result);
@@ -60,10 +65,20 @@ public class MeanInferenceCalcTest {
 
   @Test
   public void calculateSampleSizeUnknowedSD() throws Exception {
-    MeanInferenceCalc result = new MeanInferenceCalc().alpha(0.05).sampleStandardDeviation(1.7935).sampleMean(17.35)
+    MeanInferenceCalc result = new MeanInferenceCalc()
+      .alpha(0.05).sampleStandardDeviation(1.7935).sampleMean(17.35)
         .sampleError(1).calc();
     assertNotNull(result);
     assertThat(result.sampleSize(), is(15));
+  }
+
+  @Test
+  public void calculateLimUnknowedSD() throws Exception {
+    MeanInferenceCalc result = new MeanInferenceCalc()
+      .alpha(0.05).sampleStandardDeviation(1.7935).sampleMean(17.35)
+      .sampleSize(15).calc();
+    assertNotNull(result);
+    assertThat(result.sampleError(), is(1));
   }
 
 }

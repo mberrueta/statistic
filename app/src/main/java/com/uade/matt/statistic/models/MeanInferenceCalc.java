@@ -48,9 +48,9 @@ public class MeanInferenceCalc extends InferenceCalc {
 
     //conocido sigma
     if (!isNullorZero(standardDeviation)) {
-      // Normal z
-      Double multiplier = new NormalDistributionCalc().f(1 - (alpha / 2)).calculatePx().x();
-      calculate(multiplier, standardDeviation);
+      // Normal z ( 1 - alpha /2)
+      Double z = new NormalDistributionCalc().f(1 - (alpha / 2)).calculatePx().x();
+      calculate(z, standardDeviation);
     } else {
 
       if (isNullorZero(sampleSize)) {
@@ -87,12 +87,14 @@ public class MeanInferenceCalc extends InferenceCalc {
     return temp.intValue();
   }
 
-  private void calculate(double multiplier, Double variation) {
+  // variacion es el desvio estandard si lo conozco
+  private void calculate(double z, Double variation) {
     Double temp;
     Double finitePopulationCorrection = 1.0;
 
+    // averiguar tamano de la muestra
     if (isNullorZero(sampleSize)) {
-      temp = multiplier * variation / sampleError;
+      temp = z * variation / sampleError;
       temp = Math.ceil(Math.pow(temp, 2));//round up and ^ 2
       Integer infinitePopulationSampleSize = temp.intValue();
 
@@ -103,13 +105,14 @@ public class MeanInferenceCalc extends InferenceCalc {
                 .intValue();
       } else
         sampleSize = infinitePopulationSampleSize;
-
     }
 
+    // size (P) vacio es poblacion infinita
+    // sino, factor de correccion
     if (!isNullorZero(size))
       finitePopulationCorrection = Math.sqrt((size - sampleSize) / size);
 
-    temp = multiplier * variation * finitePopulationCorrection / Math.sqrt(sampleSize);
+    temp = z * variation * finitePopulationCorrection / Math.sqrt(sampleSize);
     limitInf = sampleMean - temp;
     limitSup = sampleMean + temp;
 

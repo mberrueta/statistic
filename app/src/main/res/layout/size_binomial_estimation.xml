@@ -9,7 +9,7 @@
         <TextView style="@style/texts" android:layout_width="match_parent" android:text="@string/size_binomial_estimation_help_text"/>
         <LinearLayout 
             xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <ToggleButton android:id="@+id/tbType" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:textOff="\u2264" android:textOn="\u2265"/>
+            <ToggleButton android:id="@+id/tbType" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:textOn="H0) p \u2264 p0 ;H1) p \u003E p0" android:textOff="H0) p \u2265 p0 ;H1) p \u003C p0"/>
             <!-- alpha -->
             <TextView style="@style/texts" android:layout_width="match_parent" android:text="Gb(rc / n, P0) = \u03B1"/>
             <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -23,7 +24,8 @@ import static com.uade.matt.statistic.utils.Helper.setEditText;
 public class SizeBinomialEstimationFragment extends DistributionFragment {
   SizeBinomialEstimationCalc result;
   private EditText etP0, etAlpha, etP1, etBeta, etResult;
-  private ToggleButton tbType;
+  private ToggleButton tbLessThanType;
+  private TextView txt1, txt2;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +43,11 @@ public class SizeBinomialEstimationFragment extends DistributionFragment {
     // });
 
 
-    tbType = rootView.findViewById(R.id.tbType);
+    txt1 = rootView.findViewById(R.id.txt1);
+    txt2 = rootView.findViewById(R.id.txt2);
+
+
+    tbLessThanType = rootView.findViewById(R.id.tbLessThanType);
     etP0 = rootView.findViewById(R.id.etP0);
     etAlpha = rootView.findViewById(R.id.etAlpha);
     etP1 = rootView.findViewById(R.id.etP1);
@@ -63,10 +69,28 @@ public class SizeBinomialEstimationFragment extends DistributionFragment {
         etP1.setText("");
         etBeta.setText("");
         etResult.setText("");
-        tbType.setChecked(false);
+        tbLessThanType.setChecked(false);
       }
     });
 
+    tbLessThanType.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View v) {
+        String txt1False = "Caso 2 - Error I: Fb(rc / n, P0) = \u03B1";
+        String txt2False = "Caso 2 - Error II: Gb(rc + 1/ n, P1) = \u03B2";
+        String txt1True = "Caso 1 - Error I: Gb(rc / n, P0) = \u03B1";
+        String txt2True = "Caso 1 - Error II: Fb(rc - 1 / n, P1) = \u03B2";
+
+        // caso 1
+        if (tbLessThanType.isChecked()){
+          txt1.setText(txt1True);
+          txt2.setText(txt2True);
+        }else {
+          txt1.setText(txt1False);
+          txt2.setText(txt2False);
+        }
+      }
+    });
     mButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -90,7 +114,7 @@ public class SizeBinomialEstimationFragment extends DistributionFragment {
 
         try {
           result = new SizeBinomialEstimationCalc()
-            .lessThan(tbType.isChecked())
+            .lessThan(tbLessThanType.isChecked())
             .p0((Double) getParsed(Helper.NumberType.DOUBLE, etP0))
             .alpha((Double) getParsed(Helper.NumberType.DOUBLE, etAlpha))
             .p1((Double) getParsed(Helper.NumberType.DOUBLE, etP1))

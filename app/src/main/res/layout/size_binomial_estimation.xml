@@ -9,9 +9,9 @@
         <TextView style="@style/texts" android:layout_width="match_parent" android:text="@string/size_binomial_estimation_help_text"/>
         <LinearLayout 
             xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <ToggleButton android:id="@+id/tbType" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:textOn="H0) p \u2264 p0 ;H1) p \u003E p0" android:textOff="H0) p \u2265 p0 ;H1) p \u003C p0"/>
+            <ToggleButton android:id="@+id/tbLessThanType" android:checked="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:textOff="Caso 2. H0) p \u2265 p0 ;H1) p \u003C p0" android:textOn="Caso 1. H0) p \u2264 p0 ;H1) p \u003E p0"/>
             <!-- alpha -->
-            <TextView style="@style/texts" android:layout_width="match_parent" android:text="Gb(rc / n, P0) = \u03B1"/>
+            <TextView style="@style/texts" android:layout_width="match_parent" android:text="Caso 1 - Error I: Gb(rc / n, P0) = \u03B1" android:id="@+id/txt1"/>
             <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
                 <Space style="@style/space"/>
                 <TextView style="@style/texts" android:text="p0"/>
@@ -20,7 +20,7 @@
                 <EditText android:id="@+id/etAlpha" style="@style/float_textbox"/>
             </LinearLayout>
             <!-- beta -->
-            <TextView style="@style/texts" android:layout_width="match_parent" android:text="Fb(rc / n, P1) = \u03B2"/>
+            <TextView style="@style/texts" android:layout_width="match_parent" android:text="Caso 1 - Error II: Fb(rc - 1 / n, P1) = \u03B2"  android:id="@+id/txt2"/>
             <LinearLayout style="@style/lineal_layout" android:orientation="horizontal">
                 <Space style="@style/space"/>
                 <TextView style="@style/texts" android:text="p1"/>

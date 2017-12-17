@@ -26,18 +26,18 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
 
   @Getter
   @Setter
-  private Boolean lessThan;
+  private Boolean lessThan = false;
 
   private Integer max_tries = 1200, tries = 0;
-  private Integer bestN, bestR;
-  private Double A, B, bestErrorA = 999.0, bestErrorB = 999.0;
+  private Integer bestN, bestR, nIncrement = 151;
+  private Double A = 0.0, B = 0.0, bestErrorA = 999.0, bestErrorB = 999.0, bestA = 1.0, bestB = 1.0;
 
   public SizeBinomialEstimationCalc calc() {
-    Log.i(SizeBinomialEstimationCalc.class.toString(), "Pre: " + this.toString());
+//    Log.i(SizeBinomialEstimationCalc.class.toString(), "Pre: " + this.toString());
 
     Pair<Integer, Integer> temp = null;//first number doesn't matter
     try {
-      temp = calcRequiredSize(1000, 500);
+      temp = calcRequiredSize(2000, 500);
     } catch (Exception e) {
       resultMessage = e.toString();
       return this;
@@ -46,15 +46,30 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
     sampleSize = temp.second;
     resultMessage = toString();
 
-    Log.i(SizeBinomialEstimationCalc.class.toString(), "Post: " + this.toString());
+    Log.i(SizeBinomialEstimationCalc.class.toString(), "Post: " + this.toLogString());
     return this;
+  }
+
+  public String toLogString() {
+    return "SizeBinomialEstimationCalc{" +
+      "tries=" + tries +
+      ", bestN=" + bestN +
+      ", bestR=" + bestR +
+      ", nIncrement=" + nIncrement +
+      ", A=" + A +
+      ", B=" + B +
+      ", bestErrorA=" + bestErrorA +
+      ", bestErrorB=" + bestErrorB +
+      ", bestA=" + bestA +
+      ", bestB=" + bestB +
+      '}';
   }
 
   @Override
   public String toString() {
     return " tries=" + tries
       + "\n best N=" + bestN + ", best R=" + bestR
-      + "\n A=" + A + ", B=" + B
+      + "\n best A=" + String.format("%.4f",bestA) + ", best B=" + String.format("%.4f",bestB)
       + "\n Error A=" + String.format("%.4f",bestErrorA) + ", Error B=" + String.format("%.4f",bestErrorB) ;
   }
 
@@ -71,11 +86,22 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
 
     Double errorA, errorB;
 
-    // Gb(r / n; p0) = alpha
-    A = round(new BinomialDistributionCalc().p(p0).n(n).r(r).calculatePx().g());
-    // Fb(r / n; p1) = beta
-    Integer bR = lessThan ? r -1 : r + 1;
-    B = round(new BinomialDistributionCalc().p(p1).n(n).r(bR).calculatePx().f());
+
+    if(lessThan) {
+      //p <= P0 (caso 1)
+      // Gb(rc / n; p0) = alpha
+      A = round(new BinomialDistributionCalc().p(p0).n(n).r(r).calculatePx().g());
+      // Fb(r - 1 / n; p1) = beta
+      B = round(new BinomialDistributionCalc().p(p1).n(n).r(r - 1).calculatePx().f());
+    }
+    else
+    {
+      //p => P0 (caso 2)
+      // Fb(r / n; p0) = alpha
+      A = round(new BinomialDistributionCalc().p(p0).n(n).r(r).calculatePx().f());
+      // Gb(rc + 1 / n; p1) = beta
+      B = round(new BinomialDistributionCalc().p(p1).n(n).r(r + 1).calculatePx().g());
+    }
 
     errorA = alpha - A;
     errorB = beta - B;
@@ -83,6 +109,8 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
     if (Math.abs(errorA) < bestErrorA && Math.abs(errorB) < bestErrorB) {
       bestN = n;
       bestR = r;
+      bestA = A;
+      bestB = B;
       bestErrorA = round(Math.abs(errorA));
       bestErrorB = round(Math.abs(errorB));
     }
@@ -92,16 +120,31 @@ public class SizeBinomialEstimationCalc extends InferenceCalc {
     else {
 
       // try with new possible R
-      Integer newR = new BinomialDistributionCalc().n(n).p(p0).g(alpha).calculatePx().r();
+      Integer newR = lessThan ?
+        new BinomialDistributionCalc().n(n).p(p0).g(alpha).calculatePx().r()
+        : new BinomialDistributionCalc().n(n).p(p0).f(alpha).calculatePx().r();
+
       if (!newR.equals(r)) {
         return calcRequiredSize(new Double(n).intValue(), new Double(newR).intValue());
       } else {
-        if ((errorA + errorB) > 0) {
+
+        //|| ((errorA + errorB) < 0 && !lessThan)
+        if ((errorA + errorB) > 0 )  {
           // try with a smaller size
-          return calcRequiredSize(new Double(n * 0.9).intValue(), new Double(newR).intValue());
+
+          // avoid higher limit than n
+          Integer newN = new Double(n * 0.9).intValue();
+          if(!lessThan)
+            newR = new BinomialDistributionCalc().n(newN).p(p0).f(alpha).calculatePx().r();
+
+          return calcRequiredSize(newN, new Double(newR).intValue());
         } else {
+          if(nIncrement>4)
+          {
+            nIncrement--;
+          }
           //try with a higher size
-          return calcRequiredSize(new Double(n + 7).intValue(), new Double(newR).intValue());
+          return calcRequiredSize(new Double(n + nIncrement).intValue(), new Double(newR).intValue());
         }
       }
     }
